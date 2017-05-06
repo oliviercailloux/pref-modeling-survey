@@ -86,14 +86,19 @@
 
 \defaultfontfeatures{
 	Fractions=On,
+	Mapping=tex-text,
+	Path=fonts/,
+	Extension=.otf,
+	UprightFont = xits-regular,
+	BoldFont = xits-bold,
+	ItalicFont = xits-italic,
+	BoldItalicFont = xits-bolditalic
+}
+\newfontfamily\xitsfamily{XITS}
+\defaultfontfeatures{
+	Fractions=On,
 	Mapping=tex-text% to turn "--" into dashes, useful for bibtex%%
 }
-%\defaultfontfeatures[\rmfamily, \sffamily]{
-%\defaultfontfeatures[\rmfamily]{
-%	Fractions=On,
-%	Mapping=% to leave " alone (disable the default mapping tex-text; requires loading the font afterwards?)
-%}
-\newfontfamily\xitsfamily{XITSs}
 \newfontfamily\texgyretermesfamily{TeX Gyre Termes}
 \newfontfamily\texgyreherosfamily{TeX Gyre Heros}
 \newfontfamily\lmfamily{Latin Modern Roman}
@@ -106,12 +111,17 @@
 	\setsansfont{TeX Gyre Heros}
 	\setmonofont{TeX Gyre Cursor}
 }
+\defaultfontfeatures{
+	Path=fonts/,
+	Extension=.otf,
+	UprightFont = xits-math,
+	BoldFont = xits-mathbold
+}
+\setmainfont{XITS Math}
 \defaultfontfeatures{}%disable default font features to avoid warnings with math fonts.
-%\newfontfamily\xitsmathfamily{XI Math}
-\setmathfont{XI Math}
-\setmathfont[range={\mathcal,\mathbfcal},StylisticSet=1]{XITS Math}
+%\setmathfont[range={\mathcal,\mathbfcal},StylisticSet=1]{XITS Math}
 %to make \boldmath $\cdot$ work (otherwise: “Missing character: There is no ⋅ in font XITS Math Bold/OT:script=math;language =DFLT;!”). Alternative: \setmathfont[BoldFont=XITS Math]{XITS Math}
-\setmathfont[range={"22C5},version=bold]{xits-math.otf}
+%\setmathfont[range={"22C5},version=bold]{xits-math.otf}
 %silently delays restoring normal font when using e.g. “≠)” or “≠ other word”.
 %\setTransitionTo{Arrows}{\xitsfamily}
 %\setTransitionTo{MathematicalOperators}{\xitsfamily}
