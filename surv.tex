@@ -1,6 +1,6 @@
 \RequirePackage[l2tabu, orthodox]{nag}
 \RequirePackage{silence}\WarningFilter{fmtcount}{\ordinal already defined use \FCordinal instead}
-\documentclass[version=last, pagesize, twoside=semi, BCOR=-3cm, DIV=calc, 12pt, a4paper, french, english]{scrartcl}
+\documentclass[french, english]{llncs}
 \input{preamble/packages}
 \input{preamble/math_basics}
 \input{preamble/math_mine}
@@ -13,11 +13,9 @@
 \begin{document}
 \title{The title}
 \author{Olivier Cailloux}
-\subject{Ze subject}%ok for Beamer. In article mode, appears on the page! Better use hypersetup.
-%\keywords{key, koy}%beamer only
 \makeatletter
 	\hypersetup{
-		pdfsubject={\@subject},
+%		pdfsubject={\@subject},
 		pdfkeywords={keyw1, keyw2}
 	}
 \makeatother
@@ -32,7 +30,7 @@ This link \url{http://tex.stackexchange.com/questions/31878/how-to-pass-definiti
 
 Some fractions in text: 1/2, 3/4, 10/12, and in math: $1/2$, $3/4$, $10/12$.
 
-Try leq, ≤, in text.
+%Try leq, ≤, in text.
 
 Now for some math $m$, bold $\mathbf{b}$, some symbols\commentOC{This is a long comment in the middle.} $≤$ and $\mathbf{≤}$, reals $ℝ$ and $\mathbf{ℝ}$ (consider the bb $\mathbb{R}$, $\mathcal{R}$ and $\mathscr{R}$), vector $V$ and $\mathbf{V}$, set $S$ and $\mathcal{S}$, greek $\delta$ and $\mathbf{\delta}$, $\epsilon$ VS $\varepsilon$, $\phi$ VS $\varphi$, $\Phi$.
 
