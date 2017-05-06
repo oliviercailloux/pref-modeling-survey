@@ -1,0 +1,9 @@
+\defaultfontfeatures[xitss]{
+	Path=fonts/,
+	Extension=.otf,
+	UprightFont = xits-regular,
+	BoldFont = xits-bold,
+	ItalicFont = xits-italic,
+	BoldItalicFont = xits-bolditalic
+}
+

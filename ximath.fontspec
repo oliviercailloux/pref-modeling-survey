@@ -1,0 +1,7 @@
+\defaultfontfeatures[XI Math]{
+	Path=fonts/,
+	Extension=.otf,
+	UprightFont = xits-math,
+	BoldFont = xits-mathbold
+}
+
