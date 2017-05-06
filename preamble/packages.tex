@@ -90,7 +90,7 @@
 %	Fractions=On,
 %	Mapping=% to leave " alone (disable the default mapping tex-text; requires loading the font afterwards?)
 %}
-\newfontfamily\xitsfamily{XITS}
+%\newfontfamily\xitsfamily{XITS}
 \newfontfamily\texgyretermesfamily{TeX Gyre Termes}
 \newfontfamily\texgyreherosfamily{TeX Gyre Heros}
 \newfontfamily\lmfamily{Latin Modern Roman}
@@ -104,10 +104,10 @@
 	\setmonofont{TeX Gyre Cursor}
 }
 \defaultfontfeatures{}%disable default font features to avoid warnings with math fonts.
-\setmathfont{XITS Math}
-\setmathfont[range={\mathcal,\mathbfcal},StylisticSet=1]{XITS Math}
+\setmathfont[Path = fonts/]{xits-math.otf}
+\setmathfont[range={\mathcal,\mathbfcal},StylisticSet=1]{xits-math.otf}
 %to make \boldmath $\cdot$ work (otherwise: “Missing character: There is no ⋅ in font XITS Math Bold/OT:script=math;language =DFLT;!”). Alternative: \setmathfont[BoldFont=XITS Math]{XITS Math}
-\setmathfont[range={"22C5},version=bold]{XITS Math}
+\setmathfont[range={"22C5},version=bold]{xits-math.otf}
 %silently delays restoring normal font when using e.g. “≠)” or “≠ other word”.
 %\setTransitionTo{Arrows}{\xitsfamily}
 %\setTransitionTo{MathematicalOperators}{\xitsfamily}
