@@ -8,6 +8,20 @@
 \input{preamble/draw}
 \input{preamble/acronyms}
 
+\newlength{\xdescwd}
+\usepackage{environ}
+\makeatletter
+\NewEnviron{xdesc}{%
+  \setbox0=\vbox{\hbadness=\@M \global\xdescwd=0pt
+    \def\item[##1]{%
+      \settowidth\@tempdima{\textbf{##1}:}%
+      \ifdim\@tempdima>\xdescwd \global\xdescwd=\@tempdima\fi}
+  \BODY}
+  \begin{description}[leftmargin=\dimexpr\xdescwd+.5em\relax,
+    labelindent=0pt,labelsep=.5em,
+    labelwidth=\xdescwd,align=left]\BODY\end{description}}
+\makeatother
+
 \begin{document}
 \title{Non linear preference models: why, how?}
 \author{Olivier Cailloux\inst{1} \and Sébastien Destercke\inst{2}}
@@ -23,6 +37,9 @@ LAMSADE\\
 \maketitle
 
 \abstract{Literature involving preferences of artificial agents or human beings often assume their preferences are linear, that is, the preference can be represented using a complete transitive antisymmetric binary relation. Much has been written however on more complex, or more interesting, models of preferences. In this article we review some of the reasons that have been put forward to justify more complex modeling, and review some of the techniques that have been proposed to obtain models of such preferences. (Optional: we connect to various related literature about argumentation, …)}
+
+%Oddly enough, llncs class seems to set the indent to zero when typesetting the abstract.
+\setlength{\parindent}{1.5em}
 
 \section{Introduction}
 Here is a possible approach we might want to use.
@@ -42,11 +59,24 @@ Here is a possible approach we might want to use.
 	\item (If space permits) Path to validation of normative models. Talk about empirical social choice; reflective equilibrium. Use the resulting indeterminacy (lability). Maximizing without transitivity or completeness?
 \end{itemize}
 
+In this paper, we consider choice situations (and others): given a \ac{DM} and a set of alternatives $\allalts$, we wish to model the preferences of the \ac{DM}… (To be described.)
+
+Following the sound idea that complexity requires justification, we will first consider the simplest approach to preference modeling, namely the weighted sum. We will briefly discuss its shortcomings. Relaxing it progressively, we will try to convince the reader that even more basic assumptions such as completeness and transitivity are not always justified. This will motivate us introducing more interesting approaches. We do not claim novelty in these arguments and approaches: we want to point out and summarize the various arguments from the literature that readers non-expert in preference modeling may ignore, and underline the richness and diversity of the existing approaches. 
+
 \section{Model of preference}
-When considering a \ac{DM} and a choice situation, it may be useful to try to obtain a formal model of her preferences. This model can be used to describe the way she chooses, or to recommend an option. (More on the uses of models later.) Let us see first what a simple model may look like. We start by defining a multiple-criteria choice decision situation (MCDS), one of the situations considered in this paper.
+When considering a choice situation, it may be useful to try to obtain a formal model of her preferences. This model can be used to describe the way she chooses, or to recommend an option. (More on the uses of models later.) Let us see first what a simple model may look like. We start by defining a multiple-criteria choice decision situation (MCDS), one of the situations considered in this paper.
 
-We consider a set $\allalts$ called the set of “alternatives”, that represents the possible options to choose from. Alternatives are here considered as mutually exclusive and the set $\allalts$ is exhaustive: the choice situation mandates to choose exactly one alternative from the set. Let us further assume some structure on $\allalts$: assume each alternative is evaluated on multiple criteria. The set $\crits$ supposedly represents all the criteria, or aspects, that the \ac{DM} may wish to consider when choosing. For example, say the \ac{DM} must choose what to plant in her garden. The set of alternatives $\allalts$ are vegetables, and the criteria $\crits$ measure the taste, quantity, and aesthetic quality of each vegetable. Each criterion $g \in \crits$ comes with an evaluation scale $X_g$, and an evaluation function $f_g: \allalts → X_g$ that evaluates each alternative. To simplify notations, we will denote the evaluation function $f_g$ simply by $g$, thus equate the criterion with its evaluation function. In our example, we could have $X_{g_1} = \{A, B, C, D\}$, a set of labels, with $g_1(a)$ representing the taste of the vegetable $a \in \allalts$ as subjectively considered by the \ac{DM} ($A$ is the best taste, $D$ the worst), $X_{g_2} = [0, 100]$, with $g_2(a)$ representing the number of meals that the \ac{DM} would enjoy if deciding to plant $a$, and $X_{g_3} = \{++, +, 0, −, −−\}$, where $g_3(a) = 0$ indicates that the \ac{DM} considers $a$ neither beautiful nor ugly. An MCDS is one which can be described using such exhaustive sets of alternatives and criteria.
+We consider a set $\allalts$ called the set of “alternatives”, that represents the possible options to choose from. Alternatives are here considered as mutually exclusive and the set $\allalts$ is exhaustive: the choice situation mandates to choose exactly one alternative from the set. Let us further assume some structure on $\allalts$: assume each alternative is evaluated on multiple criteria. The set $\crits$ supposedly represents all the criteria, or aspects, that the \ac{DM} may wish to consider when choosing. Each criterion $g \in \crits$ comes with an evaluation scale $X_g$, and an evaluation function $f_g: \allalts → X_g$ that evaluates each alternative. To simplify notations, we will denote the evaluation function $f_g$ simply by $g$, thus equate the criterion with its evaluation function. An MCDS is a choice situation which can be described using such exhaustive sets of alternatives and criteria. 
 
-Two natural ideas come to mind when facing an MCDS, and the reader certainly has used them already in real life. The first one is to design a value function $v: \allalts → \R$, which associates a value (a real number) to each alternative, such that better alternatives receive better scores, in order to reduce the problem to one of choosing an alternative that maximizes $v$. The second natural idea serves to define $v$: suffices to find a set of weights $\{w_g, g \in \crits\}$, and a way of transforming each evaluation function $g: \allalts → X_g$ into $g': \allalts → \R$, an evaluator that returns real numbers. Suffices then to define $v(a) = \sum_{g \in \crits} w_g g'(a)$.
+For example, say the \ac{DM} must choose what to plant in her garden. The set of alternatives $\allalts$ are vegetables, and the criteria $\crits$ measure the taste, quantity, and aesthetic quality of each vegetable. In our example, we could have $X_{g_1} = \{A, B, C, D\}$, a set of labels, with $g_1(a)$ representing the taste of the vegetable $a \in \allalts$ as considered by the \ac{DM} ($A$ is the best taste, $D$ the worst), $X_{g_2} = [0, 100]$, with $g_2(a)$ representing the number of meals that the \ac{DM} would enjoy if deciding to plant $a$, and $X_{g_3} = \{++, +, 0, −, −−\}$, where $g_3(a) = 0$ indicates that the \ac{DM} considers $a$ neither beautiful nor ugly.
 
+When facing an MCDS, the weighted sum approach comes to mind very naturally. We will see however that it requires hypothesis that are not always justified. Let us decompose this idea into several hypothesis in order to discuss them separately: the Holistic hypothesis (H), the Decomposability hypothesis (D), and the Normalization hypothesis (N). (Each hypothesis refines the previous one.)
+\begin{xdesc}
+	\item[H] It is possible to define a value function $v: \allalts → \R$, which associates a value (a real number) to each alternative, such that better alternatives receive better values, and such that a good way to choose is to choose an alternative that maximizes $v$. 
+	\item[D] It is possible to associate a weight to each criterion, thus define $\{w_g \in \R, g \in \crits\}$, and to define a way of transforming each evaluation function $g: \allalts → X_g$ into $g': \allalts → \R$, an evaluator that returns real numbers, such that a good way to choose is to choose an alternative that maximizes $v(a) = \sum_{g \in \crits} w_g g'(a)$.
+	\item[N] Assume for simplicity that $X_g \subseteq \R$, that the usual ordering $>$ on $\R$ reflects goodness on all scales, and that each criterion admits a worst evaluation $\min_{a \in \allalts} g(a) = m_g \in X_g$ and a best evaluation $\max_{a \in \allalts} g(a) = M_g \in X_g$. 
+The Normalization hypothesis postulates that it is appropriate to define $g'(a) = \frac{g(a) − m_g}{M_g − m_g}$ (where $g'$ plays the role described in hypothesis D).
+\end{xdesc}
+
+%To illustrate, consider our previous example restricted to only two criteria, $g_1$ and $g_2$, and assume instead of $\{A, B, C, D\}$ we set $X_{g_1} = \{4, 3, 2, 1\}$, thus coding vegetables that taste best as “4” instead of “A”, and similarly for the other grades on the scale. Now all scales in the problem are numerical. Obviously, computing directly a weighted sum over these two scales, one numbered from $0$ to $100$ and another from $1$ to $4$ does not make sense. The solution usually adopted is described in hypothesis N: 
 \end{document}
