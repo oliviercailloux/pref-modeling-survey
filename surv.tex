@@ -125,7 +125,10 @@ Thus, those conditions require that $\succeq$ be a weak-order.
 
 When some supplementary conditions are fulfilled (such as separability, to be described succinctly here), these conditions allow to use the Multiple Attribute Value Theory to solve the aggregation problem. When the supplementary conditions do not hold, other approaches may be suitable such as Choquet integral, … We refer the reader to the numerous surveys about those approaches (give refs) as we choose rather to focus on the reasons to question more fundamental conditions, namely completeness and transitivity of $\succeq$. Before doing this, we want to give another (important!) example of a preference model, that will be of use when discussing which conditions hold.
 
-Before doing this however, we need to say a word about what those preferences really represent and what the goal of modeling those may be. This is required to give meaning to discussion about which conditions are reasonable to postulate about $\succeq$, and how to check whether they hold.
+\section{Utility theory}
+Describe shortly (if possible?) the classical von Neumann approach?
+
+The two models we have introduced, MAVT and UT, use as a basis the notion of a preference relation. We need to say a word about what those preferences really represent and what the goal of modeling those may be. This is required to give meaning to discussion about which conditions are reasonable to postulate about $\succeq$, and how to check whether they hold.
 
 \section{Different approaches to preference modeling}
 In the descriptive approach to preferences, the goal of the model is to reflect the normal behavior of a \ac{DM}. Typically, we would have collected a database of sample choices of the \ac{DM}, say, of choices of food products in his favorite store, and we would try to obtain the model that best reflects his choice attitude. Such a model may be used to predict his behavior, e.g. for marketing or regulation purposes. It may also be applied with the aim of replacing the \ac{DM} by automating his decision procedure, although it is debatable whether the normative approach would better suit this use case.
@@ -139,8 +142,25 @@ When building recommender systems in the literature in artificial intelligence, 
 \section{Transitivity and completeness in descriptive approaches}
 When conditions about the $\succeq$ preference relation are assumed to bear on what \acp{DM} normally do, it makes it very easy to test them. Very numerous laboratory experiments have tackled this question.
 
-We must first be again more specific about what $\succeq$ means and how it should be observed. To make sure it is really the behavior of an individual that is captured with this relation, many experiments place subjects under real choices, presenting to them two objects among which the individual has to pick exactly one. This choice then represents his preference, by definition: here preference is meant to reflect the object the individual would choose when facing a choice.
+We must first be again more specific about what $\succeq$ means and how it should be observed. To make sure it is really the behavior of an individual that is captured with this relation, many experiments place subjects under real choices, presenting to them two objects among which the individual has to pick exactly one. This choice then represents his preference, by definition: here preference is meant to reflect the object the individual would choose when facing a choice. Such experiments face a first problem: individuals do not necessarily pick the same choice, when presented several times with the same choice pairs. This cannot simply be attributed to indifference between these pairs. (Cite studies.)
 
-When working under utility theory, it is common to ask questions about probability equivalent loteries, or about …
+Interestingly, this effect is generally not considered in the literature as interesting in itself. Experimenters would choose to consider some stochastic version of preference instead, defining $a \succeq b$ whenever the individual chooses $a$ a majority of time when presented $a$ and $b$. But it shows that the understanding quoted here above is not completely satisfied.
+
+Such phenomenon is also exhibited in a more indirect fashion, in tests of utility theory. When working under utility theory, it is common to ask questions about probability equivalent loteries, or about certainty equivalents. Such answers show cycles in the exhibited preferences. (Better description needed here.) There has been debate about whether this effect is due to true intransitive effects, or if it can be attributed solely to differences of evaluations between probability equivalents and certainty equivalents (cite Luce, …). But in any case, it can be also considered as an argument in favor of not using as a basis concept a complete preference relation, as if the \ac{DM} was able to always compare two options reliably.
+
+In fact, it must be noted, and it is often remarked by those authors working on relaxing completeness, that von Neumann and Morgenstern themselves considered completeness as a very strong condition. (Quote.) This is also visible from the extended description given by Fishburn of their work, although Fishburn does not focus on that aspect: the authors write that they assume the completeness of the relation, without defending the reasonableness of this hypothesis, whereas about other conditions they do not merely write that they assume them, but go at length about defending their reasonableness. About completeness, they merely state that it is also assumed by the concurrent theory which they propose to improve.
+
+TODO check descriptive studies in the multicriteria case (Deparis and co)…
+
+Savage assumes that every event can be compared infinitely precisely, talk about this?
+
+Talk here about lack of information leading to incomplete models even though the preference is intrisically complete?
+
+\section{Transitivity and completeness in the normative approaches}
+Fishburn is one of the prominent advocate about intransitivity holding even under normative approaches. Explain arguments…
+
+Roy has very much insisted on incomparability being taken into account explicitly in preference modeling. Explain…
+
+\section{Approaches not requiring completeness}
 
 \end{document}
