@@ -1,5 +1,6 @@
 \definecolor{darkgreen}{rgb}{0,0.6,0}
-\newcommand{\commentOC}[1]{{\selectlanguage{french}{\todo{OC : #1}}}}
+\newcommand{\commentOC}[1]{{\small\color{blue}{\selectlanguage{french}$\big[$OC: #1$\big]$}}}
+\newcommand{\commentSD}[1]{{\small\color{red}{\selectlanguage{french}$\big[$SD: #1$\big]$}}}
 %Or: \todo[color=green!40]
 \newcommand{\innote}[1]{{\scriptsize{#1}}}
 
@@ -35,6 +36,19 @@
 \newcommand{\mkkOK}{\checkmark}%\color{green}{\checkmark}
 \newcommand{\mkkREQ}{\ding{53}}%requires pifont?%\color{green}{\checkmark}
 \newcommand{\mkkNO}{}%\text{\color{red}{\textsf{X}}}
+
+\newlength{\xdescwd}
+\makeatletter
+\NewEnviron{xdesc}{%
+  \setbox0=\vbox{\hbadness=\@M \global\xdescwd=0pt
+    \def\item[##1]{%
+      \settowidth\@tempdima{\textbf{##1}:}%
+      \ifdim\@tempdima>\xdescwd \global\xdescwd=\@tempdima\fi}
+  \BODY}
+  \begin{description}[leftmargin=\dimexpr\xdescwd+.5em\relax,
+    labelindent=0pt,labelsep=.5em,
+    labelwidth=\xdescwd,align=left]\BODY\end{description}}
+\makeatother
 
 \makeatletter
 \newcommand{\boldor}[2]{%
