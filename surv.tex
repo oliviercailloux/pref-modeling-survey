@@ -38,9 +38,9 @@ There are two canonical fields where the modelling of preferences is a central t
 
 In MCDM, the common assumption is that the alternatives, i.e., the state of the world is known without ambiguity, and the difficulty is to determine what are the user preferences over these different, but well-defined states. In decision making under uncertainty (DMU), the preferences of the user are usually assumed to be well-known, or at least to have been previously assessed in the form of utility functions, and the problem is to recommend an alternative given our uncertainty about the world. 
 
-We will adopt the following basic scheme for the two settings (MCDM and DMU), that we will question later on, but that are necessary to set some notations. \commentOC{Je me permets de les considérer hors d’un environnement itemize pour qu’on soit plus à l’aise pour exposer un peu plus longuement les bases, ça me semble valoir la peine car je me dis que certains lecteurs connaitront peut-être très bien seulement un des deux contextes et pas du tout l’autre. Il ne faudrait pas les perdre dès le début. Je me permets aussi de ré-intégrer mon exemple de jardinage, mais sens-toi libre de l’effacer si tu supposes que les lecteurs sauront bien assez de quoi il s’agit. Je mesure mal ce que notre audience dans cette conférence sait déjà.}
+We will adopt the following basic scheme for the two settings (MCDM and DMU), that we will question later on, but that are necessary to set some notations. \commentOC{Je me permets de les considérer hors d’un environnement itemize pour qu’on soit plus à l’aise pour exposer un peu plus longuement les bases, ça me semble valoir la peine car je me dis que certains lecteurs connaitront peut-être très bien seulement un des deux contextes et pas du tout l’autre. Il ne faudrait pas les perdre dès le début. Je me permets aussi de ré-intégrer mon exemple de jardinage, mais sens-toi libre de l’effacer si tu supposes que les lecteurs sauront bien assez de quoi il s’agit. Je mesure mal ce que notre audience dans cette conférence sait déjà.}\commentSD{Pas de soucis, c'est sans doute effectivement mieux. Ok pour le jardinage, ça me semble pas mal et illustratif. }
 
-In MCDM, the classical approach is to assume that the alternatives are evaluated using a set of criteria $\crits$, each having an evaluation scale $X_g$. The set of all possible alternatives is $\allalts = \times_{g \in G}$, that is, every combination of evaluations are considered possible. \commentOC{As-tu une forte préférence pour la notation $\times_{g \in G}$? Sinon, je proposerais d’utiliser $\prod_{g \in G}$, qui me semble plus courant. Mais je peux me tromper, et je ne suis pas rigide sur cette question.} Typical approaches assume that there is some real-valued function $v: \allalts \to \R$ mapping alternatives to their values, and that $x \succeq y$ iff  $v(x) ≥ v(y)$.
+In MCDM, the classical approach is to assume that the alternatives are evaluated using a set of criteria $\crits$, each having an evaluation scale $X_g$. The set of all possible alternatives is $\allalts = \prod_{g \in G} X_g$, that is, every combination of evaluations are considered possible. Typical approaches assume that there is some real-valued function $v: \allalts \to \R$ mapping alternatives to their values, and that $x \succeq y$ iff  $v(x) ≥ v(y)$.
 
 \begin{example}
 	Say the \ac{DM} must choose what to plant in her garden. The set of alternatives $\allalts$ are all possible vegetables, the criteria $\crits = \{g_1, g_2, g_3\}$ measure the taste, quantity, and price of each vegetable, and $\alts \subseteq \allalts$ are the vegetables that are available this year for planting. $X_{g_1} = \{A, B, C, D\}$, a set of labels, with $x_1$ representing the taste of the vegetable $x \in \allalts$ as considered by the \ac{DM} ($A$ is the best taste, $D$ the worst), $X_{g_2} = [0, 100]$, with $x_2$ representing the number of meals that the \ac{DM} would enjoy if deciding to plant $x$, and $X_{g_3} = \R$, where $x_3$ indicates the price to pay for planting $x$.
@@ -77,7 +77,7 @@ When building recommender systems in the literature in artificial intelligence, 
 
 \subsection{Empirical evidences of intransitivity}
 
-* Fisher, \ldots \commentOC{Je suis curieux et impatient de connaitre l’opinion de Fisher là-dessus ! Je n’étais pas tombé là-dessus dans mes lectures.}
+* Fisher, \ldots \commentOC{Je suis curieux et impatient de connaitre l’opinion de Fisher là-dessus ! Je n’étais pas tombé là-dessus dans mes lectures.}\commentSD{Arf, non, je pensais que j'avais lu ça dans tes écrits précédent, mais j'ai du me tromper! à retirer donc. Je me suis en fait tromper avec Fishburn, qui était bien dans ton texte précédent.}
 
 When conditions about the $\succeq$ preference relation are assumed to bear on what \acp{DM} normally do, it makes it very easy to test them. Very numerous laboratory experiments have tackled this question.
 
@@ -107,7 +107,7 @@ Fishburn is one of the prominent advocate about intransitivity holding even unde
 Roy has very much insisted on incomparability being taken into account explicitly in preference modeling. Explain…
 
 \subsection{Intransitivity in MCDM}
-\commentOC{Tu veux qu’on parle ici des modèles MCDM qui admettent l’intransitivité, c’est bien ça ?}
+\commentOC{Tu veux qu’on parle ici des modèles MCDM qui admettent l’intransitivité, c’est bien ça ?}\commentSD{Ce serait l'idée, oui, après avoir énumérer les raisons qui pourraient pousser à le faire. }
 
 \subsection{Intransitivity in MDU}
 
