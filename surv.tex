@@ -9,7 +9,7 @@
 \input{preamble/acronyms}
 
 \begin{document}
-\title{Non linear preference models: why, how?}
+\title{Preference models that relax completeness or transitivity: why, how?}
 \author{Olivier Cailloux\inst{1} \and Sébastien Destercke\inst{2}}
 \institute{
 LAMSADE\\
@@ -22,58 +22,62 @@ LAMSADE\\
 }
 \maketitle
 
-\abstract{Literature involving preferences of artificial agents or human beings often assume their preferences are linear, that is, the preference can be represented using a complete transitive antisymmetric binary relation. Much has been written however on more complex, or more interesting, models of preferences. In this article we review some of the reasons that have been put forward to justify more complex modeling, and review some of the techniques that have been proposed to obtain models of such preferences. (Optional: we connect to various related literature about argumentation, …)}
+\abstract{Literature involving preferences of artificial agents or human beings often assume their preferences can be represented using a complete transitive binary relation. Much has been written however on more complex, or more interesting, models of preferences. In this article we review some of the reasons that have been put forward to justify more complex modeling, and review some of the techniques that have been proposed to obtain models of such preferences. (Optional: we connect to various related literature about argumentation, …)}
 
 %Oddly enough, llncs class seems to set the indent to zero when typesetting the abstract.
 \setlength{\parindent}{1.5em}
 
 \section{Introduction}
+%antisymmetry, peu important. ELECTRE permet l’incomparabilité. a, b sont les alternatives. Généralisation de l’approche dans le risque : prob measure and consequence instead of reals.
 
-Preferences of agents are usually assumed to be linear, that is complete, transitive and antisymmetric. In practice, such assumptions limit the scope of models (of uncertainty, of preferences) one can consider as legitimate, and are also falsified by observed empirical evidences. While models relaxing antisymmetry to allow indifferences between options have been around for some time *** ELECTRE ?***, models relaxing the assumptions of completeness or transitivity are more recent. 
+Preferences of agents are usually assumed to be linear, that is complete, transitive and antisymmetric, or representable with a weak order (a complete and transitive binary relation). In practice, such assumptions limit the scope of models (of uncertainty, of preferences) one can consider as legitimate, and are also falsified by observed empirical evidences. While models relaxing antisymmetry to allow incompleteness between options have been around for some time *** ELECTRE ?***, models relaxing the assumptions of completeness or transitivity are more recent.
 
 It is clear that our paper will not be complete, yet we think it gives a fair overview of why one would like to drop some of the above assumption. In particular, we will review both empirical evidence that preferences do not always follow the above assumption, thus relating them to more descriptive approaches, as well as formal  models that allows one to induce intransitive or incomplete preferences. 
-
-%
-%Here is a possible approach we might want to use.
-%
-%\begin{itemize}
-%	\item What’s a model of preference? Example with weighted sum. But: forbids some possibly interesting evaluations; need to recode evaluations and hence is dependent of irrelevant alternatives; w1 > w2 unclear.
-%	\item Utility: is holistic. Forbids incomparability. Mandates transitivity.
-%	\item Models of preferences can have (at least) two interpretations: normative or descriptive. Goals and (sometimes) tools to model preferences and reasonable hypothesis that can be postulated about the shape of the preferences vary according to these two lines.
-%	\item (Reasonable) hypothesis about descriptive preferences. Why it’s more difficult than can be thought naïvely. 
-%	\item Reasonable hypothesis about normative preferences. Why it’s more difficult than can be thought naïvely. Talk about incompleteness. Applying normative approaches: talk about prescription a la Roy…
-%	\item Focus on incompleteness rather than non-transitivity. Can be lack of information or intrinsic.
-%	\item Present usual models (Savage? MAVT?) and alternative ones (belief functions? Electre?)?
-%	\item Talk about choice under uncertainty wrt incompleteness.
-%	\item Impact of relaxations on problems of choice, ranking, classification.
-%	\item How to obtain information under incompleteness hypothesis, meaning and interpretation.
-%	\item (If space permits) Links to argumentation theory: build argumentative models that explain / justify a decision.?
-%	\item (If space permits) Path to validation of normative models. Talk about empirical social choice; reflective equilibrium. Use the resulting indeterminacy (lability). Maximizing without transitivity or completeness?
-%\end{itemize}
-%
-%In this paper, we consider choice situations (and others): given a \ac{DM} and a set of alternatives $\allalts$, we wish to model the preferences of the \ac{DM}… (To be described.)
-%
-%Because complexity requires justification, we will first consider the simplest approach to preference modeling, namely the weighted sum. We will briefly discuss its shortcomings. Relaxing it progressively, we will try to convince the reader that even more basic assumptions on preferences such as completeness and transitivity are not always justified. This will motivate the introduction of more interesting approaches. We do not claim novelty in these arguments and approaches: we want to point out and summarize the various arguments from the literature that readers non-expert in preference modeling may ignore, and underline the richness and diversity of the existing approaches.  
-
-\section{Model of preference: multiple criteria and uncertainty}
 
 There are two canonical fields where the modelling of preferences is a central topic: choosing an alternative when it is evaluated according to different aspects (a.k.a. multi-criteria decision making, or MCDM), and picking an alternative whose quality depends on states of the world that are uncertainly known. Although the two frameworks are formally similar to some extent, they also present some key differences, if not formally then at least conceptually. 
 
 In MCDM, the common assumption is that the alternatives, i.e., the state of the world is known without ambiguity, and the difficulty is to determine what are the user preferences over these different, but well-defined states. In decision making under uncertainty (DMU), the preferences of the user are usually assumed to be well-known, or at least to have been previously assessed in the form of utility functions, and the problem is to recommend an alternative given our uncertainty about the world. 
 
-We will adopt the following basic scheme for the two settings (MCDM and DMU), that we will question later on, but that are necessary to set some notations:
-\begin{itemize}
-	\item In MCDM, the classical approach is to assume that there is some real-valued function $f:\times_{i=1}^N X^i \to \R$ mapping alternatives to their values, and that $a_i > a_j$ iff  $f(a_i) > f(a_j)$. As all alternatives are precisely defined, the resulting order is indeed a linear one;
-	\item In the simplest form of DMU, we usually have one space $X$ of possible states of the world, and each act $a_i:X \to \R$ is modelled as a function where $a_i(x)$ is the reward or utility of performing $a_i$ when $x$ is the actual state of the world. When uncertainty is modelled by a probability mass $p$ over $X$, we have that $a_i > a_j$ iff $\sum_{x} p(x)a_i(x) > \sum_{x} p(x)a_j(x)$, that is if the expected reward of $a_i$ is higher than the one of $a_j$
-\end{itemize}
+We will adopt the following basic scheme for the two settings (MCDM and DMU), that we will question later on, but that are necessary to set some notations. \commentOC{Je me permets de les considérer hors d’un environnement itemize pour qu’on soit plus à l’aise pour exposer un peu plus longuement les bases, ça me semble valoir la peine car je me dis que certains lecteurs connaitront peut-être très bien seulement un des deux contextes et pas du tout l’autre. Il ne faudrait pas les perdre dès le début. Je me permets aussi de ré-intégrer mon exemple de jardinage, mais sens-toi libre de l’effacer si tu supposes que les lecteurs sauront bien assez de quoi il s’agit. Je mesure mal ce que notre audience dans cette conférence sait déjà.}
 
-In principle, such approaches can already provide order that are not antisymmetric as indifferences are possible, yet one can consider that indifferences are very unlikely in these frameworks, or at least not considered explicitly by the framework. 
+In MCDM, the classical approach is to assume that the alternatives are evaluated using a set of criteria $\crits$, each having an evaluation scale $X_g$. The set of all possible alternatives is $\allalts = \times_{g \in G}$, that is, every combination of evaluations are considered possible. \commentOC{As-tu une forte préférence pour la notation $\times_{g \in G}$? Sinon, je proposerais d’utiliser $\prod_{g \in G}$, qui me semble plus courant. Mais je peux me tromper, et je ne suis pas rigide sur cette question.} Typical approaches assume that there is some real-valued function $v: \allalts \to \R$ mapping alternatives to their values, and that $x \succeq y$ iff  $v(x) ≥ v(y)$.
+
+\begin{example}
+	Say the \ac{DM} must choose what to plant in her garden. The set of alternatives $\allalts$ are all possible vegetables, the criteria $\crits = \{g_1, g_2, g_3\}$ measure the taste, quantity, and price of each vegetable, and $\alts \subseteq \allalts$ are the vegetables that are available this year for planting. $X_{g_1} = \{A, B, C, D\}$, a set of labels, with $x_1$ representing the taste of the vegetable $x \in \allalts$ as considered by the \ac{DM} ($A$ is the best taste, $D$ the worst), $X_{g_2} = [0, 100]$, with $x_2$ representing the number of meals that the \ac{DM} would enjoy if deciding to plant $x$, and $X_{g_3} = \R$, where $x_3$ indicates the price to pay for planting $x$.
+\end{example}
+
+In the simplest form of DMU considered here (SDMR, for Simple Decision Making under Risk), we consider a finite space $S$ of possible states of the world, a set of consequences $C$, and each act $x: S \to C$ is modelled as a function where $x(s)$ is the consequence of performing $x$ when $s$ is the actual state of the world. Define $\allalts$ in this case as the set of possible acts (thus $\allalts = C^S$). Given $c \in C$, let $x_c$ denote the act that constantly yields $c$, thus, $x_c(s) = c, \forall s \in S$. In SDMR, uncertainty is modelled by a probability measure $p$ over the power set of $S$, $\powerset{S}$, thus with $p(s) \in [0, 1]$ indicating the probability of occurence of $s$, and $\sum_{s \in S} p(s) = 1$. Finally, SDMR assumes the existence of a utility function $u: \allalts → \R$ such that $x \succeq y$ iff $u(x) ≥ u(y)$, and such that $u(x) = \sum_{s \in S} p(s) x_{a(s)}$. It is sometimes considered that $C$ is the set of reals, and that an element $c \in C$ (thus $c \in \R$) directly represents the utility of the consequence. In that case, the utility function becomes simply $u(x) = \sum_{s \in S} p(s) a(s)$.
+
+All models presented thus far assume that it is possible to order alternatives according to their value, as given by a real function. Thus, they require $\succeq$ to be complete and transitive (by which we mean that if $\succeq$ is incomplete or not transitive, then no suitable function exists).
+
+The two contexts we have introduced, multiple criteria and risk, use as a basis the notion of a preference relation. We need to say a word about what those preferences really represent and what the goal of modeling those may be. This is required to give meaning to discussion about which conditions are reasonable to postulate about $\succeq$, and how to check whether they hold.
+
+\section{Different approaches to preference modeling}
+\subsection{Descriptive approach}
+In the descriptive approach to preferences, the goal of the model is to reflect the normal behavior of a \ac{DM}. Typically, we would have collected a database of sample choices of the \ac{DM}, say, of choices of food products in his favorite store, and we would try to obtain the model that best reflects his choice attitude. Or, we would ask an individual questions of preference about pairs of objects, and we would try to build a predictive relation on the whole set of possible pairs of alternatives. (Which nowadays would be called an “active learning” approach.) Such a model may be used to predict his behavior, e.g. for marketing or regulation purposes. It may also be applied with the aim of replacing the \ac{DM} by automating his decision procedure, although it is debatable whether the normative approach would better suit this use case.
+
+Here is what von Neumann and Morgenstern say about the preference relation.
+
+“It is clear that every measurement --- or rather every claim of measurability --- must ultimately be based on some immediate sensation, which possibly cannot and certainly need not be analyzed any futher.
+[Such as the sensations of light, heat, muscular effort, etc., in the corresponding branches of physics.] 
+In the case of utility the immediate sensation of preference --- of one object or aggregate of objects as against another --- provides this basis.” (3.1.2) (The square brackets indicate a footnote.)
+
+“Let us for the moment accept the picture of an individual whose system of preferences is all-embracing and complete, i.e. who, for any two objects or rather for any two imagined events, possesses a clear intuition of preference. More precisely we expect him, for any two alternative events which are put before him as possibilities, to be able to tell which of the two he prefers.” (3.3.2) (The “events” here correspond to what we call alternatives.)
+
+As the preference relation is considered basic under a purely descriptive approach, the preference itself should be easily observable, and uncontroversial. This permits to test conditions postulated on $\succeq$. Either by asking the individual what she prefers (in which case we “observe” her answer), or by presenting a choice set and observing what she picks from that set (in real life or in a laboratory experiment). In the first case, we have however to be clear about what is meant by “prefers”, which is a reason why many experimenters prefer to go for the latter strategy.
+
+\subsection{Normative approach}
+Under the normative approach, the goal is to reflect on how the \ac{DM} ought to choose. Either according to external norms that are somehow (collectively) considered as representing rational behavior, or using some norms that the \ac{DM} himself accepts after careful reflexion. Hence, the decision outcome using such approach may differ from that the \ac{DM} would have chosen in his daily life. Consider as an example a responsible person in an enterprise who wants to model the procedure used to recruit employees. After having collected the figures, it may appear that, for some (possibly unconscious) reason, the recrutement is biased against some particular socio-economic or gender category, even considering equal competences. It may be, further, that the \ac{DM} himself is not happy about this situation. Thus, he may try to find a strategy of selecting employees that would avoid such biases, therefore actively trying \emph{not} to build a perfectly descriptive model of the normal selection attitude.
+
+When the focus is on providing decision help to a \ac{DM} by letting him think about and adopt the norms he prefers, rather than considering them as external norms that he ought to follow under threat of being considered irrational, the approach is often termed prescriptive, or constructive. There are important differences between these terms, and different authors use them somewhat differently. (Give refs.) The focus here being not on those differences, we refer to … and will use the general normative term as an umbrella.
+
+When building recommender systems in the literature in artificial intelligence, the focus is often on descriptive approaches. This is usually left implicit, with no discussion about possible alternatives. We think however that an interesting path is offered by normative approaches. Descriptive approaches will, by design, reflect cognitive limitations exhibited by us, normal human beings. Those limitations are numerous and sometimes obviously not in agreement with what a more thoughtful and knowledgeable person would do, as is well known and will be illustrated in this article (although there is debate about how such a sentence is to be interpreted exactly, more about this later). Providing (more) normative-based automatic recommendations might help provide sound advices, help increase serendipity, and possibly reduce incitations to merchants to exploit imperfections on the human reasoning abilities by using marketing techniques that may lead to choices that the \ac{DM} himself would possibly reject when thinking more carefully.
 
 \section{Dropping transitivity}
 
 \subsection{Empirical evidences of intransitivity}
 
-* Fisher, \ldots
+* Fisher, \ldots \commentOC{Je suis curieux et impatient de connaitre l’opinion de Fisher là-dessus ! Je n’étais pas tombé là-dessus dans mes lectures.}
 
 \subsection{Intransitivity in MCDM}
 
@@ -103,112 +107,109 @@ In principle, such approaches can already provide order that are not antisymmetr
 
 \subsection{Incompleteness: absence of knowledge or knowledge of absence?}
 
-%When considering a choice situation, it may be useful to try to obtain a formal model of her preferences. This model can be used to describe the way she chooses, or to recommend an option. (More on the uses of models later.) Let us see first what a simple model may look like. We start by defining a multiple-criteria choice decision situation (MCDS), one of the situations considered in this paper.
-%
-%We consider a set $\allalts$ called the set of “alternatives”, that represents the possible options to choose from. Alternatives are here considered as mutually exclusive and the set $\allalts$ is exhaustive: the choice situation mandates to choose exactly one alternative from the set. Let us further assume some structure on $\allalts$: assume each alternative is evaluated on multiple criteria. The finite set $\crits$ supposedly represents all the criteria, or aspects, that the \ac{DM} may wish to consider when choosing. Each criterion $g \in \crits$ comes with an evaluation scale $X_g$, and an evaluation function $f_g: \allalts → X_g$ that evaluates each alternative. To simplify notations, we will denote the evaluation function $f_g$ simply by $g$, thus equate the criterion with its evaluation function. Finally, it may be useful to apply the decision problem to different subsets of alternatives (either as a thought experiment, or because the problem can happen again in the future). Let $\alts \subseteq \allalts$ denote a subet of alternatives, that represents the alternatives to choose from in a given occurence of the decision problem. An MCDS $(\allalts, \crits)$ is a choice situation which can be described using such exhaustive sets of alternatives and criteria.
-%
-%For example, say the \ac{DM} must choose what to plant in her garden. The set of alternatives $\allalts$ are all possible vegetables, the criteria $\crits$ measure the taste, quantity, and price of each vegetable, and $\alts$ are the vegetables that are available this year for planting. In our example, we could have $X_{g_1} = \{A, B, C, D\}$, a set of labels, with $g_1(a)$ representing the taste of the vegetable $a \in \allalts$ as considered by the \ac{DM} ($A$ is the best taste, $D$ the worst), $X_{g_2} = [0, 100]$, with $g_2(a)$ representing the number of meals that the \ac{DM} would enjoy if deciding to plant $a$, and $X_{g_3} = \R$, where $g_3(a)$ indicates the price to pay for planting $a$.
-%
-%Given an MCDS $(\allalts, \crits)$, we are interested in designing an aggregation function $f: \powerset{\alts} → \powerset{\alts} \setminus \emptyset$, such that $f(\alts) \subseteq \alts$, that represents the best alternatives from the point of view of the \ac{DM}. We allow the function to return a subset of alternatives to allow for ex-æquo. (The domain of the function is sometimes restricted to the finite subsets $\alts \subseteq \allalts$.) It will be interesting to parameterize the function with preference parameters, that represent the subjectivity of the \ac{DM}. Let $\Omega$ denote the set of possible preference values for the preference parameters. An aggregation scheme is such a set $\Omega$ and a mechanism for deriving an aggregation function $f_\omega$ given $\omega \in \Omega$.
-%
-%When facing an MCDS, the weighted sum approach comes to mind very naturally. 
-%Assume for simplicity that $X_g \subseteq \R$ and that the usual ordering $>$ on $\R$ reflects goodness on all scales. Given a finite set $\alts \subseteq \allalts$, define for each criterion the worst evaluation in that set, $\min_{a \in \alts} g(a) = m_g \in X_g$ and the best evaluation, $\max_{a \in \alts} g(a) = M_g \in X_g$. 
-%The weighted sum aggregation scheme defines $\Omega$ as the set of all possible weights that sum to one, thus $\omega = \left(w_g \in \R^+\right)_{g \in \crits}$, with $\sum_{g \in \crits} w_g = 1$, and given $\omega \in \Omega$ and a finite set $\alts$, defines $f_\omega(\alts) = \argmax_{a \in \alts} \sum_{g \in \crits} w_g \frac{g(a) − m_g}{M_g − m_g}$ (the denominator is replaced with $1$ if $M_g = m_g$).
-%
-%To illustrate, consider our previous example restricted to only two criteria, $g_2$ and $g_3$, with the evaluations given in \cref{fig:veg23} (price is set negative so that greater evaluations are better). Given $\alts = \{a_1, a_2, a_3\}$, the weighted sum approach considers that a choice can be found by associating to each alternative the value $v(a) = w_{g_2} \frac{g_2(a) - 20}{15} + w_{g_3} \frac{g_3(a) + 160}{60}$, for some weights $w_{g_2}$ and $w_{g_3}$, and picking the alternatives having highest values. 
-%
-%\begin{table}
-%	\center
-%	\begin{tabular}{rrr}
-%		\toprule
-%			& $g_2$	& $g_3$\\
-%		\midrule
-%		$a_1$	& $35$	& $− 120$\\
-%		$a_2$	& $20$	& $− 100$\\
-%		$a_3$	& $23$	& $− 160$\\
-%		\bottomrule
-%	\end{tabular}
-%	\caption{Evaluations of some vegetables}
-%	\label{fig:veg23}
-%\end{table}
-%
-%This approach is simple, but may not be innocuous. One of its problem is that it fails to satisfy the Independence of irrelevant alternatives. This property of an aggregation scheme requires that for all preferential parameters $\omega$, whenever some $a_1$ is chosen by $f_\omega$ and some $a_2$ is not, given some set $\alts$, changing other alternatives in $\alts$ may not reverse the decision. Formally, Independence of irrelevant alternatives mandates that, $\forall \omega \in \Omega$: $a_1 \in f_\omega(\alts), a_2 \notin f_\omega(\alts) ⇒ \nexists \alts' \subseteq \allalts \suchthat a_1, a_2 \in \alts', a_2 \in f_\omega(\alts'), a_1 \notin f_\omega(\alts')$.
-%
-%In our example, pick $w_{g_2} = w_{g_3} = \frac{1}{2}$. Observe that $v(a_1) = \frac{1}{2} 1 + \frac{1}{2} \frac{2}{3} = \frac{5}{6}$, $v(a_2) = \frac{1}{2}$, $v(a_3) = \frac{1}{10}$. Thus $f_\omega(\set{a_1, a_2, a_3}) = \{a_1\}$. Now replace $a_3$ by $a'_3$ with evaluations $g_2(a'_3) = 10$ and $g_3(a'_3) = −110$. We obtain $v'(a) = w_{g_2} \frac{g_2(a) - 10}{25} + w_{g_3} \frac{g_3(a) + 120}{20}$, $v'(a_1) = \frac{1}{2} 1 + \frac{1}{2} 0 = \frac{1}{2}$, $v'(a_2) = \frac{7}{10}$, $v'(a_3) = \frac{1}{4}$, thus $a_2$ is now selected while $a_1$ is not. This feature is unwanted if the \ac{DM} considers that the relative positions of $a_1$ and $a_2$ do not depend on the evaluations of some third alternative $a_3$.
-%
-%Incidentally, the infamous Shanghaï ranking exhibits such unfortunate property [TODO refs].
-%
-%To solve this problem, the normalization procedure may be modified: define for each criterion $m_g$ and $M_g$ once and for all, independently of $\alts$. But the choice of these extreme points will have a strong influence on the aggregation function, as just illustrated, and it may be unclear how to define them. Relatedly, the natural interpretation of the weights parameter may not correspond to what the \ac{DM} has in mind. For example, it may be natural for the \ac{DM} to state that all criteria have equal importance, in which case the analyst may be tempted to set all weights to an equal value. The effect of this will depend on the extreme points $m_g, M_g$: changing $M_g$ to $M'_g = 2 M_g - m_g$, without changing the weight $w_g$, will half the effective importance of the related criterion. Similarly, the \ac{DM} might state that $g$ is “more important” than $g'$. This should not necessarily be interpreted as meaning that $w_g > w_{g'}$.
-%
-%+ talk about the impossibility to pick some interesting alternatives with a weighted sum?
-%
-%\section{MAVT}
-%A more principled approach is useful to make sure we pick an aggregation scheme with suitable properties. Principled here means that we want to introduce sufficient properties on the way the \ac{DM} chooses, that suffice to guarantee that an aggregation function that represents the \ac{DM}’s choices exists within the aggregation scheme.
-%
-%The most usual approach to MCDS is to attribute a value to each alternative and assume that the choice function picks the maximal alternatives according to $v$. This starts as in the weighted sum approach, with the important difference that $v$ may not depend on $\alts$, only on $\allalts$ and $\crits$.
-%
-%With such a value function underhand, we may reason with a binary preference relation $\succeq$ on the set of alternatives. Define: $a \succeq b ⇔ v(a) ≥ v(b)$.
-%
-%It is customary to consider $\succeq$ as a relation that is naturally defined, known by the \ac{DM}, and with no need of explanation. This, with this approach, we assume we can observe $\succeq$ and wonder in which cases we can define a suitable $v$.
-%
-%1. $\succeq$ is complete.
-%2. $\succeq$ is transitive.
-%
-%\begin{theorem}
-%	Assume $\allalts$ is finite. There exists $v$ such that [$v(a) ≥ v(b)$ iff $a \succeq b$] iff $\succeq$ is a complete transitive binary relation.
-%\end{theorem}
-%If $\allalts$ is infinite, the implication from left to right still holds. The other direction, from existence of $\succeq$ complete and transitive to existence of a suitable $v$, requires a supplementary technical condition (there must be some subset $\alts \subseteq \allalts$ such that, for all $a \succ c$ with $a, c \in \allalts$, $\exists b \in \alts \suchthat a \succeq b \succeq c$ \citep[Ch. 2, Th. 2, p. 40]{krantz_foundations_1971}). 
-%%We assume that $\allalts$ is finite or that this condition is fulfilled throughout this article.
-%
-%Thus, those conditions require that $\succeq$ be a weak-order. 
-%
-%When some supplementary conditions are fulfilled (such as separability, to be described succinctly here), these conditions allow to use the Multiple Attribute Value Theory to solve the aggregation problem. When the supplementary conditions do not hold, other approaches may be suitable such as Choquet integral, … We refer the reader to the numerous surveys about those approaches (give refs) as we choose rather to focus on the reasons to question more fundamental conditions, namely completeness and transitivity of $\succeq$. Before doing this, we want to give another (important!) example of a preference model, that will be of use when discussing which conditions hold.
-%
-%\section{Utility theory}
-%Describe shortly (if possible?) the classical von Neumann approach?
-%
-%The two models we have introduced, MAVT and UT, use as a basis the notion of a preference relation. We need to say a word about what those preferences really represent and what the goal of modeling those may be. This is required to give meaning to discussion about which conditions are reasonable to postulate about $\succeq$, and how to check whether they hold.
-%
-%\section{Different approaches to preference modeling}
-%In the descriptive approach to preferences, the goal of the model is to reflect the normal behavior of a \ac{DM}. Typically, we would have collected a database of sample choices of the \ac{DM}, say, of choices of food products in his favorite store, and we would try to obtain the model that best reflects his choice attitude. Such a model may be used to predict his behavior, e.g. for marketing or regulation purposes. It may also be applied with the aim of replacing the \ac{DM} by automating his decision procedure, although it is debatable whether the normative approach would better suit this use case.
-%
-%Under the normative approach, the goal is to reflect on how the \ac{DM} ought to choose. Either according to external norms that are somehow collectively decided as representing rational behavior, or using some norms that the \ac{DM} himself accepts after careful reflexion. Hence, the decision outcome using such approach may differ from that the \ac{DM} would have chosen in his daily life. Consider as an example a responsible person in an enterprise who wants to think about the procedure used to recruit employees. After having collected the figures, it may appear that, for some unconscious reason, the recrutement is biased against some particular socio-economic or gender category, even considering equal competences. It may be, further, that the \ac{DM} himself is not happy about this situation. Thus, he may try to find a strategy of selecting employees that would avoid such biases, therefore actively trying \emph{not} to build a perfectly descriptive model of his normal selection attitude.
-%
-%When the focus is on providing decision help to a \ac{DM} by letting him think about and adopt the norms he prefers, rather than considering them as external norms that he ought to follow under threat of being considered irrational, the approach is often termed prescriptive, or constructive. There are important differences between these terms, and different authors use them somewhat differently. (Give refs.) The focus here being not on those differences, we refer to … and will use the general normative term as an umbrella.
-%
-%When building recommender systems in the literature in artificial intelligence, the focus is often on descriptive approaches. This is usually left implicit, with no discussion about possible alternatives. We think however that an interesting path is offered by normative approaches. Descriptive approaches will, by design, reflect cognitive limitations exhibited by us, normal human beings. Those limitations are numerous and sometimes obviously not in agreement with what a more thoughtful and knowledgeable person would do, as is well known and will be illustrated in this article (although there is debate about how such a sentence is to be interpreted exactly, more about this later). Providing (more) normative-based automatic recommendations might help provide sound advices, help increase serendipity, and possibly reduce incitations to merchants to exploit imperfections on the human reasoning abilities by using marketing techniques that may lead to choices that the \ac{DM} himself would possibly reject when thinking more carefully. \commentOC{This should be moved to the conclusion, probably.}
-%
-%\section{Transitivity and completeness in descriptive approaches}
-%When conditions about the $\succeq$ preference relation are assumed to bear on what \acp{DM} normally do, it makes it very easy to test them. Very numerous laboratory experiments have tackled this question.
-%
-%We must first be again more specific about what $\succeq$ means and how it should be observed. Here is what von Neumann and Morgenstern say about the preference relation.
-%
-%“It is clear that every measurement --- or rather every claim of measurability --- must ultimately be based on some immediate sensation, which possibly cannot and certainly need not be analyzed any futher.
-%[Such as the sensations of light, heat, muscular effort, etc., in the corresponding branches of physics.] 
-%In the case of utility the immediate sensation of preference --- of one object or aggregate of objects as against another --- provides this basis.” (3.1.2) (The square brackets indicate a footnote.)
-%
-%“Let us for the moment accept the picture of an individual whose system of preferences is all-embracing and complete, i.e. who, for any two objects or rather for any two imagined events, possesses a clear intuition of preference. More precisely we expect him, for any two alternative events which are put before him as possibilities, to be able to tell which of the two he prefers.” (3.3.2)
-%
-%To make sure it is really the behavior of an individual that is captured with this relation, many experiments place subjects under real choices, presenting to them two objects among which the individual has to pick exactly one. This choice then represents his preference, by definition: here preference is meant to reflect the object the individual would choose when facing a choice. Such experiments face a first problem: individuals do not necessarily pick the same choice, when presented several times with the same choice pairs. This cannot simply be attributed to indifference between these pairs. (Cite studies.)
-%
-%Interestingly, this effect is generally not considered in the literature as interesting in itself. Experimenters would choose to consider some stochastic version of preference instead, defining $a \succeq b$ whenever the individual chooses $a$ a majority of time when presented $a$ and $b$. But it shows that the understanding quoted here above is not completely satisfied.
-%
-%Such phenomenon is also exhibited in a more indirect fashion, in tests of utility theory. When working under utility theory, it is common to ask questions about probability equivalent loteries, or about certainty equivalents. Such answers show cycles in the exhibited preferences. (Better description needed here.) There has been debate about whether this effect is due to true intransitive effects, or if it can be attributed solely to differences of evaluations between probability equivalents and certainty equivalents (cite Luce, …). But in any case, it can be also considered as an argument in favor of not using as a basis concept a complete preference relation, as if the \ac{DM} was able to always compare two options reliably.
-%
-%In fact, it must be noted, and it is often remarked by those authors working on relaxing completeness, that von Neumann and Morgenstern themselves considered completeness as a very strong condition. (Quote.) This is also visible from the extended description given by Fishburn of their work, although Fishburn does not focus on that aspect: the authors write that they assume the completeness of the relation, without defending the reasonableness of this hypothesis, whereas about other conditions they do not merely write that they assume them, but go at length about defending their reasonableness. About completeness, they merely state that it is also assumed by the concurrent theory which they propose to improve.
-%
-%TODO check descriptive studies in the multicriteria case (Deparis and co)…
-%
-%Savage assumes that every event can be compared infinitely precisely, talk about this?
-%
-%Talk here about lack of information leading to incomplete models even though the preference is intrisically complete?
-%
-%\section{Transitivity and completeness in the normative approaches}
-%Fishburn is one of the prominent advocate about intransitivity holding even under normative approaches. Explain arguments…
-%
-%Roy has very much insisted on incomparability being taken into account explicitly in preference modeling. Explain…
-%
-%\section{Approaches not requiring completeness}
+\section{Old introduction}
 
+Here is a possible approach we might want to use.
+
+\begin{itemize}
+	\item What’s a model of preference? Example with weighted sum. But: forbids some possibly interesting evaluations; need to recode evaluations and hence is dependent of irrelevant alternatives; w1 > w2 unclear.
+	\item Utility: is holistic. Forbids incomparability. Mandates transitivity.
+	\item Models of preferences can have (at least) two interpretations: normative or descriptive. Goals and (sometimes) tools to model preferences and reasonable hypothesis that can be postulated about the shape of the preferences vary according to these two lines.
+	\item (Reasonable) hypothesis about descriptive preferences. Why it’s more difficult than can be thought naïvely. 
+	\item Reasonable hypothesis about normative preferences. Why it’s more difficult than can be thought naïvely. Talk about incompleteness. Applying normative approaches: talk about prescription a la Roy…
+	\item Focus on incompleteness rather than non-transitivity. Can be lack of information or intrinsic.
+	\item Present usual models (Savage? MAVT?) and alternative ones (belief functions? Electre?)?
+	\item Talk about choice under uncertainty wrt incompleteness.
+	\item Impact of relaxations on problems of choice, ranking, classification.
+	\item How to obtain information under incompleteness hypothesis, meaning and interpretation.
+	\item (If space permits) Links to argumentation theory: build argumentative models that explain / justify a decision.?
+	\item (If space permits) Path to validation of normative models. Talk about empirical social choice; reflective equilibrium. Use the resulting indeterminacy (lability). Maximizing without transitivity or completeness?
+\end{itemize}
+
+In this paper, we consider choice situations (and others): given a \ac{DM} and a set of alternatives $\allalts$, we wish to model the preferences of the \ac{DM}… (To be described.)
+
+Because complexity requires justification, we will first consider the simplest approach to preference modeling, namely the weighted sum. We will briefly discuss its shortcomings. Relaxing it progressively, we will try to convince the reader that even more basic assumptions on preferences such as completeness and transitivity are not always justified. This will motivate the introduction of more interesting approaches. We do not claim novelty in these arguments and approaches: we want to point out and summarize the various arguments from the literature that readers non-expert in preference modeling may ignore, and underline the richness and diversity of the existing approaches.  
+
+\section{Model of preferences}
+When considering a choice situation, it may be useful to try to obtain a formal model of her preferences. This model can be used to describe the way she chooses, or to recommend an option. (More on the uses of models later.) Let us see first what a simple model may look like. We start by defining a multiple-criteria choice decision situation (MCDS), one of the situations considered in this paper.
+
+We consider a set $\allalts$ called the set of “alternatives”, that represents the possible options to choose from. Alternatives are here considered as mutually exclusive and the set $\allalts$ is exhaustive: the choice situation mandates to choose exactly one alternative from the set. Let us further assume some structure on $\allalts$: assume each alternative is evaluated on multiple criteria. The finite set $\crits$ supposedly represents all the criteria, or aspects, that the \ac{DM} may wish to consider when choosing. Each criterion $g \in \crits$ comes with an evaluation scale $X_g$, and an evaluation function $f_g: \allalts → X_g$ that evaluates each alternative. To simplify notations, we will denote the evaluation function $f_g$ simply by $g$, thus equate the criterion with its evaluation function. Finally, it may be useful to apply the decision problem to different subsets of alternatives (either as a thought experiment, or because the problem can happen again in the future). Let $\alts \subseteq \allalts$ denote a subet of alternatives, that represents the alternatives to choose from in a given occurence of the decision problem. An MCDS $(\allalts, \crits)$ is a choice situation which can be described using such exhaustive sets of alternatives and criteria.
+
+Given an MCDS $(\allalts, \crits)$, we are interested in designing an aggregation function $f: \powerset{\alts} → \powerset{\alts} \setminus \emptyset$, such that $f(\alts) \subseteq \alts$, that represents the best alternatives from the point of view of the \ac{DM}. We allow the function to return a subset of alternatives to allow for ex-æquo. (The domain of the function is sometimes restricted to the finite subsets $\alts \subseteq \allalts$.) It will be interesting to parameterize the function with preference parameters, that represent the subjectivity of the \ac{DM}. Let $\Omega$ denote the set of possible preference values for the preference parameters. An aggregation scheme is such a set $\Omega$ and a mechanism for deriving an aggregation function $f_\omega$ given $\omega \in \Omega$.
+
+When facing an MCDS, the weighted sum approach comes to mind very naturally. 
+Assume for simplicity that $X_g \subseteq \R$ and that the usual ordering $>$ on $\R$ reflects goodness on all scales. Given a finite set $\alts \subseteq \allalts$, define for each criterion the worst evaluation in that set, $\min_{a \in \alts} g(a) = m_g \in X_g$ and the best evaluation, $\max_{a \in \alts} g(a) = M_g \in X_g$. 
+The weighted sum aggregation scheme defines $\Omega$ as the set of all possible weights that sum to one, thus $\omega = \left(w_g \in \R^+\right)_{g \in \crits}$, with $\sum_{g \in \crits} w_g = 1$, and given $\omega \in \Omega$ and a finite set $\alts$, defines $f_\omega(\alts) = \argmax_{a \in \alts} \sum_{g \in \crits} w_g \frac{g(a) − m_g}{M_g − m_g}$ (the denominator is replaced with $1$ if $M_g = m_g$).
+
+To illustrate, consider our previous example restricted to only two criteria, $g_2$ and $g_3$, with the evaluations given in \cref{fig:veg23} (price is set negative so that greater evaluations are better). Given $\alts = \{a_1, a_2, a_3\}$, the weighted sum approach considers that a choice can be found by associating to each alternative the value $v(a) = w_{g_2} \frac{g_2(a) - 20}{15} + w_{g_3} \frac{g_3(a) + 160}{60}$, for some weights $w_{g_2}$ and $w_{g_3}$, and picking the alternatives having highest values. 
+
+\begin{table}
+	\center
+	\begin{tabular}{rrr}
+		\toprule
+			& $g_2$	& $g_3$\\
+		\midrule
+		$a_1$	& $35$	& $− 120$\\
+		$a_2$	& $20$	& $− 100$\\
+		$a_3$	& $23$	& $− 160$\\
+		\bottomrule
+	\end{tabular}
+	\caption{Evaluations of some vegetables}
+	\label{fig:veg23}
+\end{table}
+
+This approach is simple, but may not be innocuous. One of its problem is that it fails to satisfy the Independence of irrelevant alternatives. This property of an aggregation scheme requires that for all preferential parameters $\omega$, whenever some $a_1$ is chosen by $f_\omega$ and some $a_2$ is not, given some set $\alts$, changing other alternatives in $\alts$ may not reverse the decision. Formally, Independence of irrelevant alternatives mandates that, $\forall \omega \in \Omega$: $a_1 \in f_\omega(\alts), a_2 \notin f_\omega(\alts) ⇒ \nexists \alts' \subseteq \allalts \suchthat a_1, a_2 \in \alts', a_2 \in f_\omega(\alts'), a_1 \notin f_\omega(\alts')$.
+
+In our example, pick $w_{g_2} = w_{g_3} = \frac{1}{2}$. Observe that $v(a_1) = \frac{1}{2} 1 + \frac{1}{2} \frac{2}{3} = \frac{5}{6}$, $v(a_2) = \frac{1}{2}$, $v(a_3) = \frac{1}{10}$. Thus $f_\omega(\set{a_1, a_2, a_3}) = \{a_1\}$. Now replace $a_3$ by $a'_3$ with evaluations $g_2(a'_3) = 10$ and $g_3(a'_3) = −110$. We obtain $v'(a) = w_{g_2} \frac{g_2(a) - 10}{25} + w_{g_3} \frac{g_3(a) + 120}{20}$, $v'(a_1) = \frac{1}{2} 1 + \frac{1}{2} 0 = \frac{1}{2}$, $v'(a_2) = \frac{7}{10}$, $v'(a_3) = \frac{1}{4}$, thus $a_2$ is now selected while $a_1$ is not. This feature is unwanted if the \ac{DM} considers that the relative positions of $a_1$ and $a_2$ do not depend on the evaluations of some third alternative $a_3$.
+
+Incidentally, the infamous Shanghaï ranking exhibits such unfortunate property [TODO refs].
+
+To solve this problem, the normalization procedure may be modified: define for each criterion $m_g$ and $M_g$ once and for all, independently of $\alts$. But the choice of these extreme points will have a strong influence on the aggregation function, as just illustrated, and it may be unclear how to define them. Relatedly, the natural interpretation of the weights parameter may not correspond to what the \ac{DM} has in mind. For example, it may be natural for the \ac{DM} to state that all criteria have equal importance, in which case the analyst may be tempted to set all weights to an equal value. The effect of this will depend on the extreme points $m_g, M_g$: changing $M_g$ to $M'_g = 2 M_g - m_g$, without changing the weight $w_g$, will half the effective importance of the related criterion. Similarly, the \ac{DM} might state that $g$ is “more important” than $g'$. This should not necessarily be interpreted as meaning that $w_g > w_{g'}$.
+
++ talk about the impossibility to pick some interesting alternatives with a weighted sum?
+
+\section{MAVT}
+A more principled approach is useful to make sure we pick an aggregation scheme with suitable properties. Principled here means that we want to introduce sufficient properties on the way the \ac{DM} chooses, that suffice to guarantee that an aggregation function that represents the \ac{DM}’s choices exists within the aggregation scheme.
+
+The most usual approach to MCDS is to attribute a value to each alternative and assume that the choice function picks the maximal alternatives according to $v$. This starts as in the weighted sum approach, with the important difference that $v$ may not depend on $\alts$, only on $\allalts$ and $\crits$.
+
+With such a value function underhand, we may reason with a binary preference relation $\succeq$ on the set of alternatives. Define: $a \succeq b ⇔ v(a) ≥ v(b)$.
+
+It is customary to consider $\succeq$ as a relation that is naturally defined, known by the \ac{DM}, and with no need of explanation. This, with this approach, we assume we can observe $\succeq$ and wonder in which cases we can define a suitable $v$.
+
+1. $\succeq$ is complete.
+2. $\succeq$ is transitive.
+
+\begin{theorem}
+	Assume $\allalts$ is finite. There exists $v$ such that [$v(a) ≥ v(b)$ iff $a \succeq b$] iff $\succeq$ is a complete transitive binary relation.
+\end{theorem}
+If $\allalts$ is infinite, the implication from left to right still holds. The other direction, from existence of $\succeq$ complete and transitive to existence of a suitable $v$, requires a supplementary technical condition (there must be some subset $\alts \subseteq \allalts$ such that, for all $a \succ c$ with $a, c \in \allalts$, $\exists b \in \alts \suchthat a \succeq b \succeq c$ \citep[Ch. 2, Th. 2, p. 40]{krantz_foundations_1971}). 
+%We assume that $\allalts$ is finite or that this condition is fulfilled throughout this article.
+
+Thus, those conditions require that $\succeq$ be a weak-order. 
+
+When some supplementary conditions are fulfilled (such as separability, to be described succinctly here), these conditions allow to use the Multiple Attribute Value Theory to solve the aggregation problem. When the supplementary conditions do not hold, other approaches may be suitable such as Choquet integral, … We refer the reader to the numerous surveys about those approaches (give refs) as we choose rather to focus on the reasons to question more fundamental conditions, namely completeness and transitivity of $\succeq$. Before doing this, we want to give another (important!) example of a preference model, that will be of use when discussing which conditions hold.
+
+\section{Transitivity and completeness in descriptive approaches}
+When conditions about the $\succeq$ preference relation are assumed to bear on what \acp{DM} normally do, it makes it very easy to test them. Very numerous laboratory experiments have tackled this question.
+
+To make sure it is really the behavior of an individual that is captured with this relation, many experiments place subjects under real choices, presenting to them two objects among which the individual has to pick exactly one. This choice then represents his preference, by definition: here preference is meant to reflect the object the individual would choose when facing a choice. Such experiments face a first problem: individuals do not necessarily pick the same choice, when presented several times with the same choice pairs. This cannot simply be attributed to indifference between these pairs. (Cite studies.)
+
+Interestingly, this effect is generally not considered in the literature in relation with incompleteness. Experimenters would choose to consider some stochastic version of preference instead, defining $a \succeq b$ whenever the individual chooses $a$ a majority of time when presented $a$ and $b$, and then discuss whether this relation (complete by definition) satisfies transitivity. But it shows that, at least under the understanding quoted here above, completeness is not satisfied.
+
+Such phenomenon is also exhibited in a more indirect fashion, in tests of utility theory. When working under utility theory, it is common to ask questions about probability equivalent loteries, or about certainty equivalents. Such answers show cycles in the exhibited preferences. (Better description needed here.) There has been debate about whether this effect is due to true intransitive effects, or if it can be attributed solely to differences of evaluations between probability equivalents and certainty equivalents (cite Luce, …). But in any case, it can be also considered as an argument in favor of not using as a basis concept a complete transitive preference relation, as if the \ac{DM} was able to always compare two options reliably.
+
+In fact, it must be noted, and it is often remarked by those authors working on relaxing completeness, that von Neumann and Morgenstern themselves considered completeness as a very strong condition. (Quote.) This is also visible from the extended description given by Fishburn of their work, although Fishburn does not focus on that aspect: the authors write that they assume the completeness of the relation, without defending the reasonableness of this hypothesis, whereas about other conditions they do not merely write that they assume them, but go at length about defending their reasonableness. About completeness, they merely state that it is also assumed by the concurrent theory which they propose to improve.
+
+TODO check descriptive studies in the multicriteria case (Deparis and co)…
+
+Savage assumes that every event can be compared infinitely precisely, talk about this?
+
+Talk here about lack of information leading to incomplete models even though the preference is intrisically complete?
+
+\section{Transitivity and completeness in the normative approaches}
+Fishburn is one of the prominent advocate about intransitivity holding even under normative approaches. Explain arguments…
+
+Roy has very much insisted on incomparability being taken into account explicitly in preference modeling. Explain…
 
 \end{document}
