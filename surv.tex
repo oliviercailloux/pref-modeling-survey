@@ -79,7 +79,35 @@ When building recommender systems in the literature in artificial intelligence, 
 
 * Fisher, \ldots \commentOC{Je suis curieux et impatient de connaitre l’opinion de Fisher là-dessus ! Je n’étais pas tombé là-dessus dans mes lectures.}
 
+When conditions about the $\succeq$ preference relation are assumed to bear on what \acp{DM} normally do, it makes it very easy to test them. Very numerous laboratory experiments have tackled this question.
+
+To make sure it is really the behavior of an individual that is captured with this relation, many experiments place subjects under real choices, presenting to them two objects among which the individual has to pick exactly one. This choice then represents his preference, by definition: here preference is meant to reflect the object the individual would choose when facing a choice. Such experiments face a first problem: individuals do not necessarily pick the same choice, when presented several times with the same choice pairs. This cannot simply be attributed to indifference between these pairs. (Cite studies.)
+
+Interestingly, this effect is generally not considered in the literature in relation with incompleteness. Experimenters would choose to consider some stochastic version of preference instead, defining $a \succeq b$ whenever the individual chooses $a$ a majority of time when presented $a$ and $b$, and then discuss whether this relation (complete by definition) satisfies transitivity. But it shows that, at least under the understanding quoted here above, completeness is not satisfied.
+
+Such phenomenon is also exhibited in a more indirect fashion, in tests of utility theory. When working under utility theory, it is common to ask questions about probability equivalent loteries, or about certainty equivalents. Such answers show cycles in the exhibited preferences. (Better description needed here.) There has been debate about whether this effect is due to true intransitive effects, or if it can be attributed solely to differences of evaluations between probability equivalents and certainty equivalents (cite Luce, …). But in any case, it can be also considered as an argument in favor of not using as a basis concept a complete transitive preference relation, as if the \ac{DM} was able to always compare two options reliably.
+
+In fact, it must be noted, and it is often remarked by those authors working on relaxing completeness, that von Neumann and Morgenstern themselves considered completeness as a very strong condition. (Quote.) This is also visible from the extended description given by Fishburn of their work, although Fishburn does not focus on that aspect: the authors write that they assume the completeness of the relation, without defending the reasonableness of this hypothesis, whereas about other conditions they do not merely write that they assume them, but go at length about defending their reasonableness. About completeness, they merely state that it is also assumed by the concurrent theory which they propose to improve.
+
+In situations of risk, a famous study \citep{tversky_1981} showed an important effect of framing. The subjects, split in two groups, have to choose a preferred program to prepare against an epidemic outspring which will, if no action is taken, result in the death of 600 persons. The first group must choose between program A, which saves 200 persons, and program B, which saves 600 persons with 1 chance on 3, and otherwise saves nobody. Most persons in that group choose program A. The second group must choose between program A', which lets 400 persons die, and B', which results in nobody dying with 1 chance on 3, and otherwise the death of 600 persons. Most persons in the second group choose program B'. Observe that both choices are identical up to phrasing. This illustrates an effect well-known in psychology, according to which choices phrased as losses are evaluated differently than choices phrases as gains.
+
+Closer to a multicriteria context, when the decision involves trade-offs, psychologists have shown systematic differences between choice and matching elicitation procedures \citep{tversky_contingent_1988}. Assume you want to know which of two alternatives $a, b$ the \ac{DM} prefers, in a problem involving two criteria. You can present both and directly ask for a choice. Alternatively, the matching procedure consists in presenting alternative $a$ with its two evaluations $g_1(a), g_2(a)$, and present alternative $b$ with only one evaluation $g_1(b)$, and ask the \ac{DM} to state the value $g'_2(b)$ which would make $b$ indifferent to $a$. Assuming $\succeq$ satisfies dominance and transitivity, you then know that $a \succeq b$ iff $g'_2(b) ≥ g_2(b)$.
+
+Other discussions and presentations of descriptive studies in the multicriteria and risk case are presented in \citet[Ch. 2]{deparis_2012}, \citet{slovic_construction_2006}, …
+
+Physchologists talk about preference reversal effects when referring to situations where an individual ends up stating, indirectly, that he prefers $a$ to $b$ or $b$ to $a$ depending on the way the question is asked (possibly while assuming transitivity and dominance, as illustrated previously). Many advocate to view such effects as illustrating that preferences are constructed (by the process of elicitation), rather than given. There has been debate about whether such effect is due to true intransitive effects, or if it can be attributed solely to differences of evaluations between probability equivalents and certainty equivalents (cite Luce, …). But in any case, it can be also considered as an argument in favor of not using as a basis concept a complete preference relation, as if the \ac{DM} was able to always compare two options reliably.
+
+Savage assumes that every event can be compared infinitely precisely, talk about this?
+
+Talk here about lack of information leading to incomplete models even though the preference is intrisically complete?
+
+\subsection{Under a normative view}
+Fishburn is one of the prominent advocate about intransitivity holding even under normative approaches. Explain arguments…
+
+Roy has very much insisted on incomparability being taken into account explicitly in preference modeling. Explain…
+
 \subsection{Intransitivity in MCDM}
+\commentOC{Tu veux qu’on parle ici des modèles MCDM qui admettent l’intransitivité, c’est bien ça ?}
 
 \subsection{Intransitivity in MDU}
 
@@ -189,27 +217,5 @@ If $\allalts$ is infinite, the implication from left to right still holds. The o
 Thus, those conditions require that $\succeq$ be a weak-order. 
 
 When some supplementary conditions are fulfilled (such as separability, to be described succinctly here), these conditions allow to use the Multiple Attribute Value Theory to solve the aggregation problem. When the supplementary conditions do not hold, other approaches may be suitable such as Choquet integral, … We refer the reader to the numerous surveys about those approaches (give refs) as we choose rather to focus on the reasons to question more fundamental conditions, namely completeness and transitivity of $\succeq$. Before doing this, we want to give another (important!) example of a preference model, that will be of use when discussing which conditions hold.
-
-\section{Transitivity and completeness in descriptive approaches}
-When conditions about the $\succeq$ preference relation are assumed to bear on what \acp{DM} normally do, it makes it very easy to test them. Very numerous laboratory experiments have tackled this question.
-
-To make sure it is really the behavior of an individual that is captured with this relation, many experiments place subjects under real choices, presenting to them two objects among which the individual has to pick exactly one. This choice then represents his preference, by definition: here preference is meant to reflect the object the individual would choose when facing a choice. Such experiments face a first problem: individuals do not necessarily pick the same choice, when presented several times with the same choice pairs. This cannot simply be attributed to indifference between these pairs. (Cite studies.)
-
-Interestingly, this effect is generally not considered in the literature in relation with incompleteness. Experimenters would choose to consider some stochastic version of preference instead, defining $a \succeq b$ whenever the individual chooses $a$ a majority of time when presented $a$ and $b$, and then discuss whether this relation (complete by definition) satisfies transitivity. But it shows that, at least under the understanding quoted here above, completeness is not satisfied.
-
-Such phenomenon is also exhibited in a more indirect fashion, in tests of utility theory. When working under utility theory, it is common to ask questions about probability equivalent loteries, or about certainty equivalents. Such answers show cycles in the exhibited preferences. (Better description needed here.) There has been debate about whether this effect is due to true intransitive effects, or if it can be attributed solely to differences of evaluations between probability equivalents and certainty equivalents (cite Luce, …). But in any case, it can be also considered as an argument in favor of not using as a basis concept a complete transitive preference relation, as if the \ac{DM} was able to always compare two options reliably.
-
-In fact, it must be noted, and it is often remarked by those authors working on relaxing completeness, that von Neumann and Morgenstern themselves considered completeness as a very strong condition. (Quote.) This is also visible from the extended description given by Fishburn of their work, although Fishburn does not focus on that aspect: the authors write that they assume the completeness of the relation, without defending the reasonableness of this hypothesis, whereas about other conditions they do not merely write that they assume them, but go at length about defending their reasonableness. About completeness, they merely state that it is also assumed by the concurrent theory which they propose to improve.
-
-TODO check descriptive studies in the multicriteria case (Deparis and co)…
-
-Savage assumes that every event can be compared infinitely precisely, talk about this?
-
-Talk here about lack of information leading to incomplete models even though the preference is intrisically complete?
-
-\section{Transitivity and completeness in the normative approaches}
-Fishburn is one of the prominent advocate about intransitivity holding even under normative approaches. Explain arguments…
-
-Roy has very much insisted on incomparability being taken into account explicitly in preference modeling. Explain…
 
 \end{document}
