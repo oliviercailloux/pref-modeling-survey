@@ -48,7 +48,7 @@
 	\commentSD{Pas certain qu'on ait besoin de l'acte constant, sauf si tu veux parler assez techniquement d'élicitation? En fait je suis assez peu familier de la littérature qui part des conséquences et des idées de lotteries, qui sont plutôt fu vNM, non?}
 	In SDMR, uncertainty is modelled by a probability measure $p$ over the power set of $S$, $\powerset{S}$, thus with $p(s) \in [0, 1]$ indicating the probability of occurence of $s$, and $\sum_{s \in S} p(s) = 1$. Finally, it is often assumed that consequences can be mapped to a real-valued reward or utility through a function $a:C \to \R$, in which case we will simply denote by $a(s)$ the utility of performing $x$ in state $s$. The most common way to evaluate an $x$ is to use the notion of expected utility, which simply writes $u(x) = \sum_{s \in S} p(s) a(s)$.
 	
-	\begin{example}
+	\begin{example}\label{exm:DMU}
 		Assume a vegetable and its possible tastes ($S=\{A,B,C,D\}$). Given this vegetable, two actions are $x_1$: \``to eat it yourself" and $x_2$: \``give it to your neighbour", and the consequences are $c_1$: \``unhappy", $c_2$: \``neither happy nor unhappy" and $c_3$: \``happy". If the vegetable is very good ($x_1(A)=c_3,x_2(A)=c_1$), eating it will make you happy,  and giving it away will make you unhappy. On the contrary, if it is not very good ($x_1(D)=c_1,x_2(D)=c_3$) but edible, you will be happy to give a gift to your neighbour, but unhappy to eat it yourself. In the other situation, you are quite indifferent to both actions. Assuming that $p(A)=0.2, p(D)=0.6$ (you think it has a bad taste), $p(B)=p(C)=0.1$, and that $a(c_i)=i-2$, we then have
 		$$u(x_1)=0.2 \cdot 1 + 0.6 \cdot -1 <  u(x_2)=0.2 \cdot -1 + 0.6 \cdot 1$$
 	\end{example}
@@ -133,9 +133,23 @@
 		\item In Savage and De Finetti settings, utilities or rewards of actions are supposed to be known, but the axioms assume, from the start, that any two actions can be compared by the decision maker (i.e., that the preference relation is complete). These axioms, along with some others, results in the use of probabilities and of expected utility as a unique rule. 
 		\item In Von Neumann and Morgenstern, \commentSD{Olivier, là tu connais mieux que moi.} the axioms also assume completeness of the preferences and lead to expected utility as the unique valid rule, but here the probabilities are assumed to be known.
 	\end{itemize}
-	While these theoretical constructs have set very strong foundations for the use of probabilities, in practice experiments such as the Ellsberg urn suggests that people do not always act according to expected utility computed from a unique probability. 
+	While these theoretical constructs have set very strong foundations for the use of probabilities, in practice experiments such as the Ellsberg urn suggest that people do not always act according to expected utility computed from a unique probability. And even before, researchers such as Keynes or Boole suggested that getting precise probabilities in practice was not a very realistic assumption. 
 	
-	* Stochastic dominance inducing possibly incomparability
+	Since then, many different extensions have been proposed, some modifying the utilities (ref to prospect theory) or the probabilities (ref to rank dependent utility). Others simply propose to relax the probabilistic assumption, for instance by considering a possibilistic setting where rewards can be non-numerical (ref to Dubois/Fargier), by considering sets of probabilities such as in the literature concerning decision under ambiguity (ref to Jean-marc Tallon and co), or by simply considering completely missing information, such as Wald (citation)  and his celebrated maximin criterion (widely used in decision under risk and in robust optimisation). Some other works also consider dropping the precision of utility functions (Gul/pesendorfer). However, not knowing the utility function is somehow similar to problems treated in MCDM, as the utility function does not express our lack of information about the state of the world, but our preferences about different options. 
+	
+	However, while these extensions do address some of the observed behaviours that do not comply with expected utility, their axiomatic or models keep assuming that every acts can or should be comparable between each others, hence that preferences should be complete. Yet, if one considers that probabilities or utilities may be incompletely known, the next natural step is to consider that preferences derived from them could also be incomplete. 
+	
+	\subsubsection{Keeping precise probabilities but not expected utility}
+	
+	Even when having precise probabilities, there are alternatives to expected utility that induce incomplete preferences. One of them that is particularly interesting is the notion of stochastic dominance. Assuming that your probability is defined over a completely ordered space $Y=\{y_1,\ldots,y_n\}$ (which can be your space of consequences), then an act modelled by probability $p_1$ is said to stochastically dominate another act modelled by probability $p_2$ iff for all $y_i$, we have
+	\begin{equation}\label{eq:stodom}P_1(\{y_1,\ldots,y_i\})=\sum_{j=1}^i p_1(y_j) \leq P_2(\{y_1,\ldots,y_i\})=\sum_{j=1}^i p_2(y_j).\end{equation}
+	Since Inequality~\eqref{eq:stodom} can be satisfied for some $y_i$ and not for others, possible incomparabilities immediately follow. It should be noticed that the probabilities $p_1,p_2$ may concern the same uncertain quantity, but may result from the mapping of the original probability $p$ to the space of (ordered) consequences, such as in Example~\ref{exm:DMU}.
+	
+	Moreover, stochastic dominance may also be perceived as a criterion allowing for utilities to be ill-defined, as when $p_1$ stochastically dominates $p_2$, then its expected value for any increasing utility function $u$ defined over $Y$ (that is, $u(y_i) \leq u(y_{i+1})$) will be higher than the expected value of this utility function according to $p_2$. 
+		
+	\subsubsection{Keeping expected utility but not precise probabilities}
+	
+
 	
 	* Incompleteness from incompletely specified probabilities, including decision under risk
 	
