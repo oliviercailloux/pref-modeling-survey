@@ -49,19 +49,21 @@
 	\end{example}
 	
 	In the simplest form of DMU considered here (SDMR, for Simple Decision Making under Risk), we consider a finite space $S$ of possible states of the world, a set of consequences $C$, and each act $x: S \to C$ is modelled as a function where $x(s)$ is the consequence of performing $x$ when $s$ is the actual state of the world. Define $\allalts$ in this case as the set of possible acts (thus $\allalts = C^S$). %Given $c \in C$, let $x_c$ denote the act that constantly yields $c$, thus, $x_c(s) = c, \forall s \in S$. 
+	In SDMR, uncertainty is modelled by a probability measure $p$ over the power set of $S$, $\powerset{S}$, thus with $p(s) \in [0, 1]$ indicating the probability of occurence of $s$, and $\sum_{s \in S} p(s) = 1$. 
 	\commentSD{Pas certain qu'on ait besoin de l'acte constant, sauf si tu veux parler assez techniquement d'élicitation? En fait je suis assez peu familier de la littérature qui part des conséquences et des idées de lotteries, qui sont plutôt fu vNM, non?}
-	\commentOC{En fait, c’est ce que j’essayais d’expliquer dans un e-mail précédent. Je voulais tenter de rendre compatible le modèle vNM et l’approche où les utilités sont données.}
-	\begin{example}\label{exm:DMU}
-		Assume a vegetable and its possible tastes ($S=\{A,B,C,D\}$). Given this vegetable, two actions are $x_1$: \``to eat it yourself" and $x_2$: \``give it to your neighbour", and the consequences are $c_1$: \``unhappy", $c_2$: \``neither happy nor unhappy" and $c_3$: \``happy". If the vegetable is very good ($x_1(A)=c_3,x_2(A)=c_1$), eating it will make you happy,  and giving it away will make you unhappy. On the contrary, if it is not very good ($x_1(D)=c_1,x_2(D)=c_3$) but edible, you will be happy to give a gift to your neighbour, but unhappy to eat it yourself. In the other situation, you are quite indifferent to both actions. Assuming that $p(A)=0.2, p(D)=0.6$ (you think it has a bad taste), $p(B)=p(C)=0.1$, and that $a(c_i)=i-2$, we then have
-		$$u(x_1)=0.2 \cdot 1 + 0.6 \cdot -1 <  u(x_2)=0.2 \cdot -1 + 0.6 \cdot 1$$
-	\end{example}
-	
+	\commentOC{En fait, c’est ce que j’essayais d’expliquer dans un e-mail précédent. Je voulais tenter d’adopter des notations compatible avec le modèle vNM et avec l’approche où les utilités sont données.}
+
 	\subsection{Classical models}
 	Typical approaches in MCDM assume that there is some real-valued function $v: \allalts \to \R$ mapping alternatives to their values, and that $x \succeq y$ iff  $v(x) ≥ v(y)$.
 
-	In SDMR, uncertainty is modelled by a probability measure $p$ over the power set of $S$, $\powerset{S}$, thus with $p(s) \in [0, 1]$ indicating the probability of occurence of $s$, and $\sum_{s \in S} p(s) = 1$. Finally, it is often assumed that consequences can be mapped to a real-valued reward or utility through a function $a:C \to \R$, in which case we will simply denote by $a(s)$ the utility of performing $x$ in state $s$. The most common way to evaluate an $x$ is to use the notion of expected utility, which simply writes $u(x) = \sum_{s \in S} p(s) a(s)$.
+	In DMU, it is often assumed that consequences can be mapped to a real-valued reward or utility through a function $a:C \to \R$, in which case we will simply denote by $a(s)$ the utility of performing $x$ in state $s$. The most common way to evaluate an $x$ is to use the notion of expected utility, which simply writes $u(x) = \sum_{s \in S} p(s) a(s)$.
 	
-	\commentOC{Ici on pourrait parler des autres approches à la Savage etc., mais qui postulent la complétude.}
+	\begin{example}\label{exm:DMU}
+		Assume a vegetable and its possible tastes ($S=\{A,B,C,D\}$). Given this vegetable, two actions are $x_1$: ``to eat it yourself" and $x_2$: ``give it to your neighbour", and the consequences are $c_1$: ``unhappy", $c_2$: ``neither happy nor unhappy" and $c_3$: ``happy". If the vegetable is very good ($x_1(A)=c_3,x_2(A)=c_1$), eating it will make you happy,  and giving it away will make you unhappy. On the contrary, if it is not very good ($x_1(D)=c_1,x_2(D)=c_3$) but edible, you will be happy to give a gift to your neighbour, but unhappy to eat it yourself. In the other situation, you are quite indifferent to both actions. Assuming that $p(A)=0.2, p(D)=0.6$ (you think it has a bad taste), $p(B)=p(C)=0.1$, and that $a(c_i)=i-2$, we then have
+		$$u(x_1)=0.2 \cdot 1 + 0.6 \cdot -1 <  u(x_2)=0.2 \cdot -1 + 0.6 \cdot 1$$
+	\end{example}
+	
+	\commentOC{Ici on pourrait parler des autres approches à la Savage et autres qui postulent la complétude.}
 	
 	All models presented thus far assume that it is possible to order alternatives according to their value, as given by a real function. Thus, they require $\succeq$ to be complete and transitive (by which we mean that if $\succeq$ is incomplete or not transitive, then no suitable function exists).
 	
@@ -158,7 +160,7 @@
 		
 	\subsubsection{Incompleteness from non-precise probabilities}
 	
-	In the past few decades, different scholars have challenged what is sometimes called the \``dogma of precision" (Walley) of probabilities, advocating general theories based on sets of probabilities as a model rather than enforcing the need of a single probability. Such theories consider in general convex sets of probabilities, and recommend decision rules that extend expected utility but do allow, at least for some of them, incomparabilities to happen. 
+	In the past few decades, different scholars have challenged what is sometimes called the ``dogma of precision" (Walley) of probabilities, advocating general theories based on sets of probabilities as a model rather than enforcing the need of a single probability. Such theories consider in general convex sets of probabilities, and recommend decision rules that extend expected utility but do allow, at least for some of them, incomparabilities to happen. 
 	
 	In such theories, our knowledge is no longer modelled by a single distribution $p$, but by a convex set $\mathcal{P}$ of them. 
 	
