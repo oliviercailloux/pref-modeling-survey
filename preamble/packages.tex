@@ -18,7 +18,7 @@
 \togglefalse{LCpres}
 
 \usepackage{mathtools} %load this before babel!
-	\mathtoolsset{showonlyrefs,showmanualtags}
+	\mathtoolsset{showmanualtags}%showonlyrefs
 
 %\usepackage[french, english]{babel}%options should probably be on the document level
 \usepackage{babel}
@@ -136,7 +136,7 @@
 %  {\endgroup}
 
 \usepackage{environ}%for xdescwd command
-\usepackage{cleveref}% cleveref should go "laster" than hyperref
+\usepackage[capitalize]{cleveref}% cleveref should go "laster" than hyperref
 %GRAPHICS
 \usepackage{pgf}
 \usepackage{pgfplots}
