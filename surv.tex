@@ -63,7 +63,7 @@
 	\commentOC{À mon avis, pour réduire le risque de confusion, on ferait bien de choisir deux exemples assez différents, un pour illustrer le MCDM (c’était mon idée derrière ces légumes), et un autre pour illustrer la décision dans le risque. Je suis d’accord que le même contexte peut très bien être vu des deux façons, mais je crains que ça crée des confusions, ou des interrogations (le lecteur peut par exemple se demander comment on va faire dans le contexte MCDM pour gérer l’incertitude illustrée dans le cas DMU sur le gout des aliments, ce qui nous obligerait à introduire un contexte MCDM+DMU, mais je ne pense pas qu’on veuille entrer dans des complexités pareilles). Mais si tu insistes on peut laisser comme ça. Ou voir ça plus tard.}
 	\commentSD{Ok, je changerai après pour le contexte, je garderai cependant ton exemple à quatre valeurs distinctes!}
 	\begin{example}\label{exm:DMU}
-		Assume a vegetable and its possible tastes ($S=\{A,B,C,D\}$). Given this vegetable, two actions are $x_1$: ``to eat it yourself" and $x_2$: ``give it to your neighbour", and the consequences are $c_1$: ``unhappy", $c_2$: ``neither happy nor unhappy" and $c_3$: ``happy". If the vegetable is very good ($x_1(A)=c_3,x_2(A)=c_1$), eating it will make you happy,  and giving it away will make you unhappy. On the contrary, if it is not very good ($x_1(D)=c_1,x_2(D)=c_3$) but edible, you will be happy to give a gift to your neighbour, but unhappy to eat it yourself. In the other situation, you are quite indifferent to both actions. Assuming that $p(A)=0.2, p(D)=0.6$ (you think it has a bad taste), $p(B)=p(C)=0.1$, and that $a(c_i)=i-2$, we then have
+		Assume you want to go out and wonder about the weather state ($S=\{A,B,C,D\}$), going from $A=$\``shiny" to $D=$\``stormy". Given this state, two actions are $x_1$: ``leave the umbrella home" and $x_2$: ``take the umbrella", and the consequences are $c_1$: ``unhappy", $c_2$: ``neither happy nor unhappy" and $c_3$: ``happy". If the weather is nice ($x_1(A)=c_3,x_2(A)=c_1$), not having an umbrella is enjoyable,  and having to bear one for nothing will make you unhappy. On the contrary, if it is stormy ($x_1(D)=c_1,x_2(D)=c_3$), you will be happy to have taken your umbrella, but quite unhappy if you end up being very wet. In the other situation, you are quite indifferent to both actions. Assuming that $p(A)=0.2, p(D)=0.6$ (you think it has a bad taste), $p(B)=p(C)=0.1$, and that $u_1(c_i)=i-2$, we then have
 		$$u(x_1)=0.2 \cdot 1 + 0.6 \cdot -1 <  u(x_2)=0.2 \cdot -1 + 0.6 \cdot 1$$
 	\end{example}
 	
@@ -153,30 +153,53 @@
 	
 	\subsection{Incompleteness in DMU}
 	
-	As recalled in Section~\ref{sec:intro}, probability theory and expected utility are the most widely used tools when having to decide under uncertainty, and naturally induce completeness of preferences under uncertainty. While we mentioned several approaches that tries to depart from this setting while preserving preference completeness, there are only a few that tries to relax the completeness assumption. 
+	As recalled in Section~\ref{sec:intro}, probability theory and expected utility are the most widely used tools when having to decide under uncertainty, and naturally induce completeness of preferences under uncertainty. It should however be noted that while these theoretical constructs have very strong foundations, early scholars were critical about the fact that completeness could hold in practice, including for instance Von Neumann and Morgenstern \citet[p. 19]{vNM}. Many attempts to relax the completeness axioms does so by considerings axioms leading to deal with sets of utilities and sets of probaibilities (citer Anscombe/Aumann et autres), entangling together aspects about decision and about information modelling. We will mainly restrict ourselves to approaches focusing on the uncertainty part, rather than on the utility part (interested reader can consult provided references for other apprpoaches). 
 	
 	\subsubsection{Keeping precise probabilities but not expected utility}
 	
-	Even when having precise probabilities, there are alternatives to expected utility that induce incomplete preferences. One of them that is particularly interesting is the notion of stochastic dominance. Assuming that your probability is defined over a completely ordered space $Y=\{y_1,\ldots,y_n\}$ (which can be your space of consequences), then an act modelled by probability $p_1$ is said to stochastically dominate another act modelled by probability $p_2$ iff for all $y_i$, we have
+	Even when having precise probabilities, there are alternatives to expected utility that induce incomplete preferences. One of them that is particularly interesting is the notion of stochastic dominance (citation H.Levy:stochastic dominance book). Assuming that your probability is defined over a completely ordered space $Y=\{y_1,\ldots,y_n\}$ (which can be your space of consequences), then an act modelled by probability $p_1$ is said to stochastically dominate another act modelled by probability $p_2$ iff for all $y_i$, we have
 	\begin{equation}\label{eq:stodom}P_1(\{y_1,\ldots,y_i\})=\sum_{j=1}^i p_1(y_j) \leq P_2(\{y_1,\ldots,y_i\})=\sum_{j=1}^i p_2(y_j).\end{equation}
 	Since Inequality~\eqref{eq:stodom} can be satisfied for some $y_i$ and not for others, possible incomparabilities immediately follow. It should be noticed that the probabilities $p_1,p_2$ may concern the same uncertain quantity, but may result from the mapping of the original probability $p$ to the space of (ordered) consequences, such as in \cref{exm:DMU}.
 	
-	Moreover, stochastic dominance may also be perceived as a criterion allowing for utilities to be ill-defined, as when $p_1$ stochastically dominates $p_2$, then its expected value for any increasing utility function $u$ defined over $Y$ (that is, $u(y_i) \leq u(y_{i+1})$) will be higher than the expected value of this utility function according to $p_2$. 
+	\begin{example}
+		Consider again the space $C=\{c_1,\ldots,c_3\}$of consequences and the following probability masses (induced by different acts $x_1,x_2,x_3$) defined over them, given in vectorial forms: $p_1=(0.2,0.3,0.5)$, $p_2=(0.1,0.3,0.6)$ and $p_3=(0.3,0,0.7)$. They induce the following cumulative probabilities:
+		$$P_1(\{c_1\})=0.2, \; P_1(\{c_1,c_2\})=0.5, \; P_1(\{c_1,c_2,c_3\})=1; $$
+		$$P_2(\{c_1\})=0.1, \; P_2(\{c_1,c_2\})=0.4, \; P_2(\{c_1,c_2,c_3\})=1;$$
+		$$P_3(\{c_1\})=0.3, \; P_3(\{c_1,c_2\})=0.3, \; P_3(\{c_1,c_2,c_3\})=1, $$
+		from which we can conclude that $x_2$ stochastically dominates $x_1$, while $x_3$ is incomparable to both $x_1$ and $x_2$, according to stochastic dominance.
+	\end{example}
+	
+	The notion of stochastic dominance has some very attractive properties, as:
+	\begin{enumerate}
+		\item it does not necessitate to define utilities over consequences, and merely requires them to be linearly ordered;
+		\item it can be be perceived as a criterion allowing for utilities to be ill-defined, as $p_1$ stochastically dominates $p_2$, if and only if its expected value for any increasing utility function $u$ defined over $Y$ (that is, $u(y_i) \leq u(y_{i+1})$)  is higher than the expected value of this utility function according to $p_2$ (trouver la référence à la preuve?). 
+	\end{enumerate}
 	
 	\subsubsection{Incompleteness from non-precise probabilities}
 	
-	In the past few decades, different scholars have challenged what is sometimes called the ``dogma of precision" (Walley) of probabilities, advocating general theories based on sets of probabilities as a model rather than enforcing the need of a single probability. Such theories consider in general convex sets of probabilities, and recommend decision rules that extend expected utility but do allow, at least for some of them, incomparabilities to happen. 
-	
-	In such theories, our knowledge is no longer modelled by a single distribution $p$, but by a convex set $\mathcal{P}$ of them. 
-	
-	\begin{itemize}
-		\item introduce expectation bounds
-		\item introduce maximality
-		\item speak about E-admissibility? not strictly speaking an ordering rule, but does have some interesting connection with the ontic/epistemic duality
-		\item mention that every probabilistic decision rule can be extended to accomodate imprecision. 
+	In the past few decades, different scholars have challenged the need for precise probabilities associated to classical axiomatics, advocating the use of imprecisely defined prices (expected values) or of imprecisely defined probabilities. To mention but a few:
+	\begin{itemize} 
+		\item Levi advocates the uses of sets of probabilities within a logical interpretation of probabilities;
+		\item Walley extends de Finetti axioms by assuming that given an act $x$ and a (postulated) linear utility function, an agent would give different buying and selling prices for this act, therefore allowing indecision if the given price is between these two bounds;
+		\item Shafer and Vovk explores a probabilistic setting centered on the notion of Martingale that naturally gives rise to expectation bounds rather than precisely defined one, inheriting ideas from Jean Ville and Kolmogorov complexity. 
 	\end{itemize}
+	Without entering into too much details, such theories can most of the time be associated to the use convex sets of probabilities, and recommend decision rules that extend expected utility but do allow incomparabilities to happen. Once we accept that a convex set $\mathcal{P}$ of probabilities (or a formally equivalent representation) can represent our knowledge, without having to be precise, incompleteness ensues easily. 
 	
+	A prototypical way to induce incompleteness between acts from incompleteness in probabilities is to adapt expected utility criterion, and among rules doing so, maximality is a popular one (it is championed by Walley, but is considered as early as the 60's by Ansombe and Aumann ***papier 63***). Given acts $x_1,x_2$, maximality says that 
+	$$x_1 \succ x_2 \textrm{ iff }  u(x_1) ≥ u(x_2) \textrm{for all} p \in \mathcal{P},$$
+	still with $u(x) = \sum_{s \in S} p(s) u_1(x(s))$. It is clear that this reduces to expected utility when $\mathcal{P}$	is a singleton. 
 	
+	\begin{example}
+		Going back to Example~\ref{exm:DMU}, we have that 
+		$$u(x_1)=p(A) - p(B) \textrm{ and } u(x_1)=p(B) - p(A)$$
+		which means that the two acts will be incomparable according to maximality as soon as $\mathcal{P}$ contains a probability where $p(A)=p(B)$ that is not on the border of $\mathcal{P}$ (i.e., it contains at least one mass where $p(A)<p(B)$, and another where $p(B)>p(A)$). 
+	\end{example}
+	
+	It should be noted that other authors have proposed different rules: for instance Levi as well as some of his followers (citer Seidenfeld) recommends to use a decision rule, often called E-admissibility, that does not give rise to an incomplete order between acts, but rather selects all the acts that are Bayes optimal according to at least one probability $p \in \mathcal{P}$. In terms of order, this comes down to consider a set of possible linear ordering, and to retain only those elements that are maximal for at least one of them. 
+	
+	Compared to maximality, E-admissibility implicitly uses the precise probabilities within the set $\mathcal{P}$, and therefore would not be consistent with Walley's view where the bounded (buying and selling) prices are not to be interpreted as incomplete information about an ideal precise price, but have to be considered as current state of knowledge that may not be reducible with additional information. 
+	
+	\subsubsection{Working with sets of probabilities and utilities}
 	
 	\subsection{Incompleteness: absence of knowledge or knowledge of absence?}
 	
