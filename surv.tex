@@ -145,8 +145,10 @@
 	Talk here about lack of information leading to incomplete models even though the preference is intrisically complete?
 	
 	\subsection{Incompleteness in MCDM}
-	Some approaches in MCDM in the family of outranking methods permit to represent incomparabilities. As an example, let us consider the ELECTRE method. It aims at defining a preference relation $S$ on $\allalts$ that…
+	Some approaches in MCDM in the family of outranking methods permit to represent incomparabilities. A much used idea is to take into account two points of view and accordingly build two weak-orders, $\succeq^1$, $\succeq^2$, then define $\succeq = \succeq^1 ∩ \succeq^2$. Thus, when the points of view of the two weak-orders strongly disagree about some pair of objects, the resulting relation does not take position about the related preference. As an example, let us consider (a simplification of) the ELECTRE III method (our description is much simplified because we want to focus on the way incomparabilities arise). It is used in the MCDM context. It builds a concordance relation $C$ that determines whether alternative $x$ is sufficiently better than $y$, by accounting only for the criteria in favor of $x$. For example, a model compatible with ELECTRE III could declare that $x C y$ iff $x$ is better than or equal to $y$ according to at least two criteria. It also defines a discordance relation $D$. In ELECTRE III, the performance of $x$ on a given criterion $g$ may be considered as “unacceptably low” compared to the performance of $y$ on $g$ (depending on parameters of the model). For example, a model could consider that the performance of $x$ on $g$ is unacceptably low compared to $y$ iff $y_g - x_g ≥ 2$, where $X_g$ would be numerical. Then define $x \succeq y$ iff $x C y$ and $¬(x D y)$.
 	
+	Consider an example with $\allalts = \R^3$, each criteria to be maximized, and the following two alternatives: $x = (0, 0, 2), y = (1, 1, 0)$. Using the example definitions given above for $C$ and $D$, we obtain $x C y$ and $x D y$, thus $x$ and $y$ are incomparable in the resulting model.
+
 	* Robust MCDM a la Greco etc...
 	
 	* MCDM model that induce incomplete orders (CP-net... others?)
