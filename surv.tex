@@ -108,6 +108,7 @@
 	\commentOC{Je me permets d’inverser les sections à propos de completeness et de transitivity, car je suis nettement plus inspiré sur la question de la complétude. Mais cette inversion est négociable et potentiellement temporaire, bien sûr.}
 	
 	\subsection{Empirical evidence of incompleteness}
+	\label{sec:empirical}
 	A precise definition of what the preference relation $\succeq$ represents is required for discussing conditions postulated about it. For “preference”, in its everyday usage, is very ambiguous. (\citet{frankfurt_freedom_1971} cites seven reasonable interpretations of the phrase “to want to”; this exercice transposes, \emph{mutatis mutandis}, to the concept of preference.)
 	
 	Expanding on the proposition of nVM, we define that the \ac{DM} \emph{prefers} $a$ to $b$ when he expresses an intuitive attraction towards $a$ when presented with $a$ and $b$, or an equal attraction towards $a$ and $b$; and this attraction is stable over time (at least within a short time span) and does not change with irrelevant changes in the context. The second part of our definition makes it applicable also in case the intuitive attraction felt by the \ac{DM} changes for no apparent reason, or depends on the context at the moment of presenting $a$ and $b$ to the \ac{DM}, for example whether it is currently raining. Here we are interested in the multicriteria and SDMR settings, thus we assume that $a, b$ are alternatives in $\allalts$ described by their evaluations on the criteria (in the first case) or by the relevant probability distributions and consequences (in the second case), and consider irrelevant changes in the context as anything that does not change those descriptions. 
@@ -157,14 +158,18 @@
 	
 	\subsection{Incompleteness in DMU}
 	
-	As recalled in Section~\ref{sec:intro}, probability theory and expected utility are the most widely used tools when having to decide under uncertainty, and naturally induce completeness of preferences under uncertainty. It should however be noted that while these theoretical constructs have very strong foundations, early scholars were critical about the fact that completeness could hold in practice, including for instance Von Neumann and Morgenstern \citet[p. 19]{vNM}. Many attempts to relax the completeness axioms does so by considerings axioms leading to deal with sets of utilities and sets of probaibilities (citer Anscombe/Aumann et autres), entangling together aspects about decision and about information modelling. We will mainly restrict ourselves to approaches focusing on the uncertainty part, rather than on the utility part (interested reader can consult provided references for other apprpoaches). 
+	As recalled in Section~\ref{sec:intro}, probability theory and expected utility are the most widely used tools when having to decide under uncertainty, and naturally induce completeness of preferences under uncertainty. It should however be noted that while these theoretical constructs have very strong foundations, early scholars were critical about the fact that completeness could hold in practice, including for instance Von Neumann and Morgenstern \citet[p. 19]{vNM}. Many attempts to relax the completeness axioms does so by considerings axioms leading to deal with sets of utilities and sets of probabilities (citer Anscombe/Aumann et autres), entangling together aspects about decision and about information modelling. We will mainly restrict ourselves to approaches focusing on the uncertainty part, rather than on the utility part (interested reader can consult provided references for other apprpoaches). 
 	
 	\subsubsection{Axiomatic based incomplete representations}
 	\citet{aumann_1962}: axioms do not require completeness. $x \succeq y ⇒ u(x) ≥ u(y)$ and $x \succ y ⇒ u(x) > u(y)$ but the reverse implications do not hold.
 
-	\citet{ok_2002} represents a possibly incomplete preference relation using a vector-valued utility function, instead of a real-valued one. This idea is exploited and extended in \citet{eliaz_indifference_2006}, which also cover the DMR setting.
+	\citet{dubra_expected_2004} represents preferences over lotteries by means of a set of real-valued utility functions. Preference holds whenever the expected utility for the preferred alternative is higher, for all utility functions in the set. This idea has also been applied in other contexts \citep{ok_2002, eliaz_indifference_2006}.
 	
-	\citet{dubra_expected_2004} represents preferences over lotteries by means of a set of real-valued utility functions. Preference holds whenever the expected utility for the preferred alternative is higher, for all utility functions in the set. (This assumes restrictions over the space of lotteries considered.)
+	\citet{dubra_model_2002} propose to view the preference relation as a completion of an intuitive partial preference relation: the \ac{DM} knows intuitively the result of some comparisons, and compute the other ones by applying some reasoning process. They also obtain a preference relation that is representable using a set of utility functions. Observe that this approach directly tackles some of the shortcomings described in \cref{sec:empirical}.
+	
+	\citet{manzini_representation_2007} use a utility function and a vagueness function, thus, represent the preference using intervals of utilities rather than real valued utilities. (Beyond DMU, also using this representation, see \citet{manzini_vague_2003}, and \citet{masatlioglu_2005} who assume that a specific alternative called the status quo alternative is prominently chosen whenever the \ac{DM} faces a choice about which incomparability occur.)
+	
+	\citet{danan} propose to consider that an incomparability is observed whenever the \ac{DM} is ready to pay a small price to postpone the decision, without receiving new information about the problem.
 	
 	\subsubsection{Keeping precise probabilities but not expected utility}
 	
