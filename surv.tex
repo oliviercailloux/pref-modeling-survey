@@ -7,6 +7,7 @@
 \input{preamble/redac}
 \input{preamble/draw}
 \input{preamble/acronyms}
+\newcommand{\dollars}[1]{\SI{#1}[\$]{}}
 
 \begin{document}
 	\title{Preference models that relax completeness or transitivity: why, how?}
@@ -106,7 +107,7 @@
 	\section{Dropping completeness}
 	\commentOC{Je me permets d’inverser les sections à propos de completeness et de transitivity, car je suis nettement plus inspiré sur la question de la complétude. Mais cette inversion est négociable et potentiellement temporaire, bien sûr.}
 	
-	\subsection{Empirical evidence of incompleteness}
+	\subsection{Defining and testing incompleteness}
 	\label{sec:empirical}
 	A precise definition of what the preference relation $\succeq$ represents is required for discussing conditions postulated about it. For “preference”, in its everyday usage, is very ambiguous. (\citet{frankfurt_freedom_1971} cites seven reasonable interpretations of the phrase “to want to”; this exercice transposes, \emph{mutatis mutandis}, to the concept of preference.)
 	
@@ -122,9 +123,12 @@
 	
 	In order to discuss this hypothesis, we turn to the second (and much more interesting) reason for failure of completeness, which is also given by the literature in empirical psychology. It appears that preferences change in systematic ways according to changes in the presentation of the alternatives or the context that should have no impact from a normative point of view.
 	
+	\subsection{Empirical evidence of incompleteness}
 	\commentOC{Ici je n’ai pas encore décrit les expériences en détail, juste l’idée pour que tu voies où je veux en venir. Faudra voir de combien de place on dispose pour cet aspect. J’ai l’impression d’en avoir déjà fait des tonnes sur cette section.}
 	
-	Describe study MacCrimmon, Stanbury, and Wehrung (1980, Real money lotteries: A study of ideal risk, context effects, and simple processes. In T S. Wallsten (Ed.). Cognitive Process in Choice and Decision Behavior).
+	\newcommand{\simplebet}[3]{(\dollars{#1}, #2, \dollars{#3})}
+	
+	\citet{maccrimmon_real_1980} have collected preferences of individuals over alternatives in a risk setting, representing monetary bets. Their subjects are business executives. One of the most striking result of the study is that individuals order some pairs of alternatives differently depending on which other alternatives they are presented with. The study is run as follows. Each subject is presented instructions and three sets of five alternatives. (The same three sets of five alternatives are presented to every individual.) The subjects are asked to rank each alternative by order of preference. Each alternative has exactly two possible consequences (monetary outcomes), and can thus be fully described using three numbers: best outcome, probability of winning the best outcome, and worst outcome. We focus on two of these sets of five alternatives, labelled set B and C in the paper. Set B contains the alternatives $\simplebet{5}{1}{5}$, $\simplebet{20}{0.692}{3.90}$, $\simplebet{20}{0.2752}{-0.70}$, $\simplebet{20}{0.6185}{-19.30}$, $\simplebet{20}{0.9046}{-137.00}$. Set C contains $\simplebet{5}{1}{5}$, $\simplebet{10}{0.6185}{-3.10}$, $\simplebet{15}{0.6185}{-11.20}$, $\simplebet{20}{0.6185}{-19.30}$, $\simplebet{25}{0.6185}{-27.40}$. The first and fourth of these alternatives are identical in sets B and C. However, 9 out of 40 subjects give those pairs of alternatives different relative positions depending on which set they are ranking (4 of them prefer B1 to B4 but C4 to C1, and vice-versa for the other 5). This effect might be thought to be due to the individuals not taking the task seriously, but as the authors note, this appears implausible because of the very regular choice patterns observed in the rest of the analysis.
 	
 	When working under utility theory, it is common to ask questions about probability equivalent loteries, or about certainty equivalents. Systematic differences appear in the preferences exhibited between each mode of questioning. (Better description needed here.) 
 	
@@ -207,8 +211,6 @@
 	
 	Compared to maximality, E-admissibility implicitly uses the precise probabilities within the set $\mathcal{P}$, and therefore would not be consistent with Walley's view where the bounded (buying and selling) prices are not to be interpreted as incomplete information about an ideal precise price, but have to be considered as current state of knowledge that may not be reducible with additional information. 
 	
-	\subsubsection{Working with sets of probabilities and utilities}
-	
 	\subsubsection{Working with sets of utilities}
 	
 	\citet{dubra_expected_2004} represents preferences over lotteries by means of a set of real-valued utility functions. Preference holds whenever the expected utility for the preferred alternative is higher, for all utility functions in the set. This idea has also been applied in other contexts \citep{ok_2002, eliaz_indifference_2006}.
@@ -216,6 +218,10 @@
 	\citet{dubra_model_2002} propose to view the preference relation as a completion of an intuitive partial preference relation: the \ac{DM} knows intuitively the result of some comparisons, and compute the other ones by applying some reasoning process. They also obtain a preference relation that is representable using a set of utility functions. Observe that this approach directly tackles some of the shortcomings described in \cref{sec:empirical}.
 	
 	\citet{manzini_representation_2007} use a utility function and a vagueness function, thus, represent the preference using intervals of utilities rather than real valued utilities. (Beyond DMU, also using this representation, see \citet{manzini_vague_2003}, and \citet{masatlioglu_2005} who assume that a specific alternative called the status quo alternative is prominently chosen whenever the \ac{DM} faces a choice about which incomparability occur.)
+	
+	\subsubsection{Working with sets of probabilities and utilities}
+	\commentOC{Je proposerais de fusionner cette § avec la précédente, à moins que tu aies beaucoup de choses en tête à dire à ce sujet ? (Moi pas !)}
+	\citet{galaabaatar_subjective_2013} are interested in the Savage-like context where probabilities are unknown and represent an incomplete preference relation in uncertaintly using a set of pairs of probabilities and utilities.
 	
 	\subsubsection{Others}
 	\citet{aumann_1962}: axioms do not require completeness. $x \succeq y ⇒ u(x) ≥ u(y)$ and $x \succ y ⇒ u(x) > u(y)$ but the reverse implications do not hold.
