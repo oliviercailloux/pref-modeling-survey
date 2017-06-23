@@ -162,6 +162,8 @@
 	%do not have a clear, intuitive preference for each pairs of alternatives, but rather, at least for some of them, can be lead to declare preference for one, depending on how the problem has been presented. When thinking more about the comparison and presented with different views of the same problem, individuals may in some cases change their preference. This has been studied empirically \citep{slovic_who_1974, maccrimmon_utility_1979, lichtenstein_reversals_2006}, and \citet[pp. 101 – 103]{savage_foundations_1972} famously reported that it happened to him. 
 
 	One may of course want to preserve completeness of preferences, for example to preserve mathematical and computational simplicity. One way to do so, common in experimental psychology, is to restrict further the frame in which preferences are considered. For instance, \citet{luce_utility_2000} indicates clearly that he studies preferences in terms of choice, not judgment; \citet{maccrimmon_real_1980} excludes some kind loteries from the scope of the model. In such cases, completeness may well be justified, at the price of losing generality. In other settings, such as normative approaches or recommender systems, it is unclear that such reductions should be enforced, as they may lead to constraints or axioms that may appear unnatural to the user, or hard to impose in practice. 
+	
+	Note that in such experiments, incomparability is actually not observed \emph{per se}, as experimental protocol forces to make a choice. Some other studies \citet{deparis_when_2012} are interested in the behavior of individuals when they are allowed to make explicit statements of incomparability. Others such  \citet{danan_are_2006} propose to consider that an incomparability is observed whenever the \ac{DM} is ready to pay a small price to postpone the decision.
 
 
 %One way wish however to model a preference relation as complete anyway, in order, for example, to benefit from increased simplicity, tractability, or mathematical elegance of such models. One path for doing this is to consider the context as fixed, for example, consider the way of presenting the alternatives to the \ac{DM} as fixed. Thus, for example, the model would represent the preference as stated by the \ac{DM} when asked questions in terms of choices, and not when he is interrogated in terms of matching. Furthermore, the model would represent not a preference understood as the expression of clear intuitive attraction from the \ac{DM} towards some alternative, but rather as the a noisy intuitive attraction, known only imperfectly by the \ac{DM}. 
@@ -220,7 +222,7 @@ Such approaches consider that incomparabilities follow from a lack of knowledge,
 	\end{itemize}
 	Such theories can most of the time be associated to the use convex sets of probabilities, and give rise to decision rules that extend expected utility but do allow incomparabilities. Once we accept that a convex set $\mathcal{P}$ of probabilities (or a formally equivalent representation) can represent our knowledge, incompleteness ensues. 
 	
-	A prototypical way to induce incompleteness between acts from incompleteness in probabilities is to adapt expected utility criterion, and among rules doing so, maximality is a popular one (it is championed by Walley, but is considered as early as the 60's by Ansombe and Aumann ***papier 63***). Given acts $x_1,x_2$, maximality says that 
+	A prototypical way to induce incompleteness between acts from incompleteness in probabilities is to adapt expected utility criterion, and among rules doing so, maximality is a popular one (it is championed by Walley, but is considered as early as the 60's~\cite{aumann_utility_1962}). Given acts $x_1,x_2$, maximality says that 
 	$$x_1 \succ x_2 \textrm{ iff }  u(x_1) ≥ u(x_2) \textrm{for all} p \in \mathcal{P},$$
 	still with $u(x) = \sum_{s \in S} p(s) u_1(x(s))$. It is clear that this reduces to expected utility when $\mathcal{P}$	is a singleton. 
 	
@@ -234,28 +236,27 @@ Such approaches consider that incomparabilities follow from a lack of knowledge,
 	
 	%Compared to maximality, E-admissibility implicitly uses the precise probabilities within the set $\mathcal{P}$, and therefore would not be consistent with Walley's view where the bounded (buying and selling) prices are not to be interpreted as incomplete information about an ideal precise price, but have to be considered as current state of knowledge that may not be reducible with additional information. 
 	
-	\commentSD{Effectivement, j'unifierais les deux suivantes en mettant working with sets of probabilities and utilities}
-	\subsubsection{Working with sets of utilities}
-	
-	\citet{dubra_expected_2004} represents preferences over lotteries by means of a set of real-valued utility functions. Preference holds whenever the expected utility for the preferred alternative is higher, for all utility functions in the set. This idea has also been applied in other contexts \citep{ok_utility_2002, eliaz_indifference_2006}.
-	
-	\citet{dubra_model_2002} propose to view the preference relation as a completion of an intuitive partial preference relation: the \ac{DM} knows intuitively the result of some comparisons, and compute the other ones by applying some reasoning process. They also obtain a preference relation that is representable using a set of utility functions. Observe that this approach directly tackles some of the shortcomings described in \cref{sec:empirical}.
-	
-	\citet{manzini_representation_2008} use a utility function and a vagueness function, thus, represent the preference using intervals of utilities rather than real valued utilities. (Beyond DMU, also using this representation, \citet{masatlioglu_rational_2005} assume that a specific alternative called the status quo alternative is prominently chosen whenever the \ac{DM} faces a choice about which incomparability occur.)
-	
 	\subsubsection{Working with sets of probabilities and utilities}
 	
-	\commentOC{Je proposerais de fusionner cette § avec la précédente, à moins que tu aies beaucoup de choses en tête à dire à ce sujet ? (Moi pas !)}
-	\citet{galaabaatar_subjective_2013} are interested in the Savage-like context where probabilities are unknown and represent an incomplete preference relation in uncertaintly using a set of pairs of probabilities and utilities.
+	Sets of probabilities are helpful to represent incomplete beliefs or lack of information, yet it is natural to also consider cases where the \ac{DM} cannot provide a fully accurate estimation of utilities associated to consequences, or even to completely order them. In some sense, stochastic dominance is an extreme view of such a case, where consequences are ordered but the utility function is left totally unspecified. 
 	
-	\subsubsection{Others}
-	\citet{aumann_utility_1962}: axioms do not require completeness. $x \succeq y ⇒ u(x) ≥ u(y)$ and $x \succ y ⇒ u(x) > u(y)$ but the reverse implications do not hold.
+	Other works have dealt with partially specified utilities:
+	\begin{itemize}
+		\item \citet{dubra_expected_2004} represents preferences over lotteries by a set of utility functions. Preference holds whenever the expected utility for the preferred alternative is higher for all utility functions. This idea has been applied in other contexts \citep{ok_utility_2002}.
+		\item \citet{dubra_model_2002} propose to view the preference relation as a completion of an intuitive partial preference relation: the \ac{DM} knows intuitively the result of some comparisons, and compute the other ones by applying some reasoning process. They also obtain a preference relation that is representable using a set of utility functions. This approach directly tackles some of the shortcomings described in \cref{sec:empirical}.
+		\item \citet{manzini_representation_2008} use a utility function and a vagueness function, representing the preference using intervals of utilities rather than real valued utilities. %(Beyond DMU, also using this representation, \citet{masatlioglu_rational_2005} assume that a specific alternative called the status quo alternative is prominently chosen whenever the \ac{DM} faces a choice about which incomparability occur.)
+	\end{itemize}
 
-	\citet{danan_are_2006} propose to consider that an incomparability is observed whenever the \ac{DM} is ready to pay a small price to postpone the decision, without receiving new information about the problem.
+	There exist a few works where both requirements of precise probabilities and utilities are relaxed. This can be traced back at least to \citet{aumann_utility_1962} whose axioms do not require uniqueness of utilities: $x \succ y ⇒ u(x) > u(y)$, without requiring the reverse. More recently, \citet{galaabaatar_subjective_2013} are interested in the Savage-like context where probabilities are unknown and represent an incomplete preference relation in uncertaintly using a set of pairs of probabilities and utilities.
+
+
+	\section{Incompleteness: absence of knowledge or knowledge of absence?}
 	
-\citet{deparis_when_2012} studies behavior of individuals how are allowed to express incomparability supplementary to indifference or preference.
-
-	\subsection{Incompleteness: absence of knowledge or knowledge of absence?}
+	We have tried to browse a general picture of reasons why preference modelling should accommodate for incompleteness, and how it can do so in multi-criteria problems and uncertainty modelling. 
+	
+	One issue that transpired in most of the paper is whether incompleteness should be considered as an intrinsic, or ontic property of the preferences, in which case incomparability express a knowledge of absence of relation, or if incompleteness should be considered as an incomplete, epistemic description of a complete order, in which case it expresses an absence of knowledge. This mirrors different views about probability sets (Walley's consider that they model belief, without assuming an existing precise unknown distribution, while robust Bayesians consider the opposite). 
+	
+	Our opinion is that both views can be legitimate in different settings, and also that beyond the philosophical interest of distinguishing the two, this can have an important practical impact: knowing that incomparabilities are observable facts may influence strongly our information collection protocol; also, a same piece of information will be interpreted differently. If a \ac{DM} pick act $a$ among three acts $\{a,b,c\}$, in the espistemic interpretation, we woud deduce $a \succ \{b,c\}$, but in the ontic one we could only deduce that $a$ is a maximal element ($\neg(b\succ a)$ and $\neg(c\succ a)$)
 %	
 %	\section{Dropping transitivity}
 %	
