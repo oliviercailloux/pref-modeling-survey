@@ -25,34 +25,34 @@
 	}
 	\maketitle
 	
-	\abstract{Literature involving preferences of artificial agents or human beings often assume their preferences can be represented using a complete transitive binary relation. Much has been written however on more complex, or more interesting, models of preferences. In this article we review some of the reasons that have been put forward to justify more complex modeling, and review some of the techniques that have been proposed to obtain models of such preferences.}
+	\abstract{Literature involving preferences of artificial agents or human beings often assume their preferences can be represented using a complete transitive binary relation. Much has been written however on different models of preferences. We review some of the reasons that have been put forward to justify more complex modeling, and review some of the techniques that have been proposed to obtain models of such preferences.}
 	
 	%Oddly enough, llncs class seems to set the indent to zero when typesetting the abstract.
 	\setlength{\parindent}{1.5em}
 	
 	\section{Introduction}\label{sec:intro}
-	Preferences of agents are usually assumed to be linear, that is complete, transitive and antisymmetric, or representable with a weak order (a complete and transitive binary relation). In practice, such assumptions limit the scope of preference models one can consider as legitimate, and are also falsified by observed empirical evidences. While models relaxing antisymmetry to allow indifference (relaxing antisymmetry) between options have been around for some time, models relaxing the assumptions of completeness or transitivity are more recent.
+	Preferences of agents are usually assumed to be representable with a weak order (a complete and transitive binary relation). We are interested in discussing the completeness assumption. 
 	
-	There are two canonical fields where the modelling of preferences is a central topic: choosing an alternative when it is evaluated according to different aspects (a.k.a. multi-criteria decision making, or MCDM), and picking an alternative whose quality depends on states of the world that are uncertainly known. Although the two frameworks are formally similar to some extent, they also present some conceptual key differences. 
+	Preference models are especially important in two fields: choosing an alternative when it is evaluated according to different aspects (multi-criteria decision making, or MCDM), and picking an alternative whose quality depends on states of the world that are uncertainly known (decision making under uncertainty, or DMU).
+	In MCDM, the common assumption is that the alternatives, i.e., the state of the world, is known without ambiguity, and the difficulty is to determine the structure of the user’s preferences over these well-defined alternatives. In DMU, the alternatives are usually not described over several criteria, but the problem is to recommend an alternative given our uncertainty about the world. 
 	
-	In MCDM, the common assumption is that the alternatives, i.e., the state of the world is known without ambiguity, and the difficulty is to determine what are the user preferences over these different, but well-defined states. In decision making under uncertainty (DMU), the preferences of the user are usually assumed to be well-known, or at least to have been previously assessed in the form of utility functions, and the problem is to recommend an alternative given our uncertainty about the world. 
-	
-	In this paper, we will review some reasons to relax preference completeness and models (either in MCDM or DMU) that do so. Although this review will not be comprehensive, it will provide a sufficient number of pointers for the reader to get an overall idea. Given the space limitations, we will also not deal in details with the issue of transitivity. We will first review MCDM and DMU settings considering completeness in Section~\ref{sec:review}, before detailing how completeness can be perceived in descriptive and normative approaches (recalling their difference at the same time) in Section~\ref{sec:nordesc}. Finally, we review models that departs from completeness in Section~\ref{sec:incomp}.
-	
+	In this paper, we review some reasons to relax preference completeness and modeling approaches (either in MCDM or DMU) that support this relaxation. We discuss in particular reasons to consider that the assumption of completeness is empirically falsified. Although these reasons are not new, we think it is interesting to discuss this question here and now because of (as we perceive it) a relative ignorance of these discussions in research fields that use preference models but are not specialized in preference modeling per se, and because of recent and ongoing advances in analysis of incomplete preferences.
+We try to cover a wide scope by discussing some of the goals, assumptions and basic definitions related to preference modeling and reviewing a wide range of techniques for obtaining such models. In counterpart, this review does not claim to be comprehensive and does not provide technical details. To further simplify the discussion, we pretend that the MCDM and DMU contexts are sharply separated. (In reality, it is often possible to cover MCDM contexts while taking uncertainty into account \citep{keeney_decisions_1993}.) We also do not discuss transitivity.
 
+We briefly present the MCDM and DMU settings considering completeness in Section~\ref{sec:review}. \Cref{sec:nordesc} discusses completeness in descriptive and normative approaches (recalling their difference at the same time). Finally, we review models that departs from completeness in Section~\ref{sec:incomp}.
 	
 	\section{Completeness in classical and less classical settings}\label{sec:review}
-	In this section, we are going to recall the main models that consider completeness and transitivity of preferences as a consequence of natural requirements, if not as pre-requisite of any preference modelling. We will also recall normative views and descriptive views of these concepts. 
+	In this section, we are going to recall the main models that consider completeness and transitivity of preferences as a consequence of natural requirements, if not as pre-requisite of any preference modeling. We will also recall normative views and descriptive views of these concepts. 
 	
 	\subsection{MCDM}
-	In MCDM, the classical approach is to assume that the alternatives are evaluated using a set of criteria $\crits$, each having an evaluation scale $X_g$. The set of all possible alternatives is $\allalts = \prod_{g \in G} X_g$, that is, every combination of evaluations are considered possible. 
+	We consider a simple and classical setting in MCDM. We assume that the alternatives are evaluated using a set of criteria $\crits$, each having an evaluation scale $X_g$. The set of all possible alternatives is $\allalts = \prod_{g \in G} X_g$, that is, every combination of evaluations are considered possible. 
 	We are interested in a preference relation $\succeq$ defined as a binary relation over $\allalts$.
-	
+
 	\begin{example}
 		Say the \ac{DM} must choose what to plant in her garden. The set of alternatives $\allalts$ are all possible vegetables, the criteria $\crits = \{g_1, g_2, g_3\}$ measure the taste, quantity, and price of each vegetable, and $\alts \subseteq \allalts$ are the vegetables that are available this year for planting. $X_{g_1} = \{A, B, C, D\}$, a set of labels, with $x_1$ representing the taste of the vegetable $x \in \allalts$ as considered by the \ac{DM} ($A$ is the worst taste, $D$ the best), $X_{g_2} = [0, 100]$, with $x_2$ representing the number of meals that the \ac{DM} would enjoy if deciding to plant $x$, and $X_{g_3} = \R$, where $x_3$ indicates the price to pay for planting $x$.
 	\end{example}
 	
-	Typical approaches in MCDM assume that there is some real-valued function $v: \allalts \to \R$ mapping alternatives to their values, and that $x \succeq y$ iff  $v(x) ≥ v(y)$.
+	Typical approaches in MCDM assume that there is some real-valued function $v: \allalts \to \R$ mapping alternatives to their values, and that $x \succeq y$ iff $v(x) ≥ v(y)$.
 	
 	\subsection{DMU}
 	In the simplest form of DMU considered here (SDMR, for Simple Decision Making under Risk), we consider a set $S$ of possible states of the world, a finite set of consequences $C$, and each act $x: S \to C$ is modeled as a function where $x(s)$ is the consequence of performing $x$ when $s$ is the actual state of the world. Define $\allalts$ in this case as the set of possible acts (thus $\allalts = C^S$).
@@ -67,7 +67,7 @@
 		$$u(x_1)=0.2 \cdot 1 + 0.6 \cdot -1 <  u(x_2)=0.2 \cdot -1 + 0.6 \cdot 1$$
 	\end{example}
 	
-	Expected utility has been justified axiomatically by different authors, the main ones being Savage~\cite{savage_foundations_1972}, De Finetti~\cite{definetti_probability_2017} and Von Neumann Morgenstern~\cite{von_neumann_theory_2004}. It is worth noticing that these settings are quite different.
+	Expected utility has been justified axiomatically by different authors, the main ones being \citet{savage_foundations_1972}, \citet{definetti_probability_2017} and \citet{von_neumann_theory_2004}. It is worth noticing that these settings are quite different.
 	\begin{itemize}
 		\item In De Finetti setting, utilities are given as random variables, and a precise price can be associated to each random variable. That reasoning should be probabilistic and choices made according to expected utility follow from two axioms: linearity and boundedness of those prices.
 		\item von Neumann and Morgenstern postulate conditions on $\succeq$ ensuring that utility functions $u$ and $u_1$ satisfying the above conditions exist. The axioms assume completeness of the preferences, and the probabilities are assumed to be given.
@@ -75,7 +75,7 @@
 	\end{itemize}
 	While these theoretical constructs have set very strong foundations for the use of probabilities, in practice experiments such as the Ellsberg urn (contradicting Savage sure-thing principle) suggest that people do not always act according to expected utility. 
 	
-	Since then, many different extensions have been proposed, some modifying the utilities~\cite{wakker_prospect_2010} or the probabilities~\cite{quiggin_generalized_2012}. Others simply propose to relax the probabilistic assumption, for instance by considering a possibilistic setting  (see~\cite{dubois_qualitative_2003}, that discusses Savage-like axioms), by considering sets of probabilities such as in decision under ambiguity~\cite{gajdos_attitude_2008}, or by simply considering completely missing information, such as Wald's~\cite{wald_statistical_1992} celebrated maximin criterion. 
+	Since then, many different extensions have been proposed, some modifying the utilities~\citep{wakker_prospect_2010} or the probabilities~\citep{quiggin_generalized_2012}. Others simply propose to relax the probabilistic assumption, for instance by considering a possibilistic setting  (see~\cite{dubois_qualitative_2003}, that discusses Savage-like axioms), by considering sets of probabilities such as in decision under ambiguity~\cite{gajdos_attitude_2008}, or by simply considering completely missing information, such as Wald's~\cite{wald_statistical_1992} celebrated maximin criterion. 
 	
 	Such extensions address some of the observed behaviours deviating from expected utility, but keep assuming that all acts are comparable, i.e., that preferences are complete. Yet, if one considers that probabilities or utilities may be incompletely known, the next step is to consider that preferences as well could be.
 	
@@ -115,11 +115,7 @@
 	
 	%\commentSD{La phrase suivante me parait un peu mal s'agencer avec le reste?}
 	%\citet{fischhoff_knowing_1980} \citep[also]{fischhoff_knowing_1988} discuss possible attitudes of an analyst wanting to take into account incompleteness of preferences.
-	
 
-	\section{Dropping completeness}\label{sec:incomp}
-	
-	
 	\subsection{Defining and testing incompleteness}
 	\label{sec:empirical}
 	A first step to define and test incompleteness in preferences is to define what is meant by preference and by the relation $\succeq$, as its everyday useag can be ambiguous:\citet{frankfurt_freedom_1971} gives seven interpretations of “to want to”, and this exercice transposes, \emph{mutatis mutandis}, to the notion of preference.
@@ -138,7 +134,7 @@
 	%This argument may not be strong enough however. In absence of other arguments, one might agree that preferences are in reality incomplete but claim that they may appropriately be \emph{modeled} as complete: a model of complete preferences would simply deviate from time to time from what individuals declare because of (perhaps rare) random fluctuations in their expressions of preferences. 
 	%In order to discuss this hypothesis, we turn to the second (and much more interesting) reason for failure of completeness, which is also brought by the literature in empirical psychology. It appears that preferences change may not be attributed solely to random fluctuations: they change in systematic ways according to changes in the presentation of the alternatives or the context that should have no impact from a normative point of view.
 	
-	Let us also note that \citep[p. 630]{von_neumann_theory_2004} themselves considered completeness as a strong condition: “it is very dubious, whether the idealization of reality which treats this postulate as a valid one, is appropriate or even convenient”.
+	Let us also note that \citet[p. 630]{von_neumann_theory_2004} themselves considered completeness as a strong condition: “it is very dubious, whether the idealization of reality which treats this postulate as a valid one, is appropriate or even convenient”.
 
 	\subsection{Empirical evidence of incompleteness}
 	
@@ -174,6 +170,7 @@
 	
 	Above experiments suggest that incomparability may be, to some extent, an intrinsic property of individuals preferences. Yet, even when assuming completeness of preferences, for example in normative view, it may well be that provided information is insufficient to obtain a fully precise models, in which case incompleteness can be due to an incompletely specified model. 
 	
+	\section{Dropping completeness}\label{sec:incomp}
 	\subsection{Incompleteness in MCDM}
 	Some approaches in MCDM in the family of outranking methods \citep{roy_multicriteria_1996, greco_multiple_2016, bouyssou_evaluation_2000, bouyssou_evaluation_2006}, which are in the process of being axiomatized \citep{bouyssou_consolidated_2015}, can represent incomparabilities. A much used idea is to take into account two points of view leading to weak-orders $\succeq^1$ and $\succeq^2$, then define ${\succeq} = {\succeq^1} ∩ {\succeq^2}$. Thus, when the two weak-orders strongly disagree about some pair of objects, the result can declare them incomparable. As an example, consider (a simplification of) the ELECTRE III method (our much simplified description only consider the aspects sufficient to obtain incomparabilities). It builds a concordance relation $C$ that determines whether alternative $x$ is sufficiently better than $y$, by accounting only for the criteria in favor of $x$. For example, a model could declare that $x C y$ iff $x$ is better than or equal to $y$ for at least two criteria. It also defines a discordance relation $D$. In ELECTRE III, the performance of $x$ on a given criterion $g$ may be considered as “unacceptably low” compared to the performance of $y$ on $g$. For example, a model could consider that $x$ is unacceptably low compared to $y$ on $g$ iff $y_g - x_g ≥ 2$, where $X_g$ would be numerical. Then define $x \succeq y$ iff $x C y$ and $¬(x D y)$.
 	
@@ -182,11 +179,11 @@
 	Robust methods in MCDM exist that distinguish conclusions (i.e.,preferences) that hold for sure, given limited preferential information from the \ac{DM}, from conclusions that possibly hold. Such methods typically start from a classe $M$ of possible models (equivalent to version or hypothesis spaces in machine learning) assumed to represent the \ac{DM} preferences. A robust method, given a class $M$ and a set of constraints $C$ reducing the set of possibles models (typically preference statements of the \ac{DM}), will consider that $a$ is necessarily preferred to $b$, $a \succeq^N b$, whenever $a \succeq b$ for all relations $\succeq$ in $M$ that satisfy $C$ \citep{greco_ordinal_2008}.
 	\begin{example} Assume that the only thing you know about the \ac{DM} is that she prefers $x = (0, 0, 2)$ to $y = (0, 4, 0)$, and you assume that $\succeq$ satisfies preferencial independence, meaning that the way two alternatives compare does not change when changing equal values on a given criterion. Thus, $M$ contains all relations that satisfy preferencial independence, and $C$ is the constraint $x \succ y$. You may then conclude that $a = (3, 0, 2)$ is preferred to $b = (3, 4, 0)$, thus, $a \succ^N b$, but you ignore whether $c = (1, 1, 1)$ is preferred to $d = (0, 2, 2)$, thus, $¬(c \succeq^N d)$ and $¬(d \succeq^N c)$.
 	\end{example} 
-Such approaches consider that incomparabilities follow from a lack of knowledge, and are not intrinsic to the modelled preference relation, as in principle one could collect enough constraints $C$ about $M$ to identify a unique model (or a set of model leading to only one possible relation $\succ$ on a set of alternatives).
+Such approaches consider that incomparabilities follow from a lack of knowledge, and are not intrinsic to the modeled preference relation, as in principle one could collect enough constraints $C$ about $M$ to identify a unique model (or a set of model leading to only one possible relation $\succ$ on a set of alternatives).
 	
 	\subsection{Incompleteness in DMU}
 	
-	As recalled in Section~\ref{sec:intro}, probability theory and expected utility are the most widely used tools when having to decide under uncertainty, and naturally induce completeness of preferences. It should however be noted early scholars were critical about the fact that completeness could hold in practice, as recalled previously. Many attempts to relax the completeness axioms does so by considerings axioms leading to deal with sets of utilities and sets of probabilities~\cite{aumann_utility_1962}, entangling together aspects about decision and about information modelling. 
+	As recalled in Section~\ref{sec:intro}, probability theory and expected utility are the most widely used tools when having to decide under uncertainty, and naturally induce completeness of preferences. It should however be noted early scholars were critical about the fact that completeness could hold in practice, as recalled previously. Many attempts to relax the completeness axioms does so by considerings axioms leading to deal with sets of utilities and sets of probabilities~\cite{aumann_utility_1962}, entangling together aspects about decision and about information modeling. 
 	
 	\subsubsection{Keeping precise probabilities but not expected utility}
 	
@@ -249,7 +246,7 @@ Such approaches consider that incomparabilities follow from a lack of knowledge,
 
 	\section{Incompleteness: absence of knowledge or knowledge of absence?}
 	
-	We have tried to browse a general picture of reasons why preference modelling should accommodate for incompleteness, and how it can do so in multi-criteria problems and uncertainty modelling. 
+	We have tried to browse a general picture of reasons why preference modeling should accommodate for incompleteness, and how it can do so in multi-criteria problems and uncertainty modeling. 
 	
 	One issue that transpired in most of the paper is whether incompleteness should be considered as an intrinsic, or ontic property of the preferences, in which case incomparability express a knowledge of absence of relation, or if incompleteness should be considered as an incomplete, epistemic description of a complete order, in which case it expresses an absence of knowledge. This mirrors different views about probability sets (Walley's consider that they model belief, without assuming an existing precise unknown distribution, while robust Bayesians consider the opposite). 
 	
@@ -270,7 +267,7 @@ Such approaches consider that incomparabilities follow from a lack of knowledge,
 %	
 %	* Statistical preferences, strongly related to the Condorcet paradox in social choice theory
 %	
-%	\subsection{Intransivity: a default to be repaired, or a fact to be modelled?}
+%	\subsection{Intransivity: a default to be repaired, or a fact to be modeled?}
 	
 \bibliography{Survey,seb}
 
