@@ -11,14 +11,22 @@
 \newcommand{\simplebet}[3]{(\dollars{#1}, #2; \dollars{#3})}
 
 \begin{document}
-	\title{Reasons and means to model preferences as incomplete}
+	\title{%
+		\texorpdfstring{%
+			Reasons and means to model preferences as incomplete%
+			\thanks{This work has received support under the program “LABEX MS2T” launched by the French Government and implemented by ANR with the references ANR-11-IDEX-0004-02.}
+		}{Reasons and means to model preferences as incomplete%
+		}
+	}
 	\author{Olivier Cailloux\inst{1} \and Sébastien Destercke\inst{2}}
 	\institute{
-		LAMSADE\\
+		Université Paris-Dauphine, PSL Research University, CNRS, LAMSADE, 75016 PARIS, FRANCE\\
 		\email{olivier.cailloux@dauphine.fr}
-		\and HDS
+		\and Sorbonne Université, UMR CNRS 7253 Heudiasyc, \\
+			Université de Technologie de Compiègne CS 60319 - 60203 Compiègne cedex, France
 	}
 	\hypersetup{
+		pdftitle={Reasons and means to model preferences as incomplete},
 		pdfsubject={preference modeling},
 		pdfkeywords={keyw1, keyw2}
 	}
@@ -28,7 +36,7 @@
 	
 	%Oddly enough, llncs class seems to set the indent to zero when typesetting the abstract.
 	\setlength{\parindent}{1.5em}
-	
+
 	\section{Introduction}\label{sec:intro}
 	Preferences of agents are usually assumed to be representable with a weak order (a complete and transitive binary relation). We are interested in discussing the completeness assumption. 
 	
@@ -57,24 +65,22 @@ We briefly present the MCDM and DMU settings considering completeness in Section
 	In the simplest form of DMU considered here (SDMR, for Simple Decision Making under Risk), we consider a set $S$ of possible states of the world, a finite set of consequences $C$, and each act $x: S \to C$ is modeled as a function where $x(s)$ is the consequence of performing $x$ when $s$ is the actual state of the world. Define $\allalts$ in this case as the set of possible acts (thus $\allalts = C^S$).
 	In SDMR, uncertainty is modeled by a probability measure $p$ over the power set of $S$, $\powerset{S}$, thus with $p(s) \in [0, 1]$ indicating the probability of occurence of $s$ (with $s \subseteq S$), and $p(S) = 1$. 
 	We consider a preference relation $\succeq$ defined as a binary relation over $\allalts$.
-	Given an act $x$ and a probability measure $p$, it is usually convenient to view $x$ as $p_x$, a probability mass over the consequences: define $p_x: C → [0, 1]$ as $p_x(c) = p(x^{-1}(c))$, where $x^{-1}(c)$ designate the set of states in which $x$ leads to the consequence $c$. Such a $p_x$ is usually called a lottery. In most numerical DMU frameworks, a utility function $u_1: C → \R$ mapping consequences to numbers is assumed (or derived), from which is then induced the classical expected utility criterion $u: \allalts → \R$ that represents the global utility of an act and that reads $u(x) = \sum_{s \in S} p(s) u_1(x(s))$. An act $x$ is then preferred to $y$ ($x \succeq y$) iff $u(x) ≥ u(y)$. 
-	
-	%It follows from this definition that $u$ and $u_1$ are coherent, in the following sense: given an act $x$ that brings a consequence $c$ with probability one, $u(x) = u_1(c)$.
+	Given an act $x$ and a probability measure $p$, it is usually convenient to view $x$ as $p_x$, a probability mass over the consequences: define $p_x: C → [0, 1]$ as $p_x(c) = p(x^{-1}(c))$, where $x^{-1}(c)$ designate the set of states in which $x$ leads to the consequence $c$. Such a $p_x$ is usually called a lottery. 
 	
 	\begin{example}\label{exm:DMU}
-		Assume you want to go out and wonder about the weather state ($S=\{A,B,C,D\}$), going from $A=$``shiny" to $D=$``stormy". Given this state, two actions are $x_1$: ``leave the umbrella home" and $x_2$: ``take the umbrella", and the consequences are $c_1$: ``unhappy", $c_2$: ``neither happy nor unhappy" and $c_3$: ``happy". If the weather is nice ($x_1(A)=c_3,x_2(A)=c_1$), not having an umbrella is enjoyable,  and having to bear one for nothing will make you unhappy. On the contrary, if it is stormy ($x_1(D)=c_1,x_2(D)=c_3$), you will be happy to have taken your umbrella, but quite unhappy if you end up wet. In the other situations, you are quite indifferent to both actions. Assuming that $p(A)=0.2, p(D)=0.6$, $p(B)=p(C)=0.1$, and that $u_1(c_i)=i-2$, we then have
-		$$u(x_1)=0.2 \cdot 1 + 0.6 \cdot -1 <  u(x_2)=0.2 \cdot -1 + 0.6 \cdot 1$$
+		Assume you want to go out and wonder about taking or leaving your umbrella. You consider relevant weather state to be going from $A=$``shiny" to $D=$``stormy", with $A, B, C, D \subseteq S$. Two simple actions are $x_1$: ``leave the umbrella home" and $x_2$: ``take the umbrella", and the consequences are $c_1$: “encumbered” (when taking your umbrella, irrelevant of the weather), $c_2$: “free” (when leaving your umbrella and weather is $A$), and $c_3, c_4, c_5$ being “slightly wet”, “wet” and “very wet”, when leaving your umbrella and weather being respectively $B$, $C$, or $D$. Assume the probabilities of the states $A, B, C, D$ are respectively $0.2$, $0.3$, $0.4$ and $0.1$. Then the act $x_1$ can also be described as $p_{x_1}$ defined as $p_{x_1}(c_1) = 0$, $p_{x_1}(c_2) = 0.2$, $p_{x_1}(c_3) = 0.3$, $p_{x_1}(c_4) = 0.4$, $p_{x_1}(c_5) = 0.1$, and similarly the constant act $x_2$ can be associated to $p_{x_2}$, with $p_{x_2}(c_1) = 1$.
+%		Assuming that $p(A)=0.2, p(D)=0.6$, $p(B)=p(C)=0.1$, and that $u_1(c_i)=i-2$, we then have
+%		$$u(x_1)=0.2 \cdot 1 + 0.6 \cdot -1 <  u(x_2)=0.2 \cdot -1 + 0.6 \cdot 1$$
 	\end{example}
 	
-	Expected utility has been justified axiomatically by different authors, the main ones being \citet{savage_foundations_1972}, \citet{definetti_probability_2017} and \citet{von_neumann_theory_2004}. It is worth noticing that these settings are quite different.
-	\begin{itemize}
-		\item In De Finetti setting, utilities are given as random variables, and a precise price can be associated to each random variable. That reasoning should be probabilistic and choices made according to expected utility follow from two axioms: linearity and boundedness of those prices.
-		\item von Neumann and Morgenstern postulate conditions on $\succeq$ ensuring that utility functions $u$ and $u_1$ satisfying the above conditions exist. The axioms assume completeness of the preferences, and the probabilities are assumed to be given.
-		\item In Savage setting, both probabilities and expected utility follow from axioms about preferences between acts. In particular, the first axiom (P1) is that any pair of act should be comparable. Completeness is therefore postulated in the axioms, and expected utility and probabilistic reasoning follow from it. 
-	\end{itemize}
-	While these theoretical constructs have set very strong foundations for the use of probabilities, in practice experiments such as the Ellsberg urn (contradicting Savage sure-thing principle) suggest that people do not always act according to expected utility. 
+	In most DMU frameworks, consequences can be mapped to a real-valued reward or utility through a function $u_1: C \to \R$, in which case $u_1(x(s))$ denotes the utility of performing $x$ in state $s$, and acts can be evaluated using a utility function $u: \allalts → \R$ defined as $u(x) = \sum_{s \in S} p(s) u_1(x(s))$, such that $u(x) ≥ u(y)$ iff $x \succeq y$.
+	It follows from this definition that $u$ and $u_1$ are coherent, in the following sense: given an act $x$ that brings a consequence $c$ with probability one, $u(x) = u_1(c)$.
 	
-	Since then, many different extensions have been proposed, some modifying the utilities~\citep{wakker_prospect_2010} or the probabilities~\citep{quiggin_generalized_2012}. Others simply propose to relax the probabilistic assumption, for instance by considering a possibilistic setting  (see~\cite{dubois_qualitative_2003}, that discusses Savage-like axioms), by considering sets of probabilities such as in decision under ambiguity~\cite{gajdos_attitude_2008}, or by simply considering completely missing information, such as Wald's~\cite{wald_statistical_1992} celebrated maximin criterion. 
+	Expected utility has been justified axiomatically by different authors, the main ones being \citet{savage_foundations_1972}, \citet{definetti_probability_2017} and \citet{von_neumann_theory_2004} (hereafter, vNM). In the \citeauthor{definetti_probability_2017} setting, utilities are given as random variables, and a precise price can be associated to each random variable. That reasoning should be probabilistic and choices made according to expected utility follow from two axioms: linearity and boundedness of those prices. vNM postulate conditions on $\succeq$ ensuring that utility functions $u$ and $u_1$ satisfying the above conditions exist. The axioms assume completeness of the preferences, and the probabilities are assumed to be given. In the Savage setting, both probabilities and expected utility follow from axioms about preferences between acts. In particular, his first axiom (P1) is that any pair of act should be comparable. Completeness is therefore postulated in the axioms, and expected utility and probabilistic reasoning follow from the axioms. 
+
+	While these theoretical constructs have set very strong foundations for the use of probabilities, in practice experiments such as the \citet{ellsberg_risk_1961} urn (contradicting Savage sure-thing principle) suggest that people do not always act according to expected utility. 
+	
+	Since then, many different extensions have been proposed \citep{wakker_prospect_2010, quiggin_generalized_2012}. Others propose to relax the probabilistic assumption, for instance by considering a possibilistic setting  (e.g., \citet{dubois_qualitative_2003} discusses Savage-like axioms), by considering sets of probabilities such as in decision under ambiguity \citep{gajdos_attitude_2008}, or by simply considering completely missing information, such as \citeauthor{wald_statistical_1992}'s~\citeyear{wald_statistical_1992} celebrated maximin criterion. 
 	
 	Such extensions address some of the observed behaviours deviating from expected utility, but keep assuming that all acts are comparable, i.e., that preferences are complete. Yet, if one considers that probabilities or utilities may be incompletely known, the next step is to consider that preferences as well could be.
 	
