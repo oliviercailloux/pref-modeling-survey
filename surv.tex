@@ -195,7 +195,7 @@ Many attempts to relax the completeness axioms does so by considerings axioms le
 Even when having precise probabilities, there are alternatives to expected utility that induce incomplete preferences. One of them that is particularly interesting is the notion of stochastic dominance~\citep{levy_stochastic_1992}. Assuming that the set of consequences is completely ordered by preference, which we denote by $C = \{c_1, …, c_n\}$ where $c_{i-1}$ is preferred to $c_{i}$, then a lottery $p_x$ is said to stochastically dominate $p_y$ iff, for all $1 ≤ i ≤ n$:
 %\commentOC{À la réflexion, ça me semble plus intuitif en commençant par les meilleures conséquences, et avec l’exigence que les probas pour les meilleures conséquences soient les plus élevées pour la meilleure lotterie. Mais n’hésite pas à re-changer si tu n’es pas d’accord.}
 \begin{equation}\label{eq:stodom}
-P_x(\{c_1,\ldots,c_i\})=\sum_{j=1}^i p_x(c_j) ≥ P_y(\{c_1,\ldots,c_i\})=\sum_{j=1}^i p_y(c_j).
+p_x(\{c_1,\ldots,c_i\})=\sum_{j=1}^i p_x(c_j) ≥ p_y(\{c_1,\ldots,c_i\})=\sum_{j=1}^i p_y(c_j).
 \end{equation}
 Since Inequality~\eqref{eq:stodom} can be satisfied for some $i$ and not for others, possible incomparabilities immediately follow. %It should be noticed that the probabilities $p_1,p_2$ may concern the same uncertain quantity, but may result from the mapping of the original probability $p$ to the space of (ordered) consequences, such as in \cref{exm:DMU}.
 	
@@ -210,25 +210,26 @@ Consider the set of consequences $C=\{c_1, c_2, c_3\}$ and the following lotteri
 Then $x_2$ stochastically dominates $x_1$, while $x_3$ is incomparable to both $x_1$ and $x_2$, according to stochastic dominance.
 \end{example}
 	
-	The notion of stochastic dominance has some very attractive properties, as:
-	\begin{enumerate}
-		\item it does not necessitate to define utilities over consequences, and merely requires them to be linearly ordered;
-		\item it can be be perceived as a criterion allowing for utilities to be ill-defined, as $p_x$ stochastically dominates $p_y$ if and only if $x$ has a higher expected utility than $y$ for any increasing utility function $u$ defined over $C$. 
-	\end{enumerate}
-	
-	\subsubsection{Incompleteness from non-precise probabilities}
-	
-	In the past few decades, different scholars have challenged the need for precise probabilities associated to classical axiomatics, advocating the use of imprecisely defined prices (expected values) or of imprecisely defined probabilities. To mention but a few:
-	\begin{itemize} 
-		\item Levi~\cite{levi_enterprise_1983} advocates the uses of sets of probabilities within a logical interpretation of probabilities;
-		\item Walley~\cite{walley_statistical_1991} extends de Finetti axioms by assuming that an agent would give different buying and selling prices for an act, therefore allowing indecision if the given price is between these two bounds;
-		\item Shafer and Vovk~\cite{shafer_probability_2005} explores a probabilistic setting centered on the notion of Martingale.
-	\end{itemize}
-	Such theories can most of the time be associated to the use convex sets of probabilities, and give rise to decision rules that extend expected utility but do allow incomparabilities. Once we accept that a convex set $\mathcal{P}$ of probabilities (or a formally equivalent representation) can represent our knowledge, incompleteness ensues. 
-	
-	A prototypical way to induce incompleteness between acts from incompleteness in probabilities is to adapt expected utility criterion, and among rules doing so, maximality is a popular one (it is championed by Walley, but is considered as early as the 60's~\cite{aumann_utility_1962}). Given acts $x_1,x_2$, maximality says that 
-	$$x_1 \succ x_2 \textrm{ iff }  u(x_1) ≥ u(x_2) \textrm{for all} p \in \mathcal{P},$$
-	still with $u(x) = \sum_{s \in S} p(s) u_1(x(s))$. It is clear that this reduces to expected utility when $\mathcal{P}$	is a singleton. 
+The notion of stochastic dominance has some very attractive properties, as:
+\begin{enumerate}
+	\item it does not necessitate to define utilities over consequences, and merely requires them to be linearly ordered;
+	\item it can be be perceived as a criterion allowing for utilities to be ill-defined, as $p_x$ stochastically dominates $p_y$ if and only if $x$ has a higher expected utility than $y$ for any increasing utility function $u$ defined over $C$. 
+\end{enumerate}
+
+\subsubsection{Incompleteness from non-precise probabilities}
+
+In the past few decades, different scholars have challenged the need for precise probabilities associated to classical axiomatics, advocating the use of imprecisely defined prices (expected values) or of imprecisely defined probabilities. To mention but a few:
+\begin{itemize} 
+	\item \citet{levi_enterprise_1983} advocates the uses of sets of probabilities within a logical interpretation of probabilities;
+	\item \citet{walley_statistical_1991} extends the de Finetti axioms by assuming that an agent would give different buying and selling prices for an act, therefore allowing indecision if the given price is between these two bounds;
+	\item \citet{shafer_probability_2005} explores a probabilistic setting centered on the notion of Martingale.
+\end{itemize}
+Such theories can most of the time be associated to the use of convex sets of probabilities, and give rise to decision rules that extend expected utility but do allow incomparabilities. Once we accept that a convex set $\mathcal{P}$ of probabilities (or a formally equivalent representation) can represent our knowledge, incompleteness may ensue. 
+
+A prototypical way to induce incompleteness between acts from incompleteness in probabilities is to adapt expected utility criterion, and among rules doing so, maximality is a popular one (it is championed by Walley, but is considered as early as the 60's~\citep{aumann_utility_1962}). Given acts $x_1, x_2$, maximality says that 
+$$x_1 \succeq x_2 \text{ iff }  u(x_1) ≥ u(x_2) \text{ for all } p \in \mathcal{P}.$$
+%still with $u(x) = \sum_{s \in S} p(s) u_1(x(s))$. 
+It is clear that this reduces to expected utility when $\mathcal{P}$ is a singleton. 
 	
 	\begin{example}
 		Going back to Example~\ref{exm:DMU}, we have that 
