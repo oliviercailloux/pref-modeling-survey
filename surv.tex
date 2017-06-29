@@ -48,7 +48,7 @@ We try to cover a wide scope by discussing some of the goals, assumptions and ba
 
 We briefly present the MCDM and DMU settings considering completeness in Section~\ref{sec:review}. \Cref{sec:nordesc} discusses completeness in descriptive and normative approaches (recalling their difference at the same time). Finally, we review models that departs from completeness in Section~\ref{sec:incomp}.
 	
-\section{Completeness in classical and less classical settings}\label{sec:review}
+\section{Assuming completeness}\label{sec:review}
 In this section, we are going to recall the main models that consider completeness and transitivity of preferences as a consequence of natural requirements, if not as pre-requisite of any preference modeling. We will also recall normative views and descriptive views of these concepts. 
 	
 \subsection{MCDM}
@@ -69,6 +69,7 @@ We consider a preference relation $\succeq$ defined as a binary relation over $\
 Given an act $x$ and a probability measure $p$, it is usually convenient to view $x$ as $p_x$, a probability mass over the consequences: define $p_x: C → [0, 1]$ as $p_x(c) = p(x^{-1}(c))$, where $x^{-1}(c)$ designate the set of states in which $x$ leads to the consequence $c$. Such a $p_x$ is usually called a lottery. 
 	
 \begin{example}\label{exm:DMU}
+%\commentOC{Je me permets de modifier les conséquences du type "happy" en conséquences qui décrivent des états objectifs, du type "mouillé". Je suis nettement plus à l’aise si dans nos exemples les conséquences sont objectives. Je trouve que ça sépare plus sainement les aspects objectifs des aspects subjectifs (confinés à la fonction d’utilité). J’espère que ça ne te posera pas problème. Par ailleurs, je serais en faveur de laisser tomber la suite de l’exemple, par parallèle avec l’exemple MCDM d’une part, et par simplification. Je l’ai donc commenté. Sinon, je trouve qu’on se demande d’où viennent les utilités. Et on ne veut sûrement pas complexifier l’exemple au point de décrire comment on aurait pu éliciter ces informations.}
 	Assume you want to go out and wonder about taking or leaving your umbrella. You consider relevant weather state to be going from $A=$``shiny" to $D=$``stormy", with $A, B, C, D \subseteq S$. Two simple actions are $x_1$: ``leave the umbrella home" and $x_2$: ``take the umbrella", and the consequences are $c_1$: “encumbered” (when taking your umbrella, irrelevant of the weather), $c_2$: “free” (when leaving your umbrella and weather is $A$), and $c_3, c_4, c_5$ being “slightly wet”, “wet” and “very wet”, when leaving your umbrella and weather being respectively $B$, $C$, or $D$. Assume the probabilities of the states $A, B, C, D$ are respectively $0.2$, $0.3$, $0.4$ and $0.1$. Then the act $x_1$ can also be described as $p_{x_1}$ defined as $p_{x_1}(c_1) = 0$, $p_{x_1}(c_2) = 0.2$, $p_{x_1}(c_3) = 0.3$, $p_{x_1}(c_4) = 0.4$, $p_{x_1}(c_5) = 0.1$, and similarly the constant act $x_2$ can be associated to $p_{x_2}$, with $p_{x_2}(c_1) = 1$.
 %		Assuming that $p(A)=0.2, p(D)=0.6$, $p(B)=p(C)=0.1$, and that $u_1(c_i)=i-2$, we then have
 %		$$u(x_1)=0.2 \cdot 1 + 0.6 \cdot -1 <  u(x_2)=0.2 \cdot -1 + 0.6 \cdot 1$$
@@ -85,7 +86,7 @@ Since then, many different extensions have been proposed \citep{wakker_prospect_
 	
 All models presented thus far assume that $\succeq$ is complete (by which we mean that if $\succeq$ is incomplete, then no suitable function exists in the class of functions admitted by models presented thus far).
 	
-\section{Completeness in descriptive and normative approaches}\label{sec:nordesc}
+\section{Questioning completeness}\label{sec:nordesc}
 Before discussing the reasonableness of restrictions about $\succeq$, we need to say a word about what those preferences really represent and what the goal of modeling those may be. Indeed, the meaning of completeness depend on whether a descriptive or a normative approach is adopted. In particular, we will later discuss “how much” descriptive one must accept to be in order for the completeness hypothesis to stand.
 	
 \subsection{Descriptive and normative approaches}
@@ -134,8 +135,6 @@ This argument may not be strong enough however. In absence of other arguments, o
 %	However, a second argument also inherited from empirical psychology is that preferences may change in a non-random, consistent way according to changes in the presentation of the alternatives or the context that should have no impact from a normative point of view. 
 In order to discuss this hypothesis, we turn to the second (and much more interesting) reason for failure of completeness, which is also brought by the literature in empirical psychology. It appears that preferences change may not be attributed solely to random fluctuations: they change in systematic ways according to changes in the presentation of the alternatives or the context that should have no impact from a normative point of view.
 	
-Let us also note that \citet[p. 630]{von_neumann_theory_2004} themselves considered completeness as a strong condition: “it is very dubious, whether the idealization of reality which treats this postulate as a valid one, is appropriate or even convenient”.
-
 \subsection{Empirical evidence of incompleteness}
 \label{sec:evidence}
 In multicriteria contexts, psychologists have shown systematic differences between the so-called choice and matching elicitation procedures \citep{tversky_contingent_1988}. Assume you want to know which of two alternatives $x, y$ the \ac{DM} prefers, in a problem involving two criteria. You can present both and directly ask for a choice. Alternatively, with the matching procedure, you present $x$ with its two evaluations $g_1(x), g_2(x)$, and $y'$ with only $g_1(y') = g_1(y)$, and ask the \ac{DM} for which value $g_2(y')$ $y'$ would be indifferent to $x$. Assuming $\succeq$ satisfies dominance and transitivity, you then know that $x \succeq y$ iff $g_2(y') ≥ g_2(y)$. Although the two elicitation procedures should be equivalent, the authors confirm the prominence hypothesis stating that the more prominent criterion has more importance in choice than in matching. One of their study confront the subject to a hypothetical choice between two programs for control of a polluted beach. Program $x$ completely cleans up the beach at a yearly cost of \dollars{750 000}; program $y$ partially cleans it up for a yearly cost of \dollars{250 000}. They assume that pollution is the more prominent criterion here, hence expect that $x$ will be chosen more often in choice than in matching. Indeed, 48\% out of the 104 subjects confronted with a choice procedure selected $x$, whereas only 12\% out of the 170 subjects selected it in a matching procedure. Similar effects apply to lotteries in SDMR~\citep{luce_utility_2000}.
@@ -151,7 +150,7 @@ Numerous other studies exist that show and discuss preference reversal effects \
 	
 This shows that the $\succeq$ relation cannot be expected to be complete given our definition. For some alternatives, individuals may be led to declare different preferences, denoting an absence of a clear, intuitive preference for each pairs of alternatives. When thinking more about the comparison and presented with different views of the same problem, individuals may in some cases change their preference. This has been studied empirically \citep{slovic_who_1974, maccrimmon_utility_1979, lichtenstein_reversals_2006}, and \citet[pp. 101–103]{savage_foundations_1972} famously reported that it happened to him.
 
-One may of course want to preserve completeness of preferences, for example to preserve mathematical and computational simplicity. One way to do so, common in experimental psychology, is to restrict further the frame in which preferences are considered. For instance, \citet{luce_utility_2000} indicates clearly that he studies preferences in terms of choice, not judgment; \citet{maccrimmon_real_1980} excludes some kind loteries from the scope of the model. In such cases, completeness may well be justified. 
+One may of course want to preserve completeness of preferences, for example to preserve mathematical and computational simplicity. One way to do so, common in experimental psychology, is to restrict further the frame in which preferences are considered. For instance, \citet{luce_utility_2000} indicates clearly that he studies preferences in terms of choice, not judgment; \citet{maccrimmon_real_1980} exclude some kind of loteries from the scope of the model. In such cases, completeness may well be justified. 
 In other settings, such as normative approaches or recommender systems, it is unclear that such reductions should be enforced, as they may be hard to impose in practice or lead to behavior that the user may not desire. 
 %In the case however not of psychologists but of researchers building recommender systems, it is unclear that this path should be systematically followed. Indeed, in some cases we may want the recommendations of the recommender system to be invariant to the particular details about how alternatives have been presented to the individual. Not only because we may not know how the alternatives have been presented (what the context is), but more fundamentally, because the individual may find the advices of a recommender system more sound if it is independent of minute details of the context. (Adopting this view of course makes the system closer to the normative approach.)
 	
@@ -168,35 +167,48 @@ The next section describes approaches that allow incomplete preference represent
 
 \section{Dropping completeness}\label{sec:incomp}
 \subsection{Incompleteness in MCDM}
-Some approaches in MCDM in the family of outranking methods \citep{roy_multicriteria_1996, greco_multiple_2016, bouyssou_evaluation_2000, bouyssou_evaluation_2006, bouyssou_consolidated_2015} can represent incomparabilities. A much used idea is to take into account two points of view, leading to weak-orders $\succeq^1$ and $\succeq^2$, then define ${\succeq} = {\succeq^1} ∩ {\succeq^2}$. Thus, when the two weak-orders strongly disagree about some pair of objects, the result can declare them incomparable. As an example, consider (a simplification of) the ELECTRE III method (our much simplified description only consider the aspects sufficient to obtain incomparabilities). It builds a concordance relation $C$ that determines whether alternative $x$ is sufficiently better than $y$, by accounting only for the criteria in favor of $x$; and a discordance relation $D$ that determines whether $x$ is so much worst than $y$ on some criterion that $x$ cannot possibly be considered better than $y$ (thus implementing a veto effect). Precise definitions of $C$ and $D$ depend on parameters to be fixed when implementing the method. 
+Some approaches in MCDM in the family of outranking methods \citep{roy_multicriteria_1996, greco_multiple_2016, bouyssou_evaluation_2000, bouyssou_evaluation_2006, bouyssou_consolidated_2015} can represent incomparabilities. A much used idea is to take into account two points of view, leading to weak-orders $\succeq^1$ and $\succeq^2$, then define ${\succeq} = {\succeq^1} ∩ {\succeq^2}$. Thus, when the two weak-orders strongly disagree about some pair of objects, the result can declare them incomparable. As an example, consider (a simplification of) the ELECTRE III method (our much simplified description only consider the aspects sufficient to obtain incomparabilities). It builds a concordance relation $C$ that determines whether alternative $x$ is sufficiently better than $y$, by accounting only for the criteria in favor of $x$; and a discordance relation $D$ that determines whether $x$ is so much worst than $y$ on some criterion that $x$ cannot possibly be considered better than $y$ (thus implementing a veto effect). Precise definitions of $C$ and $D$ depend on parameters to be fixed when implementing the method.  Then, the model declares that $x \succeq y$ iff $x C y$ and not $x D y$.
 
-For example, a model could declare that $x C y$ iff $x$ is better than or equal to $y$ for at least two criteria, and the performance of $x$ on a given criterion $g$ may be considered as “unacceptably low” compared to the performance of $y$ on $g$ iff $y_g - x_g ≥ 2$, where $X_g$ would be numerical. Then define $x \succeq y$ iff $x C y$ and $¬(x D y)$.
-	
-	Consider an example with $\allalts = \R^3$, each criteria to be maximized, and the following two alternatives: $x = (0, 0, 2), y = (1, 1, 0)$. Using the relations $C$ and $D$ defined above, we obtain $x C y$ and $x D y$, thus $x$ and $y$ are incomparable in the resulting model. Such approaches tend to consider incomparabilities as intrinsic to the system, since even a completely specified model could lead to incomparabilities. 
+\begin{example}
+Consider $\allalts = \R^3$, each criteria to be maximized, and a model according to which $x C y$ iff $x$ is better than or equal to $y$ for at least two criteria, and $x D y$ iff for some $g$, $y_g - x_g ≥ 2$. Such a model would consider the two alternatives $x = (0, 0, 2)$ and $y = (1, 1, 0)$ as incomparable: neither $x \succeq y$ nor $y \succeq x$ hold.
+\end{example}
 
-	Robust methods in MCDM exist that distinguish conclusions (i.e.,preferences) that hold for sure, given limited preferential information from the \ac{DM}, from conclusions that possibly hold. Such methods typically start from a classe $M$ of possible models (similar to version or hypothesis spaces in machine learning) assumed to represent the \ac{DM} preferences. A robust method, given a class $M$ and a set of constraints $C$ reducing the set of possibles models (typically preference statements of the \ac{DM}), will consider that $a$ is necessarily preferred to $b$, $a \succeq^N b$, whenever $a \succeq b$ for all relations $\succeq$ in $M$ that satisfy $C$ \citep{greco_ordinal_2008}.
-	\begin{example} Assume that the only thing you know about the \ac{DM} is that she prefers $x = (0, 0, 2)$ to $y = (0, 4, 0)$, and you assume that $\succeq$ satisfies preferencial independence, meaning that the way two alternatives compare does not change when changing equal values on a given criterion. Thus, $M$ contains all relations that satisfy preferencial independence, and $C$ is the constraint $x \succ y$. You may then conclude that $a = (3, 0, 2)$ is preferred to $b = (3, 4, 0)$, thus, $a \succ^N b$, but you ignore whether $c = (1, 1, 1)$ is preferred to $d = (0, 2, 2)$, thus, $¬(c \succeq^N d)$ and $¬(d \succeq^N c)$.
-	\end{example} 
-Such approaches consider that incomparabilities follow from a lack of knowledge, and are not intrinsic to the modeled preference relation, as in principle one could collect enough constraints $C$ about $M$ to identify a unique model (or a set of model leading to only one possible relation $\succ$ on a set of alternatives).
-	
+Such approaches tend to consider incomparabilities as intrinsic to the preferences, since even a completely specified preference could lead to incomparabilities. 
+
+Robust methods in MCDM exist that distinguish conclusions about preferences that hold for sure, given limited preferential information from the \ac{DM}, from conclusions that possibly hold. Such methods typically start from a class $M$ of possible models (similar to hypothesis space in machine learning) assumed to be candidate representative models of the \ac{DM} preferences. A robust method, given a class $M$ and a set of constraints $C$ reducing the set of possibles models (typically preference statements given by the \ac{DM}), will consider that $a$ is necessarily preferred to $b$, $a \succeq^N b$, whenever $a \succeq b$ for all relations $\succeq$ in $M$ that satisfy $C$ \citep{greco_ordinal_2008}.
+\begin{example} 
+Assume that the only thing you know about the \ac{DM} is that she prefers $x = (0, 0, 2)$ to $y = (0, 4, 0)$, and you assume that $\succeq$ satisfies preferencial independence, meaning that the way two alternatives compare does not change when changing equal values on a given criterion. Thus, $M$ contains all relations that satisfy preferencial independence, and $C$ is the constraint $x \succ y$. You may then conclude that $a = (3, 0, 2)$ is preferred to $b = (3, 4, 0)$, thus, $a \succ^N b$, but you ignore whether $c = (1, 1, 1)$ is preferred to $d = (0, 2, 2)$, thus, $¬(c \succeq^N d)$ and $¬(d \succeq^N c)$.
+\end{example} 
+In such approach, the relation $\succeq^N$ is able to represent incomparabilites. Incomparabilities stem here from a lack of knowledge, and are not intrinsic to the modeled preference relation, as in principle one could collect enough constraints $C$ about $M$ to identify a unique compatible relation $\succ$ on a set of alternatives.
+
+It is of course also possible to include in $M$ some models that allow for incomparabilities \citep{greco_electregkms:_2011}.
+
 	\subsection{Incompleteness in DMU}
 	
-	As recalled in Section~\ref{sec:intro}, probability theory and expected utility are the most widely used tools when having to decide under uncertainty, and naturally induce completeness of preferences. It should however be noted early scholars were critical about the fact that completeness could hold in practice, as recalled previously. Many attempts to relax the completeness axioms does so by considerings axioms leading to deal with sets of utilities and sets of probabilities~\cite{aumann_utility_1962}, entangling together aspects about decision and about information modeling. 
+	As recalled in Section~\ref{sec:intro}, probability theory and expected utility are the most widely used tools when having to decide under uncertainty, and naturally induce completeness of preferences. It should however be noted early scholars were critical about the fact that completeness could hold in practice. 
+\citet[p. 630]{von_neumann_theory_1953} for example themselves considered completeness as a strong condition: “it is very dubious, whether the idealization of reality which treats this postulate as a valid one, is appropriate or even convenient”.
+
+Many attempts to relax the completeness axioms does so by considerings axioms leading to deal with sets of utilities and sets of probabilities~\citep{aumann_utility_1962}, entangling together aspects about decision and about information modeling. 
 	
-	\subsubsection{Keeping precise probabilities but not expected utility}
+\subsubsection{Keeping precise probabilities but not expected utility}
+
+Even when having precise probabilities, there are alternatives to expected utility that induce incomplete preferences. One of them that is particularly interesting is the notion of stochastic dominance~\citep{levy_stochastic_1992}. Assuming that the set of consequences is completely ordered by preference, which we denote by $C = \{c_1, …, c_n\}$ where $c_{i-1}$ is preferred to $c_{i}$, then a lottery $p_x$ is said to stochastically dominate $p_y$ iff, for all $1 ≤ i ≤ n$:
+%\commentOC{À la réflexion, ça me semble plus intuitif en commençant par les meilleures conséquences, et avec l’exigence que les probas pour les meilleures conséquences soient les plus élevées pour la meilleure lotterie. Mais n’hésite pas à re-changer si tu n’es pas d’accord.}
+\begin{equation}\label{eq:stodom}
+P_x(\{c_1,\ldots,c_i\})=\sum_{j=1}^i p_x(c_j) ≥ P_y(\{c_1,\ldots,c_i\})=\sum_{j=1}^i p_y(c_j).
+\end{equation}
+Since Inequality~\eqref{eq:stodom} can be satisfied for some $i$ and not for others, possible incomparabilities immediately follow. %It should be noticed that the probabilities $p_1,p_2$ may concern the same uncertain quantity, but may result from the mapping of the original probability $p$ to the space of (ordered) consequences, such as in \cref{exm:DMU}.
 	
-	Even when having precise probabilities, there are alternatives to expected utility that induce incomplete preferences. One of them that is particularly interesting is the notion of stochastic dominance~\cite{levy_stochastic_1992}. Assuming that the set of consequences is completely ordered by preference, which we denote by $C = \{c_1, …, c_n\}$ where $c_i$ is preferred to $c_{i - 1}$, then a lottery $p_x$ is said to stochastically dominate $p_y$ iff
-	\begin{equation}\label{eq:stodom}P_x(\{c_1,\ldots,c_i\})=\sum_{j=1}^i p_x(c_j) \leq P_y(\{c_1,\ldots,c_i\})=\sum_{j=1}^i p_y(c_j).\end{equation}
-	Since Inequality~\eqref{eq:stodom} can be satisfied for some consequence $c_i$ and not for others, possible incomparabilities immediately follow. %It should be noticed that the probabilities $p_1,p_2$ may concern the same uncertain quantity, but may result from the mapping of the original probability $p$ to the space of (ordered) consequences, such as in \cref{exm:DMU}.
-	
-	\begin{example}
-		Consider again the space $C=\{c_1,\ldots,c_3\}$of consequences and the following probability masses (induced by different acts $x_1,x_2,x_3$) defined over them, given in vectorial forms: $p_1=(0.2,0.3,0.5)$, $p_2=(0.1,0.3,0.6)$ and $p_3=(0.3,0,0.7)$. From those, it can be checked that
+\begin{example}
+Consider the set of consequences $C=\{c_1, c_2, c_3\}$ and the following lotteries (induced by different acts $x_1,x_2,x_3$), given in vectorial forms: $p_1=(0.5, 0.3, 0.2)$, $p_2=(0.6, 0.3, 0.1)$ and $p_3=(0.7, 0, 0.3)$. 
+%described simply by giving the probabilities in decreasing order of preference for the consequences
+%TODO uniformiser : acts, actions, alternatives…
 %		 They induce the following cumulative probabilities:
 %		$$P_1(\{c_1\})=0.2, \; P_1(\{c_1,c_2\})=0.5, \; P_1(\{c_1,c_2,c_3\})=1; $$
 %		$$P_2(\{c_1\})=0.1, \; P_2(\{c_1,c_2\})=0.4, \; P_2(\{c_1,c_2,c_3\})=1;$$
 %		$$P_3(\{c_1\})=0.3, \; P_3(\{c_1,c_2\})=0.3, \; P_3(\{c_1,c_2,c_3\})=1, $$
-	 that $x_2$ stochastically dominates $x_1$, while $x_3$ is incomparable to both $x_1$ and $x_2$, according to stochastic dominance.
-	\end{example}
+Then $x_2$ stochastically dominates $x_1$, while $x_3$ is incomparable to both $x_1$ and $x_2$, according to stochastic dominance.
+\end{example}
 	
 	The notion of stochastic dominance has some very attractive properties, as:
 	\begin{enumerate}
@@ -252,6 +264,7 @@ Such approaches consider that incomparabilities follow from a lack of knowledge,
 	%\commentSD{La phrase suivante me parait un peu mal s'agencer avec le reste?}
 	%\citet{fischhoff_knowing_1980} \citep[also]{fischhoff_knowing_1988} discuss possible attitudes of an analyst wanting to take into account incompleteness of preferences.
 
+%TODO https://tex.stackexchange.com/questions/74296/to-have-no-pagebreak-before-bibliography
 \bibliography{Survey,seb}
 
 \end{document}
