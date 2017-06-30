@@ -1,7 +1,8 @@
 \definecolor{darkgreen}{rgb}{0,0.6,0}
-\newcommand{\commentOC}[1]{{\small\color{blue}{\selectlanguage{french}$\big[$OC: #1$\big]$}}}
-\newcommand{\commentSD}[1]{{\small\color{red}{\selectlanguage{french}$\big[$SD: #1$\big]$}}}
-%Or: \todo[color=green!40]
+%\newcommand{\commentOC}[1]{{\small\color{blue}{\selectlanguage{french}$\big[$OC: #1$\big]$}}}
+%\newcommand{\commentSD}[1]{{\small\color{red}{\selectlanguage{french}$\big[$SD: #1$\big]$}}}
+\newcommand{\commentOC}[1]{{\small\selectlanguage{french}\todo[color=blue!40]{OC: #1}}}
+\newcommand{\commentSD}[1]{{\small\selectlanguage{french}\todo[color=green!40]{SD: #1}}}
 \newcommand{\innote}[1]{{\scriptsize{#1}}}
 
 %this probably requires outdated float package, see doc KomaScript for an alternative.

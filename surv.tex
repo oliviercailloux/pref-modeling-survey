@@ -69,7 +69,7 @@ We consider a preference relation $\succeq$ defined as a binary relation over $\
 Given an act $x$ and a probability measure $p$, it is usually convenient to view $x$ as $p_x$, a probability mass over the consequences: define $p_x: C → [0, 1]$ as $p_x(c) = p(x^{-1}(c))$, where $x^{-1}(c)$ designate the set of states in which $x$ leads to the consequence $c$. Such a $p_x$ is usually called a lottery. 
 	
 \begin{example}\label{exm:DMU}
-%\commentOC{Je me permets de modifier les conséquences du type "happy" en conséquences qui décrivent des états objectifs, du type "mouillé". Je suis nettement plus à l’aise si dans nos exemples les conséquences sont objectives. Je trouve que ça sépare plus sainement les aspects objectifs des aspects subjectifs (confinés à la fonction d’utilité). J’espère que ça ne te posera pas problème. Par ailleurs, je serais en faveur de laisser tomber la suite de l’exemple, par parallèle avec l’exemple MCDM d’une part, et par simplification. Je l’ai donc commenté. Sinon, je trouve qu’on se demande d’où viennent les utilités. Et on ne veut sûrement pas complexifier l’exemple au point de décrire comment on aurait pu éliciter ces informations.}
+\commentOC{Je me permets de modifier les conséquences du type "happy" en conséquences qui décrivent des états objectifs, du type "mouillé". Je suis nettement plus à l’aise si dans nos exemples les conséquences sont objectives. Je trouve que ça sépare plus sainement les aspects objectifs des aspects subjectifs (confinés à la fonction d’utilité). J’espère que ça ne te posera pas problème. Par ailleurs, je serais en faveur de laisser tomber la suite de l’exemple, par parallèle avec l’exemple MCDM d’une part, et par simplification. Je l’ai donc commenté. Sinon, je trouve qu’on se demande d’où viennent les utilités. Et on ne veut sûrement pas complexifier l’exemple au point de décrire comment on aurait pu éliciter ces informations.}
 	Assume you want to go out and wonder about taking or leaving your umbrella. You consider relevant weather state to be going from $A=$``shiny" to $D=$``stormy", with $A, B, C, D \subseteq S$. Two simple actions are $x_1$: ``leave the umbrella home" and $x_2$: ``take the umbrella", and the consequences are $c_1$: “encumbered” (when taking your umbrella, irrelevant of the weather), $c_2$: “free” (when leaving your umbrella and weather is $A$), and $c_3, c_4, c_5$ being “slightly wet”, “wet” and “very wet”, when leaving your umbrella and weather being respectively $B$, $C$, or $D$. Assume the probabilities of the states $A, B, C, D$ are respectively $0.2$, $0.3$, $0.4$ and $0.1$. Then the act $x_1$ can also be described as $p_{x_1}$ defined as $p_{x_1}(c_1) = 0$, $p_{x_1}(c_2) = 0.2$, $p_{x_1}(c_3) = 0.3$, $p_{x_1}(c_4) = 0.4$, $p_{x_1}(c_5) = 0.1$, and similarly the constant act $x_2$ can be associated to $p_{x_2}$, with $p_{x_2}(c_1) = 1$.
 %		Assuming that $p(A)=0.2, p(D)=0.6$, $p(B)=p(C)=0.1$, and that $u_1(c_i)=i-2$, we then have
 %		$$u(x_1)=0.2 \cdot 1 + 0.6 \cdot -1 <  u(x_2)=0.2 \cdot -1 + 0.6 \cdot 1$$
@@ -94,12 +94,12 @@ In the descriptive approach to preferences, the goal of the model is to reflect 
 
 Under the normative approach, the goal is to model the way the \ac{DM} ought to choose rationally. Rationality may corresponds to accepted external norms, or to rules accepted by the \ac{DM} after careful thinking. (In the second case, the term prescriptive or constructive may be used instead of normative, but different authors use these terms differently \citep{roy_decision_1993, tsoukias_concept_2007}; we will stick to the term “normative” as an umbrella.) In both cases, the decision outcome using such approach may differ from empirically observed decisions. Consider as an example a recruiter in an enterprise who wants to model the recruitment procedure. After having collected data, it may appear that for some (possibly unconscious) reason, the recruitment is biased against some particular socio-economic category. The \ac{DM} may then want to find a recruitment strategy that avoids such biases, therefore actively trying to build a model contradicting empirical observations. 
 	
-%\commentSD{Raccourcir/enlever des citations?} bof, je trouve que mettre quatre citations sur les aspects philo dans un papier qui tente de prendre un peu de recul sur ces notions est vraiment un minimum syndical.
+\commentSD{Raccourcir/enlever des citations?}\commentOC{bof, je trouve que c’est justifié de mettre quatre citations sur les aspects philo dans notre papier qui tente de prendre un peu de recul sur ces notions. (Et j’aime bien ces papiers !)}
 \citet{mcclennen_rationality_1990, guala_logic_2000} discuss philosophical grounds for accepting a normative model. \citet{anand_are_1987, mandler_difficult_2001} discuss normative grounds for usual axioms about preferences, including completeness.
 
-%\commentOC{Tu avais raccourci ce §. Il était effectivement trop long, mais je trouve que tu as trop raccourci. Je me permets de rétablir un peu de l’argument précédent, vu qu’on a un peu de place libre. Si la raison de ton raccourcissement n’était pas purement de gagner de la place mais d’évacuer des propos qui te semblaient bateau / inintéressant / faux, n’hésite pas à m’en faire part !}
 Choosing between normative or descriptive approaches is not always easy. For instance recommender systems often adopt a descriptive approach. 
 But descriptive approaches will, by design, reflect our cognitive limitations. Those limitations are numerous and sometimes obviously not in agreement with what the \ac{DM} himself would do when thinking more carefully, as will be illustrated in \cref{sec:evidence}. 
+\commentOC{Tu avais raccourci ce §. Il était effectivement trop long, mais je trouve que tu as trop raccourci. Je me permets de rétablir un peu de l’argument précédent, vu qu’on a un peu de place libre. Si la raison de ton raccourcissement n’était pas purement de gagner de la place mais d’évacuer des propos qui te semblaient bateau / inintéressant / faux, n’hésite pas à m’en faire part !}
 Providing (more) normative-based automatic recommendations might help provide sound advices, help increase serendipity, and possibly build trust (or avoid mistrust) in the recommender system. For example, the \ac{DM} might appreciate that the recommender system’s advices protect him from exploitations of the \ac{DM}’s cognitive limitations by merchants. (As an old but known example, “the credit card lobby is said to insist that any price difference between cash and card purchases should be labeled a cash discount rather than a credit surcharge” \citep{tversky_rational_1986}.) 
 %Yet, such an approach reflect our cognitive limitations, and it is not clear that a more thoughtful or normative-oriented (at least partially) process would not lead to more satisfying, diverse or surprising recommendations that may moreover be explainable.
 	
@@ -130,7 +130,7 @@ or momentary fluctuation
 in the evaluative process.” 
 	
 %	This argument alone could not be strong enough, as one may consider that underlying preferences are complete, but that choices are noisy observations of such preferences. 
-%\commentOC{Même remarque que ci-dessus. Me dire si tu as raccourci pour des raisons autres que gain de place.}
+\commentOC{Même remarque que ci-dessus. Me dire si tu as raccourci pour des raisons autres que gain de place.}
 This argument may not be strong enough however. In absence of other arguments, one might agree that preferences are in reality incomplete but claim that they may appropriately be \emph{modeled} as complete: a model of complete preferences would simply deviate from time to time from what individuals declare because of (perhaps rare) random fluctuations in their expressions of preferences. 
 %	However, a second argument also inherited from empirical psychology is that preferences may change in a non-random, consistent way according to changes in the presentation of the alternatives or the context that should have no impact from a normative point of view. 
 In order to discuss this hypothesis, we turn to the second (and much more interesting) reason for failure of completeness, which is also brought by the literature in empirical psychology. It appears that preferences change may not be attributed solely to random fluctuations: they change in systematic ways according to changes in the presentation of the alternatives or the context that should have no impact from a normative point of view.
@@ -183,9 +183,9 @@ In such approach, the relation $\succeq^N$ is able to represent incomparabilites
 
 It is of course also possible to include in $M$ some models that allow for incomparabilities \citep{greco_electregkms:_2011}.
 
-	\subsection{Incompleteness in DMU}
-	
-	As recalled in Section~\ref{sec:intro}, probability theory and expected utility are the most widely used tools when having to decide under uncertainty, and naturally induce completeness of preferences. It should however be noted early scholars were critical about the fact that completeness could hold in practice. 
+\subsection{Incompleteness in DMU}
+
+As recalled in Section~\ref{sec:intro}, probability theory and expected utility are the most widely used tools when having to decide under uncertainty, and naturally induce completeness of preferences. It should however be noted early scholars were critical about the fact that completeness could hold in practice. 
 \citet[p. 630]{von_neumann_theory_1953} for example themselves considered completeness as a strong condition: “it is very dubious, whether the idealization of reality which treats this postulate as a valid one, is appropriate or even convenient”.
 
 Many attempts to relax the completeness axioms does so by considerings axioms leading to deal with sets of utilities and sets of probabilities~\citep{aumann_utility_1962}, entangling together aspects about decision and about information modeling. 
@@ -193,7 +193,7 @@ Many attempts to relax the completeness axioms does so by considerings axioms le
 \subsubsection{Keeping precise probabilities but not expected utility}
 
 Even when having precise probabilities, there are alternatives to expected utility that induce incomplete preferences. One of them that is particularly interesting is the notion of stochastic dominance~\citep{levy_stochastic_1992}. Assuming that the set of consequences is completely ordered by preference, which we denote by $C = \{c_1, …, c_n\}$ where $c_{i-1}$ is preferred to $c_{i}$, then a lottery $p_x$ is said to stochastically dominate $p_y$ iff, for all $1 ≤ i ≤ n$:
-%\commentOC{À la réflexion, ça me semble plus intuitif en commençant par les meilleures conséquences, et avec l’exigence que les probas pour les meilleures conséquences soient les plus élevées pour la meilleure lotterie. Mais n’hésite pas à re-changer si tu n’es pas d’accord.}
+\commentOC{À la réflexion, ça me semble plus intuitif en commençant par les meilleures conséquences, et avec l’exigence que les probas pour les meilleures conséquences soient les plus élevées pour la meilleure lotterie. Mais n’hésite pas à re-changer si tu n’es pas d’accord.}
 \begin{equation}\label{eq:stodom}
 p_x(\{c_1,\ldots,c_i\})=\sum_{j=1}^i p_x(c_j) ≥ p_y(\{c_1,\ldots,c_i\})=\sum_{j=1}^i p_y(c_j).
 \end{equation}
@@ -230,26 +230,27 @@ A prototypical way to induce incompleteness between acts from incompleteness in 
 $$x_1 \succeq x_2 \text{ iff }  u(x_1) ≥ u(x_2) \text{ for all } p \in \mathcal{P}.$$
 %still with $u(x) = \sum_{s \in S} p(s) u_1(x(s))$. 
 It is clear that this reduces to expected utility when $\mathcal{P}$ is a singleton. 
+
+\begin{example}
+	\commentOC{Décider de ce qu’on fait de cet exemple en fonction de ce qu’on fait de \cref{exm:DMU} !}
+	Going back to \cref{exm:DMU}, we have that 
+	$$u(x_1)=p(A) - p(B) \textrm{ and } u(x_1)=p(B) - p(A)$$
+	which means that the two acts will be incomparable according to maximality as soon as $\mathcal{P}$ contains a probability where $p(A)=p(B)$ that is not on the border of $\mathcal{P}$ (i.e., it contains at least one mass where $p(A)<p(B)$, and another where $p(B)>p(A)$). 
+\end{example}
+
+It should be noted that other authors have proposed different rules: for instance \citet{levi_enterprise_1983} recommends to use a decision rule, often called E-admissibility, that does not give rise to an incomplete order between acts, but rather selects all the acts that are Bayes optimal according to at least one probability $p \in \mathcal{P}$. In terms of order, this comes down to consider a set of possible linear ordering, and to retain only those elements that are maximal for at least one of them. \commentOC{Je ne comprends pas cette explication. Que veut-dire sélectionner des actes, ici ?}
+
+%Compared to maximality, E-admissibility implicitly uses the precise probabilities within the set $\mathcal{P}$, and therefore would not be consistent with Walley's view where the bounded (buying and selling) prices are not to be interpreted as incomplete information about an ideal precise price, but have to be considered as current state of knowledge that may not be reducible with additional information. 
+
+\subsubsection{Working with sets of probabilities and utilities}
+
+Sets of probabilities are helpful to represent incomplete beliefs or lack of information, yet it is natural to also consider cases where the \ac{DM} cannot provide a fully accurate estimation of utilities associated to consequences, or even to completely order them. In some sense, stochastic dominance is an extreme view of such a case, where consequences are ordered but the utility function is left totally unspecified. \commentOC{La découpe que nous proposons ne me semble pas claire à cet endroit. Nous avons déjà parlé ci-dessus d’autres approches qui travaillent avec des ensembles de proba, donc on peut se demander ce qui distingue vraiment cette section-ci.}
 	
-	\begin{example}
-		Going back to Example~\ref{exm:DMU}, we have that 
-		$$u(x_1)=p(A) - p(B) \textrm{ and } u(x_1)=p(B) - p(A)$$
-		which means that the two acts will be incomparable according to maximality as soon as $\mathcal{P}$ contains a probability where $p(A)=p(B)$ that is not on the border of $\mathcal{P}$ (i.e., it contains at least one mass where $p(A)<p(B)$, and another where $p(B)>p(A)$). 
-	\end{example}
-	
-	It should be noted that other authors have proposed different rules: for instance Levi~\cite{levi_enterprise_1983} recommends to use a decision rule, often called E-admissibility, that does not give rise to an incomplete order between acts, but rather selects all the acts that are Bayes optimal according to at least one probability $p \in \mathcal{P}$. In terms of order, this comes down to consider a set of possible linear ordering, and to retain only those elements that are maximal for at least one of them. 
-	
-	%Compared to maximality, E-admissibility implicitly uses the precise probabilities within the set $\mathcal{P}$, and therefore would not be consistent with Walley's view where the bounded (buying and selling) prices are not to be interpreted as incomplete information about an ideal precise price, but have to be considered as current state of knowledge that may not be reducible with additional information. 
-	
-	\subsubsection{Working with sets of probabilities and utilities}
-	
-	Sets of probabilities are helpful to represent incomplete beliefs or lack of information, yet it is natural to also consider cases where the \ac{DM} cannot provide a fully accurate estimation of utilities associated to consequences, or even to completely order them. In some sense, stochastic dominance is an extreme view of such a case, where consequences are ordered but the utility function is left totally unspecified. 
-	
-	Other works have dealt with partially specified utilities:
+	Other works have dealt with partially specified utilities.
 	\begin{itemize}
 		\item \citet{dubra_expected_2004} represents preferences over lotteries by a set of utility functions. Preference holds whenever the expected utility for the preferred alternative is higher for all utility functions. This idea has been applied in other contexts \citep{ok_utility_2002}.
 		\item \citet{dubra_model_2002} propose to view the preference relation as a completion of an intuitive partial preference relation: the \ac{DM} knows intuitively the result of some comparisons, and compute the other ones by applying some reasoning process. They also obtain a preference relation that is representable using a set of utility functions. This approach directly tackles some of the shortcomings described in \cref{sec:empirical}.
-		\item \citet{manzini_representation_2008} use a utility function and a vagueness function, representing the preference using intervals of utilities rather than real valued utilities. %(Beyond DMU, also using this representation, \citet{masatlioglu_rational_2005} assume that a specific alternative called the status quo alternative is prominently chosen whenever the \ac{DM} faces a choice about which incomparability occur.)
+		\item \citet{manzini_representation_2008} use a utility function and a vagueness function, representing the preference using intervals of utilities rather than real valued utilities. (Beyond DMU, also using this representation, \citet{masatlioglu_rational_2005} assume that a specific alternative called the status quo alternative is prominently chosen whenever the \ac{DM} faces a choice about which incomparability occur.)
 	\end{itemize}
 
 	There exist a few works where both requirements of precise probabilities and utilities are relaxed. This can be traced back at least to \citet{aumann_utility_1962} whose axioms do not require uniqueness of utilities: $x \succ y ⇒ u(x) > u(y)$, without requiring the reverse. More recently, \citet{galaabaatar_subjective_2013} are interested in the Savage-like context where probabilities are unknown and represent an incomplete preference relation in uncertaintly using a set of pairs of probabilities and utilities.
@@ -265,7 +266,6 @@ It is clear that this reduces to expected utility when $\mathcal{P}$ is a single
 	%\commentSD{La phrase suivante me parait un peu mal s'agencer avec le reste?}
 	%\citet{fischhoff_knowing_1980} \citep[also]{fischhoff_knowing_1988} discuss possible attitudes of an analyst wanting to take into account incompleteness of preferences.
 
-%TODO https://tex.stackexchange.com/questions/74296/to-have-no-pagebreak-before-bibliography
 \bibliography{Survey,seb}
 
 \end{document}
