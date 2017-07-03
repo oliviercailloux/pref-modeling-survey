@@ -13,11 +13,11 @@
 %definition, theorem, lemma, example environments, qed trickery are only needed in article mode (not Beamer)
 
 %which line breaks are chosen: accept worse lines, therefore reducing risk of overfull lines. Default = 200
-\tolerance=2000
+%\tolerance=2000
 %accept overfull hbox up to...
-\hfuzz=2cm
+%\hfuzz=2cm
 %reduces verbosity about the bad line breaks
-\hbadness 5000
+%\hbadness 5000
 %sloppy sets tolerance to 9999
 \apptocmd{\sloppy}{\hbadness 10000\relax}{}{}
 
