@@ -1,5 +1,5 @@
 # Survey
 A paper about preference models.
 
-This is a work in progress. Please do not use, reproduce, etc.
+The final publication is available at Springer via https://doi.org/10.1007/978-3-319-67582-4_2.
 
