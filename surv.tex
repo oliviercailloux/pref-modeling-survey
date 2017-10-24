@@ -1,6 +1,6 @@
-\RequirePackage{amsmath}
-%\RequirePackage[l2tabu, orthodox]{nag}
-\documentclass[french, english]{llncs}
+% !TeX program = xelatex
+\RequirePackage[l2tabu, orthodox]{nag}
+\documentclass[version=last, pagesize, twocolumn, twoside=off, bibliography=totoc, 12pt, a4paper, english]{scrartcl}
 \input{preamble/packages}
 \input{preamble/math_basics}
 \input{preamble/math_mine}
@@ -10,32 +10,41 @@
 \newcommand{\dollars}[1]{\SI{#1}[\$]{}}
 \newcommand{\simplebet}[3]{(\dollars{#1}, #2; \dollars{#3})}
 
+%\KOMAoptions{DIV=calc}
+%printer margin: I take 0.5 inches = 1,27 cm to be safe. 21 cm - (2 × 1.27 cm) = 18.46 cm. 29.7 cm − 0.9 cm − (2 × 1.27 cm) = 26.26 cm
+\areaset{18.46cm}{26.26cm}
+\setlength{\footskip}{9mm}
+\setlength{\affilsep}{2mm} 
 \begin{document}
-\title{%
+\title{% 
 	\texorpdfstring{%
 		Reasons and Means to Model Preferences as Incomplete%
-		\thanks{This work has received support under the program “LABEX MS2T” launched by the French Government and implemented by ANR with the references ANR-11-IDEX-0004-02.}
+		\thanks{This work has received support under the program “LABEX MS2T” launched by the French Government and implemented by ANR with the references ANR-11-IDEX-0004-02.
+		This is an author version. The final publication is available at Springer via \url{https://doi.org/10.1007/978-3-319-67582-4_2}. The text of this version is identical to the final publication, except for this footnote.
+		\textbf{Erratum}: in the first paragraph of \cref{sec:mcdm}, contrary to what has been written, the points of view are not necessarily represented by weak-orders. This is illustrated in \cref{ex:electre} where the relation $C$ may be cyclic (consider $x_1 = (1, 1, 0)$, $x_2 = (1, 0, 1)$ and $x_3 = (0, 1, 1)$).}
 	}{Reasons and Means to Model Preferences as Incomplete%
 	}
 }
-\author{Olivier Cailloux\inst{1} \and Sébastien Destercke\inst{2}}
-\institute{
-	Université Paris-Dauphine, PSL Research University, CNRS, LAMSADE, 75016 PARIS, FRANCE\\
-	\email{olivier.cailloux@dauphine.fr}
-	\and Sorbonne Université, UMR CNRS 7253 Heudiasyc, \\
-		Université de Technologie de Compiègne CS 60319 - 60203 Compiègne cedex, France
+\author{Olivier Cailloux}
+\affil{Université Paris-Dauphine, PSL Research University, CNRS, LAMSADE, 75016 PARIS, FRANCE\\
+	\href{mailto:olivier.cailloux@dauphine.fr}{olivier.cailloux@dauphine.fr}
+}
+\author{Sébastien Destercke}
+\affil{Sorbonne Université, UMR CNRS 7253 Heudiasyc, \\
+	Université de Technologie de Compiègne CS 60319 - 60203 Compiègne cedex, France
 }
 \hypersetup{
 	pdftitle={Reasons and means to model preferences as incomplete},
 	pdfsubject={preference modeling},
 	pdfkeywords={mcda, risk, decision making, modeling}
 }
+\date{\formatdate{24}{10}{2017}}
 \maketitle
 
 \abstract{Literature involving preferences of artificial agents or human beings often assume their preferences can be represented using a complete transitive binary relation. Much has been written however on different models of preferences. We review some of the reasons that have been put forward to justify more complex modeling, and review some of the techniques that have been proposed to obtain models of such preferences.}
-	
+
 %Oddly enough, llncs class seems to set the indent to zero when typesetting the abstract.
-\setlength{\parindent}{1.5em}
+%\setlength{\parindent}{1.5em}
 
 \section{Introduction}\label{sec:intro}
 Preferences of agents are usually assumed to be representable with a weak order (a complete and transitive binary relation). We are interested in discussing the completeness assumption. 
@@ -161,9 +170,11 @@ The next section describes approaches that allow incomplete preference represent
 
 \section{Dropping completeness}\label{sec:incomp}
 \subsection{Incompleteness in MCDM}
+\label{sec:mcdm}
 Some approaches in MCDM in the family of outranking methods \citep{roy_multicriteria_1996, greco_multiple_2016, bouyssou_evaluation_2000, bouyssou_evaluation_2006, bouyssou_consolidated_2015} can represent incomparabilities. A much used idea is to take into account two points of view, leading to weak-orders $\succeq^1$ and $\succeq^2$, then define ${\succeq} = {\succeq^1} ∩ {\succeq^2}$. Thus, when the two weak-orders strongly disagree about some pair of objects, the result can declare them incomparable. As an example, consider (a simplification of) the ELECTRE III method (our much simplified description only consider the aspects sufficient to obtain incomparabilities). It builds a concordance relation $C$ that determines whether alternative $x$ is sufficiently better than $y$, by accounting only for the criteria in favor of $x$; and a discordance relation $D$ that determines whether $x$ is so much worst than $y$ on some criterion that $x$ cannot possibly be considered better than $y$ (thus implementing a veto effect). Precise definitions of $C$ and $D$ depend on parameters to be fixed when implementing the method.  Then, the model declares that $x \succeq y$ iff $x C y$ and not $x D y$.
 
 \begin{example}
+\label{ex:electre}
 Consider $\allalts = \R^3$, each criteria to be maximized, and a model according to which $x C y$ iff $x$ is better than or equal to $y$ for at least two criteria, and $x D y$ iff for some $g$, $y_g - x_g ≥ 2$. Such a model would consider the two alternatives $x = (0, 0, 2)$ and $y = (1, 1, 0)$ as incomparable: neither $x \succeq y$ nor $y \succeq x$ hold.
 \end{example}
 
@@ -186,9 +197,11 @@ Many attempts to relax the completeness axioms does so by considerings axioms le
 
 Even when having precise probabilities, there are alternatives to expected utility that induce incomplete preferences. One of them that is particularly interesting is the notion of stochastic dominance~\citep{levy_stochastic_1992}. Assuming that the set of consequences is completely ordered by preference, which we denote by $C = \{c_1, …, c_n\}$ where $c_{i-1}$ is preferred to $c_{i}$, then a lottery $p_x$ is said to stochastically dominate $p_y$ iff, for all $1 ≤ i ≤ n$:
 \begin{equation}\label{eq:stodom}
-p_x(\{c_1,\ldots,c_i\})=\sum_{j=1}^i p_x(c_j) ≥ p_y(\{c_1,\ldots,c_i\})=\sum_{j=1}^i p_y(c_j).
+\scalebox{0.8}{
+$p_x(\{c_1,\ldots,c_i\})=\sum_{j=1}^i p_x(c_j) ≥ p_y(\{c_1,\ldots,c_i\})=\sum_{j=1}^i p_y(c_j).$
+}
 \end{equation}
-Since Inequality~\eqref{eq:stodom} can be satisfied for some $i$ and not for others, possible incomparabilities immediately follow. %It should be noticed that the probabilities $p_1,p_2$ may concern the same uncertain quantity, but may result from the mapping of the original probability $p$ to the space of (ordered) consequences, such as in \cref{exm:DMU}.
+Since \cref{eq:stodom} can be satisfied for some $i$ and not for others, possible incomparabilities immediately follow. %It should be noticed that the probabilities $p_1,p_2$ may concern the same uncertain quantity, but may result from the mapping of the original probability $p$ to the space of (ordered) consequences, such as in \cref{exm:DMU}.
 	
 \begin{example}
 Consider the set of consequences $C=\{c_1, c_2, c_3\}$ and the following lotteries (induced by different acts $x_1,x_2,x_3$), given in vectorial forms: $p_1=(0.5, 0.3, 0.2)$, $p_2=(0.6, 0.3, 0.1)$ and $p_3=(0.7, 0, 0.3)$. 

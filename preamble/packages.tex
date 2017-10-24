@@ -20,12 +20,6 @@
 \usepackage{mathtools} %load this before babel!
 	\mathtoolsset{showmanualtags}%showonlyrefs
 
-%\usepackage[french, english]{babel}%options should probably be on the document level
-\usepackage{babel}
-%suppresses the warning about frenchb not modifying the captions (“—” to “:” in “Figure 1 – Legend”).
-%	\frenchbsetup{AutoSpacePunctuation=false,SuppressWarning=true}% test with false?
-	\frenchbsetup{AutoSpacePunctuation=false,SuppressWarning=false}
-
 %\usepackage[super]{nth}%better use fmtcount! (loaded by datetime anyway; see below about pbl with warnings and package silence)
 \usepackage{listings} %typeset source code listings
 	\lstset{language=XML,tabsize=2,captionpos=b,basicstyle=\NoAutoSpacing}%NoAutoSpacing avoids space before colon or ?}%,literate={"}{{\tt"}}1, keywordstyle=\fontspec{Latin Modern Mono Light}\textbf, emph={String, PreparedStatement}, emphstyle=\fontspec{Latin Modern Mono Light}\textbf, language=Java, basicstyle=\small\NoAutoSpacing\ttfamily, aboveskip=0pt, belowskip=0pt, showstringspaces=false
@@ -37,6 +31,8 @@
 	\usepackage[textsize=small]{todonotes}
 }{
 }
+\usepackage{authblk}
+\renewcommand\Affilfont{\small}
 \iftoggle{LCpres}{
 	%remove pdfusetitle (implied by beamer)
 	\usepackage{hyperref}
@@ -78,7 +74,7 @@
 \usepackage[sectionbib]{natbib}
 \usepackage{doi}
 
-\usepackage{amsmath}
+\usepackage{amsmath,amsthm}
 % \usepackage{amsfonts} %not required?
 % \usepackage{dsfont} %for what?
 %unicode-math overwrites the following commands from the mathtools package: \dblcolon, \coloneqq, \Coloneqq, \eqqcolon. Using the other colon-like commands from mathtools will lead to inconsistencies. Plus, Using \overbracket and \underbracke from mathtools package. Use \Uoverbracket and \Uunderbracke for original unicode-math definition.

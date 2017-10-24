@@ -6,6 +6,23 @@
 \newcommand{\commentSD}[1]{{\small\selectlanguage{french}\todo[color=green!40]{SD: #1}}}
 \newcommand{\innote}[1]{{\scriptsize{#1}}}
 
+\theoremstyle{remark}
+	\newtheorem{examplex}{Example}
+	\newtheorem{remarkx}{Remark}
+
+%trickery allowing use of \qedhere and the like.
+\newenvironment{example}{
+	\pushQED{\qed}\renewcommand{\qedsymbol}{$\triangle$}\examplex
+}{
+	\popQED\endexamplex
+}
+\newenvironment{remark}{
+	\pushQED{\qed}\renewcommand{\qedsymbol}{$\triangle$}\remarkx
+}{
+	\popQED\endremarkx
+}
+\crefname{examplex}{example}{examples}% I wonder why this is unnecessary in case of singular
+
 %this probably requires outdated float package, see doc KomaScript for an alternative.
 % \newfloat{program}{t}{lop}
 % \floatname{program}{PM}
