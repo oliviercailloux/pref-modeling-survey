@@ -1,6 +1,6 @@
 % !TeX program = xelatex
 \RequirePackage[l2tabu, orthodox]{nag}
-\documentclass[version=last, pagesize, twocolumn, twoside=off, bibliography=totoc, 12pt, a4paper, english]{scrartcl}
+\documentclass[version=last, pagesize, DIV=calc, twoside=off, bibliography=totoc, fontsize=14pt, a4paper, english]{scrartcl}
 \input{preamble/packages}
 \input{preamble/math_basics}
 \input{preamble/math_mine}
@@ -12,16 +12,16 @@
 
 %\KOMAoptions{DIV=calc}
 %printer margin: I take 0.5 inches = 1,27 cm to be safe. 21 cm - (2 × 1.27 cm) = 18.46 cm. 29.7 cm − 0.9 cm − (2 × 1.27 cm) = 26.26 cm
-\areaset{18.46cm}{26.26cm}
-\setlength{\footskip}{9mm}
-\setlength{\affilsep}{2mm} 
+%\areaset{18.46cm}{26.26cm}
+%\setlength{\footskip}{9mm}
+%\setlength{\affilsep}{2mm} 
 \begin{document}
 \title{% 
 	\texorpdfstring{%
 		Reasons and Means to Model Preferences as Incomplete%
 		\thanks{This work has received support under the program “LABEX MS2T” launched by the French Government and implemented by ANR with the references ANR-11-IDEX-0004-02.
 		This is an author version. The final publication is available at Springer via \url{https://doi.org/10.1007/978-3-319-67582-4_2}. The text of this version is identical to the final publication, except for this footnote.
-		\textbf{Erratum}: in the first paragraph of \cref{sec:mcdm}, contrary to what has been written, the points of view are not necessarily represented by weak-orders. This is illustrated in \cref{ex:electre} where the relation $C$ may be cyclic (consider $x_1 = (1, 1, 0)$, $x_2 = (1, 0, 1)$ and $x_3 = (0, 1, 1)$).}
+		\textbf{Erratum}: in the first paragraph of \cref{sec:mcdm}, contrary to what has been written, the points of view are not necessarily represented by weak-orders. This is illustrated in \cref{ex:electre} where the relation $C$ may violate transitivity (consider $x_1 = (2, 0, 1)$, $x_2 = (1, 2, 0)$ and $x_3 = (0, 1, 2)$).}
 	}{Reasons and Means to Model Preferences as Incomplete%
 	}
 }
@@ -38,7 +38,7 @@
 	pdfsubject={preference modeling},
 	pdfkeywords={mcda, risk, decision making, modeling}
 }
-\date{\formatdate{24}{10}{2017}}
+\date{\formatdate{7}{12}{2017}}
 \maketitle
 
 \abstract{Literature involving preferences of artificial agents or human beings often assume their preferences can be represented using a complete transitive binary relation. Much has been written however on different models of preferences. We review some of the reasons that have been put forward to justify more complex modeling, and review some of the techniques that have been proposed to obtain models of such preferences.}
