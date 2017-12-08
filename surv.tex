@@ -1,5 +1,3 @@
-% !TeX program = xelatex
-%% -*- latex-command: xelatex -*
 \RequirePackage[l2tabu, orthodox]{nag}
 \documentclass[version=last, pagesize, DIV=calc, twoside=off, bibliography=totoc, fontsize=14pt, a4paper, english]{scrartcl}
 \input{preamble/packages}
@@ -71,12 +69,13 @@ The scales are $X_{g_1} = \{A, B, C, D\}$, a set of labels, with $x_1$ represent
 \end{example}
 	
 Typical approaches in MCDM assume that there is some real-valued function $v: \allalts \to \R$ mapping alternatives to their values, and that $x \succeq y$ iff $v(x) ≥ v(y)$.
-	
+
 \subsection{DMU}
 In the simplest form of DMU considered here (SDMR, for Simple Decision Making under Risk), we consider a set $S$ of possible states of the world, a finite set of consequences $C$, and each act $x: S \to C$ is modeled as a function where $x(s)$ is the consequence of performing $x$ when $s$ is the actual state of the world. Define $\allalts$, for simplicity, as all possible or imaginary acts (thus $\allalts = C^S$).
 In SDMR, uncertainty is modeled by a probability measure $p$ over the power set of $S$, $\powerset{S}$, thus with $p(s) \in [0, 1]$ indicating the probability of occurence of $s$ (with $s \subseteq S$), and $p(S) = 1$. 
 We consider a preference relation $\succeq$ defined as a binary relation over $\allalts$.
-Given an act $x$ and a probability measure $p$, it is usually convenient to view $x$ as $p_x$, a probability mass over the consequences: define $p_x: C → [0, 1]$ as $p_x(c) = p(x^{-1}(c))$, where $x^{-1}(c)$ designate the set of states in which $x$ leads to the consequence $c$. Such a $p_x$ is usually called a lottery. 
+Given an act $x$ and a probability measure $p$, it is usually convenient to view $x$ as $p_x$, a probability mass over the consequences: define 
+$p_x: C → [0, 1]$ as $p_x(c) = p(x^{-1}(c))$, where $x^{-1}(c)$ designate the set of states in which $x$ leads to the consequence $c$. Such a $p_x$ is usually called a lottery. 
 	
 \begin{example}\label{exm:DMU}
 	Assume you want to go out and wonder about taking or leaving your umbrella. You consider relevant weather state to be $A=$``shiny" and $B=$``raining", with $A, B \subseteq S$. We assume $A ∪ B = S$ for simplicity. Two simple actions are $x_1$: ``take the umbrella" and $x_2$: ``leave the umbrella home", and the consequences are $c_1$: “encumbered” (when taking your umbrella, irrelevant of the weather), $c_2$: “free” (when leaving your umbrella and weather is $A$), and $c_3$: “wet” (when leaving your umbrella and weather is $B$). Assume the probabilities of the states $A$ and $B$ are $0.2$ and $0.8$. Then the constant act $x_1$ can also be described as $p_{x_1}$ with $p_{x_1}(c_1) = 1$ and $p_{x_1}$ being zero everywhere else, and similarly the act $x_2$ can be associated to $p_{x_2}$ where $p_{x_2}(c_1) = 0$, $p_{x_2}(c_2) = 0.2$, $p_{x_2}(c_3) = 0.8$.

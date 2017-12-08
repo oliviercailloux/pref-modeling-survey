@@ -12,4 +12,8 @@
 *.snm
 *.toc
 *.vrb
+#produced:
+*.ps
+*.out
+*.dvi
 
