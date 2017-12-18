@@ -19,7 +19,7 @@
 	\texorpdfstring{%
 		Reasons and Means to Model Preferences as Incomplete%
 		\thanks{This work has received support under the program “LABEX MS2T” launched by the French Government and implemented by ANR with the references ANR-11-IDEX-0004-02.
-		This is an author version. The final publication is available at Springer via \url{https://doi.org/10.1007/978-3-319-67582-4_2}. The text of this version is identical to the final publication, except for this footnote.
+		This is an author version. The final publication is available at Springer via \url{https://doi.org/10.1007/978-3-319-67582-4_2}. The text of this version is identical to the final publication, except for this footnote, a few corrected typos, and a rephrasing of the very last paragraph (page \pageref{epistemic}).
 		\textbf{Erratum}: in the first paragraph of \cref{sec:mcdm}, contrary to what has been written, the points of view are not necessarily represented by weak-orders. This is illustrated in \cref{ex:electre} where the relation $C$ may violate transitivity (consider $x_1 = (2, 0, 1)$, $x_2 = (1, 2, 0)$ and $x_3 = (0, 1, 2)$).}
 	}{Reasons and Means to Model Preferences as Incomplete%
 	}
@@ -245,7 +245,6 @@ It should be noted that other authors have proposed different rules: for instanc
 %Compared to maximality, E-admissibility implicitly uses the precise probabilities within the set $\mathcal{P}$, and therefore would not be consistent with Walley's view where the bounded (buying and selling) prices are not to be interpreted as incomplete information about an ideal precise price, but have to be considered as current state of knowledge that may not be reducible with additional information. 
 
 \subsubsection{Working with sets of probabilities and utilities}
-
 Sets of probabilities are helpful to represent incomplete beliefs or lack of information, yet it is natural to also consider cases where the \ac{DM} cannot provide a fully accurate estimation of utilities associated to consequences, or even to completely order them. In some sense, stochastic dominance is an extreme view of such a case, where consequences are ordered but the utility function is left totally unspecified. \commentOC{La découpe que nous proposons ne me semble pas claire à cet endroit. Nous avons déjà parlé ci-dessus d’autres approches qui travaillent avec des ensembles de proba, donc on peut se demander ce qui distingue vraiment cette section-ci. Par exemple pourquoi \og{}maximality\fg{} n’est pas ici ?}
 	
 	Other works have dealt with partially specified utilities.
@@ -262,9 +261,11 @@ Sets of probabilities are helpful to represent incomplete beliefs or lack of inf
 	
 	We have tried to browse a general picture of reasons why preference modeling should accommodate for incompleteness, and how it can do so in multi-criteria problems and uncertainty modeling. 
 	
-	One issue that transpired in most of the paper is whether incompleteness should be considered as an intrinsic, or ontic property of the preferences, in which case incomparability express a knowledge of absence of relation, or if incompleteness should be considered as an incomplete, epistemic description of a complete order, in which case it expresses an absence of knowledge. This mirrors different views about probability sets (Walley's consider that they model belief, without assuming an existing precise unknown distribution, while robust Bayesians consider the opposite). 
+	One issue that transpired in most of the paper is whether incompleteness should be considered as an intrinsic, or ontic property of the preferences, in which case incomparability expresses a knowledge of absence of relation, or if incompleteness should be considered as an incomplete, epistemic description of a complete order, in which case it expresses an absence of knowledge. This mirrors different views about probability sets (Walley's consider that they model belief, without assuming an existing precise unknown distribution, while robust Bayesians consider the opposite). 
 	
-	Our opinion is that both views can be legitimate in different settings, and also that beyond the philosophical interest of distinguishing the two, this can have an important practical impact: knowing that incomparabilities are observable facts may influence strongly our information collection protocol; also, a same piece of information will be interpreted differently. If a \ac{DM} pick act $a$ among three acts $\{a,b,c\}$, in the espistemic interpretation, we woud deduce $a \succ \{b,c\}$, but in the ontic one we could only deduce that $a$ is a maximal element ($\neg(b\succ a)$ and $\neg(c\succ a)$)
+\phantomsection
+\label{epistemic}
+	Our opinion is that both views can be legitimate in different settings, and also that beyond the philosophical interest of distinguishing the two, this can have an important practical impact: knowing that incomparabilities are observable facts may influence strongly our information collection protocol; also, a same piece of information will be interpreted differently. Starting, for simplicity, from an irreflexive and transitive relation $\succ$, and assuming we know somehow that $a$ is a maximal element among three acts $\{a,b,c\}$, in the epistemic interpretation, we would deduce that $a$ is preferred to the other two acts ($a \succ \{b,c\}$), but in the ontic one we could only deduce that $a$ has no element preferred to it ($\neg(b\succ a)$ and $\neg(c\succ a)$).
 	%\commentSD{La phrase suivante me parait un peu mal s'agencer avec le reste?}
 	%\citet{fischhoff_knowing_1980} \citep[also]{fischhoff_knowing_1988} discuss possible attitudes of an analyst wanting to take into account incompleteness of preferences.
 
