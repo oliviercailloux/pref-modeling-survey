@@ -1,7 +1,9 @@
 = Reasons and Means to Model Preferences as Incomplete
 A paper about preference models.
 
-Here is an author version.
+This article is available at Springer via https://doi.org/10.1007/978-3-319-67582-4_2 and as an author version (with an erratum) at http://arxiv.org/abs/1801.01657[arxiv:1801.01657] [cs.AI].
 
-The final publication is available at Springer via https://doi.org/10.1007/978-3-319-67582-4_2.
+This repository contains the source code, also available at arXiv. (Identical to https://github.com/oliviercailloux/pref-modeling-survey/tree/arxiv.)
+
+Authors web pages: http://www.lamsade.dauphine.fr/~ocailloux/[Olivier Cailloux], https://www.hds.utc.fr/~sdesterc/dokuwiki/start[Sébastien Destercke].
 
